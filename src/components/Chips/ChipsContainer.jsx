@@ -33,7 +33,7 @@ export const ChipsContainer = () => {
     }
   };
   return (
-    <div class='chips-outer-container'>
+    <div className='chips-outer-container'>
       {scrollX !== 0 && (
         <button className='prev-btn' onClick={() => slide(-50)}>
           <span className='material-icons-outlined'>navigate_before</span>
