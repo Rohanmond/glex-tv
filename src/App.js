@@ -10,7 +10,7 @@ function App() {
       <Routes>
         <Route path='/' element={<LandingPage />} />
         <Route path='/mock-man' element={<MockAPI />} />
-        <Route path='/home' element={<Home />}>
+        <Route path='' element={<Home />}>
           <Route path='videos' element={<VideoList />} />
         </Route>
       </Routes>
