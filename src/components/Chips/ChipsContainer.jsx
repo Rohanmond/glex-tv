@@ -36,7 +36,7 @@ export const ChipsContainer = () => {
     <div class='chips-outer-container'>
       {scrollX !== 0 && (
         <button className='prev-btn' onClick={() => slide(-50)}>
-          <span class='material-icons-outlined'>navigate_before</span>
+          <span className='material-icons-outlined'>navigate_before</span>
         </button>
       )}
       <div className='chips-container' ref={scrl} onScroll={scrollCheck}>
@@ -47,7 +47,7 @@ export const ChipsContainer = () => {
       </div>
       {!scrolEnd && (
         <button className='next-btn' onClick={() => slide(50)}>
-          <span class='material-icons-outlined'>navigate_next</span>
+          <span className='material-icons-outlined'>navigate_next</span>
         </button>
       )}
     </div>

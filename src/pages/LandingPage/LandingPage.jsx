@@ -6,7 +6,7 @@ export const LandingPage = () => {
     <div className='hero-video-thumbnail-container'>
       <div className='home-hero-img-container'>
         <img
-          class='img-responsive home-hero-image'
+          className='img-responsive home-hero-image'
           src='https://res.cloudinary.com/donqbxlnc/image/upload/v1647995519/MLP._SX1440_CR575_0_865_675_QL80_AC_FP__sxv0wl.jpg'
           alt='sample-'
         />

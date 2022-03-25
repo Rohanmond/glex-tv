@@ -12,7 +12,7 @@ const VideoCard = ({ element }) => {
       </div>
       <div className='video-card-header-container font-wt-bold'>
         <p className='video-card-header'>{title}</p>
-        <span class='material-icons-outlined video-card-header-menu'>
+        <span className='material-icons-outlined video-card-header-menu'>
           more_vert
         </span>
       </div>

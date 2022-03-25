@@ -21,8 +21,8 @@ export const Nav = () => {
               className='nav-search nav-text-input'
               type='search'
             />
-            <div class='input-search-button'>
-              <span class='material-icons-outlined'>search</span>
+            <div className='input-search-button'>
+              <span className='material-icons-outlined'>search</span>
             </div>
           </div>
         </div>
@@ -32,16 +32,6 @@ export const Nav = () => {
               <button className='btn btn-sm btn-primary background-secondary brd-rd-semi-sq'>
                 Login
               </button>
-
-              {/* <button
-                    onClick={() => {
-                      logoutHandler();
-                      navigate("/logout");
-                    }}
-                    className="btn btn-secondary outlined-primary brd-rd-semi-sq"
-                  >
-                    Logout
-                  </button> */}
             </li>
             <li className='nav-link-item nav-mob'>
               <div
@@ -49,7 +39,7 @@ export const Nav = () => {
                 // onClick={() => navigate("/wishlist")
               >
                 <div className='badge-icon'>
-                  <span class='material-icons-outlined'>menu</span>
+                  <span className='material-icons-outlined'>menu</span>
                 </div>
               </div>
             </li>
