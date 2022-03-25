@@ -1,0 +1,41 @@
+.hero-video-thumbnail-container {
+  height: 100vh;
+}
+
+.home-hero-img-container {
+  display: grid;
+  /* height: ; */
+  width: 100vw;
+}
+.home-hero-img-container::before {
+  content: '';
+  position: absolute;
+  background-color: var(--background-color);
+  width: 100vw;
+  height: 100vh;
+  opacity: 0.7;
+  z-index: 1;
+  left: 0;
+}
+.home-hero-image {
+  grid-area: 1/1/5/5;
+  height: 100vh;
+}
+
+.home-hero-image-text {
+  grid-area: 3/1/4/2;
+  display: flex;
+  width: 100vw;
+  color: var(--text-color);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  opacity: 1;
+  padding: 1rem;
+  color: #fff;
+  z-index: 1;
+}
+.home-hero-subheading {
+  font-size: 1.3rem;
+}

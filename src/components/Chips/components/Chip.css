@@ -1,0 +1,7 @@
+.chip {
+  background-color: var(--grey-600);
+  color: var(--text-color);
+  padding: 0.3rem 0.5rem;
+  border-radius: 0.75rem;
+  cursor: pointer;
+}
