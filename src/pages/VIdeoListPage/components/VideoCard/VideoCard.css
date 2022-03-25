@@ -1,0 +1,23 @@
+.video-card-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+.video-card-header-container {
+  display: flex;
+  font-size: 0.95rem;
+  gap: 1rem;
+  padding-left: 0.375rem;
+}
+.video-card-header-menu {
+  margin-left: auto;
+}
+.video-card-subheader-container {
+  font-size: 0.75rem;
+  padding-left: 0.375rem;
+  color: var(--text-secondary-color);
+}
+.video-card-image {
+  border-radius: 0.375rem;
+  object-fit: contain;
+}

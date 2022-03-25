@@ -37,7 +37,7 @@ export const videos = [
       'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.',
   },
   {
-    _id: 'qtRKdVHc-cE&t=16s',
+    _id: 'qtRKdVHc-cE',
     title: 'Fight Club',
     categories: ['drama'],
     creator: 'Movieclips Classic Trailers',
@@ -108,7 +108,7 @@ export const videos = [
     description: '',
   },
   {
-    _id: 'aEr6K1bwIVs&t=63s',
+    _id: 'aEr6K1bwIVs',
     title: 'Steve Jobs',
     categories: ['biography', 'drama'],
     creator: 'universal pictures',
