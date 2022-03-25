@@ -1,0 +1,114 @@
+.nav-mobile-up {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-left {
+  display: flex;
+  flex-direction: row;
+}
+.navigation {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  background: var(--nav-background-color);
+  padding: 0 0.25rem;
+  height: 4rem;
+  position: sticky;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 2;
+}
+.nav-logo-container {
+  height: max-content;
+  max-width: 8rem;
+  display: flex;
+  align-items: center;
+}
+.search-container {
+  display: flex;
+}
+
+.input-search-button {
+  display: flex;
+  width: 3rem;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid var(--text-color);
+  border-bottom: 1px solid var(--text-color);
+  border-right: 1px solid var(--text-color);
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+  background: var(--background-color);
+  cursor: pointer;
+}
+.nav-mob {
+  display: none;
+}
+.nav-logo-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  cursor: pointer;
+}
+.nav-search {
+  width: 35rem;
+}
+
+.nav-text-input {
+  font-size: 1rem;
+  padding: 0.5rem 0.75rem;
+  transition: 0.4s all ease;
+  background-color: var(--nav-background-color);
+  color: var(--text-color);
+  border: 1px solid var(--text-color);
+  border-top-left-radius: 0.25rem;
+  border-bottom-left-radius: 0.25rem;
+}
+.nav-text-input:focus {
+  outline: none;
+  border: 2px solid var(--secondary-color);
+}
+.nav-text-input::placeholder {
+  color: var(--text-secondary-color);
+}
+
+.nav-link-item {
+  cursor: pointer;
+}
+.nav-links {
+  padding: 0;
+  padding-right: 1rem;
+}
+@media screen and (max-width: 1000px) {
+  .nav-search {
+    width: 25rem;
+  }
+  .nav-mob {
+    display: block;
+  }
+  .nav-links {
+    padding-right: 0rem;
+  }
+}
+@media screen and (max-width: 750px) {
+  .navigation {
+    height: max-content;
+    padding-bottom: 1rem;
+  }
+  .home-nav {
+    display: flex;
+    flex-direction: column;
+  }
+}
+@media screen and (max-width: 500px) {
+  .nav-search {
+    width: 18rem;
+  }
+  .navigation {
+    height: max-content;
+    padding-bottom: 1rem;
+  }
+}
