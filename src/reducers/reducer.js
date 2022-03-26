@@ -19,6 +19,12 @@ export const DataReducer = (state, action) => {
       }
       break;
     }
+    case ACTION_TYPE.FILTER_CHANGE:
+      return {
+        ...state,
+        filter: { ...state.filter, category: action.payload.category },
+      };
+
     default:
       return state;
   }
