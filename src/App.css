@@ -2,3 +2,12 @@ body {
   background-color: var(--background-color);
   color: var(--text-color);
 }
+.color-text-secondary {
+  color: var(--text-secondary-color);
+}
+.fill-like {
+  color: var(--red-400);
+}
+.fill-watch-later {
+  color: var(--blue-400);
+}
