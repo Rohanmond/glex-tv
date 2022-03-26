@@ -10,9 +10,10 @@ export const VideoList = () => {
     <>
       <ChipsContainer />
       <div className='video-list-container'>
-        {state.videos.map((el) => {
-          return <VideoCard element={el} key={el._id} />;
-        })}
+        {state.videos.length > 0 &&
+          state.videos.map((el) => {
+            return <VideoCard video={el} key={el._id} />;
+          })}
       </div>
     </>
   );

@@ -19,7 +19,7 @@ export const LandingPage = () => {
           </p>
           <button
             className='btn btn-primary background-secondary brd-rd-semi-sq'
-            onClick={() => navigate('/home/')}
+            onClick={() => navigate('/videos')}
           >
             Explore
           </button>
