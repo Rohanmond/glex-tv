@@ -38,19 +38,19 @@ export const VideoDetails = () => {
 
               <div className='details-video-footer-buttons'>
                 <div className='details-video-footer-button'>
-                  <i class='fas fa-heart'></i>
+                  <i className='fas fa-heart'></i>
                   <p>Like</p>
                 </div>
                 <div className='details-video-footer-button'>
-                  <i class='fas fa-clock'></i>
+                  <i className='fas fa-clock'></i>
                   <p>Watch Later</p>
                 </div>
                 <div className='details-video-footer-button'>
-                  <i class='fas fa-bookmark'></i>
+                  <i className='fas fa-bookmark'></i>
                   <p>Save</p>
                 </div>
                 <div className='details-video-footer-button'>
-                  <i class='fas fa-share-alt'></i>
+                  <i className='fas fa-share-alt'></i>
                   <p>Copy Link</p>
                 </div>
               </div>

@@ -42,3 +42,8 @@
     var(--grey-600)
   );
 }
+@media only screen and (max-width: 750px) {
+  .details-video-container {
+    height: 50vh;
+  }
+}
