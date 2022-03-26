@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import { Home, MockAPI, Nav } from './components';
-import { LandingPage, VideoDetails, VideoList } from './pages';
+import { LandingPage, Login, Signup, VideoDetails, VideoList } from './pages';
 
 function App() {
   return (
@@ -14,6 +14,8 @@ function App() {
           <Route path='videos' element={<VideoList />} />
           <Route path='video/:videoId' element={<VideoDetails />} />
         </Route>
+        <Route path='/signup' element={<Signup />} />
+        <Route path='/login' element={<Login />} />
       </Routes>
     </>
   );

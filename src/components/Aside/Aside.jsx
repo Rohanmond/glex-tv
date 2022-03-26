@@ -6,7 +6,7 @@ export const Aside = () => {
         <span className='material-icons-outlined'>home</span>
         <p className='video-list-aside-item-text'>Home</p>
       </li>
-      <li className='video-list-aside-item'>
+      <li className='video-list-aside-item' title='playlist'>
         <span className='material-icons-outlined'>playlist_play</span>
         <p className='video-list-aside-item-text'>Playlist</p>
       </li>
