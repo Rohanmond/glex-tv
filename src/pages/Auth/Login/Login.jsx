@@ -1,5 +1,7 @@
+import { useNavigate } from 'react-router-dom';
 import '../auth.css';
 export const Login = () => {
+  const navigate = useNavigate();
   return (
     <div className='auth-outer-container'>
       <div className='auth-box'>
@@ -27,7 +29,9 @@ export const Login = () => {
             />
           </div>
           <div className='auth-link-container'>
-            <p className='font-wt-semibold'>Don't have an account? Signup</p>
+            <p className='font-wt-semibold' onClick={() => navigate('/signup')}>
+              Don't have an account? Signup
+            </p>
           </div>
         </form>
       </div>

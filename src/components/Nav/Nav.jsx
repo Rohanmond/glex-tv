@@ -1,5 +1,7 @@
+import { useNavigate } from 'react-router-dom';
 import './Nav.css';
 export const Nav = () => {
+  const navigate = useNavigate();
   return (
     <nav className='navigation home-nav'>
       <div className='nav-mobile-up'>
@@ -29,15 +31,15 @@ export const Nav = () => {
         <div className='nav-right'>
           <ul className='nav-links'>
             <li className='nav-link-item'>
-              <button className='btn btn-primary background-secondary brd-rd-semi-sq nav-link-item-btn'>
+              <button
+                className='btn btn-primary background-secondary brd-rd-semi-sq nav-link-item-btn'
+                onClick={() => navigate('/login')}
+              >
                 Login
               </button>
             </li>
             <li className='nav-link-item nav-mob'>
-              <div
-                className='badge-container'
-                // onClick={() => navigate("/wishlist")
-              >
+              <div className='badge-container'>
                 <div className='badge-icon'>
                   <span className='material-icons-outlined'>menu</span>
                 </div>
