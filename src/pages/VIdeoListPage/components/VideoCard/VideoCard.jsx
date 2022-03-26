@@ -2,7 +2,6 @@ import { useNavigate } from 'react-router-dom';
 import './VideoCard.css';
 const VideoCard = ({ video }) => {
   const navigate = useNavigate();
-  console.log(video, video);
   const { _id, title, creator } = video;
   return (
     <div className='video-card-container'>
