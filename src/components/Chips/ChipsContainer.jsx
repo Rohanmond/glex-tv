@@ -40,7 +40,7 @@ export const ChipsContainer = () => {
         </button>
       )}
       <div className='chips-container' ref={scrl} onScroll={scrollCheck}>
-        <Chip element={{ categoryName: 'All' }} />
+        <Chip element={{ categoryName: 'all' }} />
         {state.categories.map((el) => {
           return <Chip element={el} key={el._id} />;
         })}
