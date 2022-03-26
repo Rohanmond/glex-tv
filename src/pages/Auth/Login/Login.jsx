@@ -25,7 +25,7 @@ export const Login = () => {
             <input
               className='btn btn-primary background-secondary brd-rd-semi-sq'
               type='submit'
-              value={'signup'}
+              value={'Login'}
             />
           </div>
           <div className='auth-link-container'>
