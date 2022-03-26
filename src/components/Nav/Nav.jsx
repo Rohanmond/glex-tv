@@ -10,6 +10,7 @@ export const Nav = () => {
             <div className='nav-logo-link'>
               <img
                 className='hero-logo'
+                onClick={() => navigate('/videos')}
                 src='https://res.cloudinary.com/donqbxlnc/image/upload/v1647974532/Glex_TV_1_1_mqmdec.png'
                 alt='hero logo'
               />
