@@ -21,4 +21,5 @@
   border-radius: 0.375rem;
   object-fit: cover;
   height: 9rem;
+  cursor: pointer;
 }
