@@ -28,8 +28,8 @@ export const Nav = () => {
         </div>
         <div className='nav-right'>
           <ul className='nav-links'>
-            <li className='nav-link-item nav-link-item-btn'>
-              <button className='btn btn-sm btn-primary background-secondary brd-rd-semi-sq'>
+            <li className='nav-link-item'>
+              <button className='btn btn-primary background-secondary brd-rd-semi-sq nav-link-item-btn'>
                 Login
               </button>
             </li>
