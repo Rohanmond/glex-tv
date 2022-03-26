@@ -5,15 +5,16 @@
   height: 70vh;
 }
 .details-video-footer {
-  padding: 1rem 0;
+  padding: 1.25rem 0;
   display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
+  align-items: center;
+  gap: 1rem;
 }
 .details-video-footer-text {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  margin-right: auto;
 }
 .details-video-footer-buttons {
   display: flex;
@@ -30,6 +31,7 @@
   padding: 0.5rem 0.75rem;
   background-color: var(--grey-600);
   border-radius: 1rem;
+  cursor: pointer;
 }
 .hr {
   border: 0;
@@ -45,5 +47,8 @@
 @media only screen and (max-width: 750px) {
   .details-video-container {
     height: 50vh;
+  }
+  .details-video-footer {
+    flex-direction: column;
   }
 }
