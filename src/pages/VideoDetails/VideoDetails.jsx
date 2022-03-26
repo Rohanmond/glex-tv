@@ -7,15 +7,12 @@ import VideoCard from '../VIdeoListPage/components/VideoCard/VideoCard';
 export const VideoDetails = () => {
   const { videoId } = useParams();
   const { state } = useData();
-
   const video = state.videos.find((ele) => ele._id === videoId) || {};
   const { title, creator } = video;
   const otherVideos = state.videos.filter((ele) => ele._id !== videoId);
   useEffect(() => {
-    console.log(videoId);
-    console.log(video);
-    console.log(otherVideos);
-  });
+    window.scrollTo(0, 0);
+  }, [videoId]);
   return (
     <>
       {video && (
