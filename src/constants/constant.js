@@ -1,4 +1,9 @@
 export const ACTION_TYPE = {
   INITIAL_DATA_FETCH: 'INITIAL_DATA_FETCH',
   FILTER_CHANGE: 'FILTER_CHANGE',
+  FILTER_CLEAR: 'FILTER_CLEAR',
+};
+export const FILTER = {
+  SEARCH: 'search',
+  CATEGORY: 'category',
 };

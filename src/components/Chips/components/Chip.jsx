@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { ACTION_TYPE } from '../../../constants/constant';
+import { ACTION_TYPE, FILTER } from '../../../constants/constant';
 import { useData } from '../../../contexts';
 import './Chip.css';
 const Chip = ({ element }) => {
@@ -17,7 +17,7 @@ const Chip = ({ element }) => {
       onClick={() =>
         dispatch({
           type: ACTION_TYPE.FILTER_CHANGE,
-          payload: { category: categoryName },
+          payload: { FILTER_TYPE: FILTER.CATEGORY, FILTER_VALUE: categoryName },
         })
       }
     >

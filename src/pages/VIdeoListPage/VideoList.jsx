@@ -5,7 +5,7 @@ import './VideoList.css';
 
 export const VideoList = () => {
   const { filteredData } = useFilter();
-  console.log(filteredData);
+
   return (
     <>
       <ChipsContainer />

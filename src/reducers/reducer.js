@@ -17,14 +17,21 @@ export const DataReducer = (state, action) => {
       if (action.payload.categories) {
         return { ...state, categories: action.payload.categories };
       }
-      break;
+      return { ...state };
     }
     case ACTION_TYPE.FILTER_CHANGE:
       return {
         ...state,
-        filter: { ...state.filter, category: action.payload.category },
+        filter: {
+          ...state.filter,
+          [action.payload.FILTER_TYPE]: action.payload.FILTER_VALUE,
+        },
       };
-
+    case ACTION_TYPE.FILTER_CLEAR:
+      return {
+        ...state,
+        filter: { search: '', category: '' },
+      };
     default:
       return state;
   }
