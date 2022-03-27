@@ -5,6 +5,7 @@
   --text-secondary-color: #aaaaaa;
   --nav-background-hover-color: #2d255c;
 }
+
 ::-webkit-scrollbar {
   width: 8px;
 }

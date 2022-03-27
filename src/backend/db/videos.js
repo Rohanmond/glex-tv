@@ -31,7 +31,7 @@ export const videos = [
   {
     _id: 'JE9z-gy4De4',
     title: 'Inception',
-    categories: ['action', 'adventure', 'sci-fi'],
+    categories: ['action', 'adventure', 'sci_fi'],
     creator: 'Warner Bros. Entertainment',
     description:
       'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.',
@@ -47,7 +47,7 @@ export const videos = [
   {
     _id: 'zSWdZVtXT7E',
     title: 'Insterstellar',
-    categories: ['adventure', 'drama', 'sci-fi'],
+    categories: ['adventure', 'drama', 'sci_fi'],
     creator: 'Warner Bros UK & Ireland',
     description:
       'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.',
@@ -95,7 +95,7 @@ export const videos = [
   {
     _id: 'SOXWc32k4zA',
     title: 'PK',
-    categories: ['comedy', 'drama', 'sci-fi'],
+    categories: ['comedy', 'drama', 'sci_fi'],
     creator: 'Movieclips India',
     description:
       'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.',

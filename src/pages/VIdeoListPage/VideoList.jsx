@@ -1,17 +1,17 @@
 import { ChipsContainer } from '../../components';
-import { useData } from '../../contexts';
+import { useFilter } from '../../custom-hooks/FilterHook';
 import VideoCard from './components/VideoCard/VideoCard';
 import './VideoList.css';
 
 export const VideoList = () => {
-  const { state } = useData();
+  const { filteredData } = useFilter();
 
   return (
     <>
       <ChipsContainer />
       <div className='video-list-container'>
-        {state.videos.length > 0 &&
-          state.videos.map((el) => {
+        {filteredData.length > 0 &&
+          filteredData.map((el) => {
             return <VideoCard video={el} key={el._id} />;
           })}
       </div>

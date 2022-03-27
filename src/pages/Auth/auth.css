@@ -9,13 +9,12 @@
 
 .auth-box {
   padding: 4rem;
-  border: 0.5px solid var(--yellow-200);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 1.5rem;
-  border-radius: 0.25rem;
+  border-radius: 0.5rem;
   color: var(--yellow-200);
   background-color: var(--nav-background-color);
 }
