@@ -11,7 +11,7 @@ const VideoCard = ({ video }) => {
       >
         <img
           className='img-responsive video-card-image'
-          src={`https://i.ytimg.com/vi/${_id}/0.jpg`}
+          src={`https://i.ytimg.com/vi/${_id}/maxresdefault.jpg`}
           alt={title}
         />
       </div>
