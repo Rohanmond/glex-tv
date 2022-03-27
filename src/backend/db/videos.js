@@ -21,18 +21,50 @@ export const videos = [
       'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.',
   },
   {
-    _id: 'LDG9bisJEaI',
-    title: 'The dark knight',
-    creator: 'DC',
-    categories: ['action', 'crime', 'drama'],
+    _id: 'AZGcmvrTX9M',
+    title: 'TENET',
+    categories: ['action', 'drama', 'sci_fi', 'spy', 'suspense'],
+    creator: 'Warner Bros. Entertainment',
     description:
       'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.',
   },
   {
-    _id: 'JE9z-gy4De4',
+    _id: 'GAjBzu8ggi0',
+    title: 'The dark knight Rises',
+    creator: 'DC',
+    categories: ['action', 'crime', 'drama', 'mystery', 'superhero'],
+    description:
+      'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.',
+  },
+  {
+    _id: 'Qwe6qXFTdgc',
     title: 'Inception',
-    categories: ['action', 'adventure', 'sci_fi'],
+    categories: ['action', 'adventure', 'sci_fi', 'heist'],
     creator: 'Warner Bros. Entertainment',
+    description:
+      'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.',
+  },
+  {
+    _id: 'mSlgu8AQAd4',
+    title: 'Badla',
+    categories: ['thriller', 'drama', 'crime'],
+    creator: 'Red Chillies Entertainment',
+    description:
+      'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.',
+  },
+  {
+    _id: '_InqQJRqGW4',
+    title: 'Money Heist',
+    categories: ['thriller', 'drama', 'crime'],
+    creator: 'Netflix',
+    description:
+      'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.',
+  },
+  {
+    _id: '6kw1UVovByw',
+    title: 'Sky Fall',
+    categories: ['thriller', 'adventure', 'crime', 'spy', 'mystery'],
+    creator: 'Sony Pictures Entertainment',
     description:
       'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.',
   },
@@ -45,7 +77,7 @@ export const videos = [
       'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.',
   },
   {
-    _id: 'zSWdZVtXT7E',
+    _id: '2LqzF5WauAw',
     title: 'Insterstellar',
     categories: ['adventure', 'drama', 'sci_fi'],
     creator: 'Warner Bros UK & Ireland',
@@ -61,9 +93,9 @@ export const videos = [
       'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.',
   },
   {
-    _id: 'K0eDlFX9GMc',
-    title: '3 idiots',
-    categories: ['comedy', 'drama'],
+    _id: 'Pj0wz7zu3Ms',
+    title: 'Red Notice',
+    categories: ['comedy', 'drama', 'action', 'crime'],
     creator: 'moviemaniacsDE',
     description:
       'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.',
@@ -77,10 +109,10 @@ export const videos = [
       'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.',
   },
   {
-    _id: 'NyHpHF2AZuU',
-    title: 'Like stars on earth',
-    categories: ['drama', 'family'],
-    creator: 'YRF',
+    _id: 'oqxAJKy0ii4',
+    title: 'Squid Game',
+    categories: ['drama', 'thriller', 'horror'],
+    creator: 'Netflix',
     description:
       'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.',
   },
@@ -93,10 +125,10 @@ export const videos = [
       'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.',
   },
   {
-    _id: 'SOXWc32k4zA',
-    title: 'PK',
-    categories: ['comedy', 'drama', 'sci_fi'],
-    creator: 'Movieclips India',
+    _id: 'ESEUoa-mz2c',
+    title: 'Dark',
+    categories: ['supernatural', 'drama', 'thriller', 'mystery', 'tragedy'],
+    creator: 'Netflix',
     description:
       'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.',
   },
