@@ -1,5 +1,5 @@
 import './VideoCardMenu.css';
-export const VideoCardMenu = ({ menuItems, videoId }) => {
+export const VideoCardMenu = ({ menuItems, video }) => {
   return (
     <div className='video-card-menu-outer-container'>
       <div className='video-card-menu-container'>
@@ -11,18 +11,11 @@ export const VideoCardMenu = ({ menuItems, videoId }) => {
                 className='video-card-menu-item'
                 key={item.id}
                 onClick={(e) => {
-                  console.log('vs');
-                  item.clickHandler(e, videoId);
+                  item.clickHandler(e, video, item.id);
                 }}
               >
                 {item.icon}
-                <p
-                  onClick={(e) => {
-                    console.log('vs');
-                  }}
-                >
-                  {item.text}
-                </p>
+                <p>{item.text}</p>
               </div>
             );
           })}

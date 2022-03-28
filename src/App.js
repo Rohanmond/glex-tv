@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
-import { Home, MockAPI, Nav } from './components';
+import { Home, MockAPI, Nav, PrivateRoute } from './components';
 import {
   HistoryPage,
   LandingPage,
@@ -25,7 +25,14 @@ function App() {
           <Route path='video/:videoId' element={<VideoDetails />} />
           <Route path='watch_later' element={<WatchLater />} />
           <Route path='liked_page' element={<LikedPage />} />
-          <Route path='history_page' element={<HistoryPage />} />
+          <Route
+            path='history_page'
+            element={
+              <PrivateRoute>
+                <HistoryPage />
+              </PrivateRoute>
+            }
+          />
           <Route path='playlist_page' element={<PlayList />} />
         </Route>
         <Route path='/signup' element={<Signup />} />

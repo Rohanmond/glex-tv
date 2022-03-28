@@ -8,6 +8,7 @@ export const InitialState = {
 
   categories: [],
   videos: [],
+  history: [],
 };
 export const DataReducer = (state, action) => {
   switch (action.type) {
@@ -39,18 +40,43 @@ export const DataReducer = (state, action) => {
         filter: { search: '', category: '' },
       };
     case ACTION_TYPE.MENU_TOGGLE:
-      return {
-        ...state,
-        videos: state.videos.map((video) => {
-          if (video._id === action.payload._id)
-            return { ...video, menu: !video.menu };
-          return video;
-        }),
-      };
+      switch (action.payload.type) {
+        case 'videos':
+          return {
+            ...state,
+            videos: state.videos.map((video) => {
+              if (video._id === action.payload._id)
+                return { ...video, menu: !video.menu };
+              return video;
+            }),
+          };
+        case 'history':
+          return {
+            ...state,
+            history: state.history.map((video) => {
+              if (video._id === action.payload._id)
+                return { ...video, menu: !video.menu };
+              return video;
+            }),
+          };
+        default:
+          return state;
+      }
+
     case ACTION_TYPE.RESET_MENU:
       return {
         ...state,
         videos: state.videos.map((video) => {
+          return { ...video, menu: false };
+        }),
+        history: state.history.map((video) => {
+          return { ...video, menu: false };
+        }),
+      };
+    case ACTION_TYPE.SET_HISTORY:
+      return {
+        ...state,
+        history: action.payload.history.map((video) => {
           return { ...video, menu: false };
         }),
       };

@@ -1,0 +1,19 @@
+.history-list-container {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: stretch;
+  gap: 2rem;
+  padding: 0.5rem 1.5rem;
+  position: relative;
+}
+.history-clear-all-button-container {
+  position: absolute;
+  top: 0;
+  right: 1.5rem;
+}
+
+.history-clear-all-button {
+  padding: 0.25rem 0.5rem;
+}

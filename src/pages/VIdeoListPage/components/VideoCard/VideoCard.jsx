@@ -6,7 +6,7 @@ import { useRef, useEffect } from 'react';
 import { useOutsideClickHandler } from '../../../../custom-hooks/OutSideClickHandlerHook';
 import { VideoCardMenu } from '../VideoCardMenu/VideoCardMenu';
 
-const VideoCard = ({ video, menuItems }) => {
+const VideoCard = ({ video, menuItems, type }) => {
   const navigate = useNavigate();
   const { dispatch } = useData();
   const ref = useRef(null);
@@ -38,11 +38,14 @@ const VideoCard = ({ video, menuItems }) => {
           className='video-card-header-menu'
           ref={ref}
           onClick={() => {
-            dispatch({ type: ACTION_TYPE.MENU_TOGGLE, payload: { _id } });
+            dispatch({
+              type: ACTION_TYPE.MENU_TOGGLE,
+              payload: { _id, type },
+            });
           }}
         >
           <span className='material-icons-outlined'>more_vert</span>
-          {menu && <VideoCardMenu menuItems={menuItems} videoId={_id} />}
+          {menu && <VideoCardMenu menuItems={menuItems} video={video} />}
         </div>
       </div>
       <div className='video-card-subheader-container'>
