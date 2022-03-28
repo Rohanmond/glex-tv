@@ -1,11 +1,13 @@
 import { useNavigate } from 'react-router-dom';
 import { ACTION_TYPE, FILTER } from '../../constants/constant';
-import { useData } from '../../contexts';
+import { useAuth, useData } from '../../contexts';
 import './Nav.css';
 import { useRef } from 'react';
+
 export const Nav = () => {
   const navigate = useNavigate();
   const { dispatch } = useData();
+  const { token, logoutHandler } = useAuth();
   const searchRef = useRef();
   const smallSearchRef = useRef();
   const searchHandler = (e) => {
@@ -85,12 +87,22 @@ export const Nav = () => {
         <div className='nav-right'>
           <ul className='nav-links'>
             <li className='nav-link-item'>
-              <button
-                className='btn btn-primary background-secondary brd-rd-semi-sq nav-link-item-btn'
-                onClick={() => navigate('/login')}
-              >
-                Login
-              </button>
+              {!token && (
+                <button
+                  className='btn btn-primary background-secondary brd-rd-semi-sq nav-link-item-btn'
+                  onClick={() => navigate('/login')}
+                >
+                  Login
+                </button>
+              )}
+              {token && (
+                <button
+                  className='btn btn-primary background-secondary brd-rd-semi-sq nav-link-item-btn'
+                  onClick={() => logoutHandler()}
+                >
+                  Logout
+                </button>
+              )}
             </li>
             <li className='nav-link-item nav-mob'>
               <div className='badge-container'>
