@@ -1,20 +1,17 @@
-import { useEffect } from 'react';
-import { ACTION_TYPE } from '../constants/constant';
-import { useData } from '../contexts';
+import { useEffect, useState } from 'react';
 
 export const useOutsideClickHandler = (ref) => {
-  const { dispatch } = useData();
+  const [resetMenu, setResetMenu] = useState(false);
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (ref.current && !ref.current.contains(e.target)) {
-        dispatch({
-          type: ACTION_TYPE.RESET_MENU,
-        });
-      }
+        setResetMenu(true);
+      } else setResetMenu(false);
     };
     document.addEventListener('click', handleClickOutside, true);
     return () => {
       document.addEventListener('click', handleClickOutside, true);
     };
   }, [ref]);
+  return { resetMenu };
 };

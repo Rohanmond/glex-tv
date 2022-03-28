@@ -2,16 +2,21 @@ import { useNavigate } from 'react-router-dom';
 import './VideoCard.css';
 import { useData } from '../../../../contexts';
 import { ACTION_TYPE } from '../../../../constants/constant';
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import { useOutsideClickHandler } from '../../../../custom-hooks/OutSideClickHandlerHook';
 
 const VideoCard = ({ video, VideoCardMenu }) => {
   const navigate = useNavigate();
   const { dispatch } = useData();
   const ref = useRef(null);
-  useOutsideClickHandler(ref);
+  const { resetMenu } = useOutsideClickHandler(ref);
   const { _id, title, creator, menu } = video;
-
+  useEffect(() => {
+    if (resetMenu)
+      dispatch({
+        type: ACTION_TYPE.RESET_MENU,
+      });
+  }, [resetMenu, dispatch]);
   return (
     <div className='video-card-container'>
       <div
