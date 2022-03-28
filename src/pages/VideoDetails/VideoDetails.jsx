@@ -27,7 +27,7 @@ export const VideoDetails = () => {
                 frameBorder='0'
                 style={{ borderRadius: '0.5rem' }}
                 allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
-                allowFullScreen=''
+                allowFullScreen={true}
               ></iframe>
             </div>
             <div className='details-video-footer'>
