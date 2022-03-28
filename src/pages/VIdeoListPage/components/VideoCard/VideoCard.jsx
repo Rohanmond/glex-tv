@@ -35,15 +35,13 @@ const VideoCard = ({ video, menuItems }) => {
       <div className='video-card-header-container font-wt-bold'>
         <p className='video-card-header'>{title}</p>
         <div
+          className='video-card-header-menu'
           ref={ref}
           onClick={() => {
-            console.log('e');
             dispatch({ type: ACTION_TYPE.MENU_TOGGLE, payload: { _id } });
           }}
         >
-          <span className='material-icons-outlined video-card-header-menu'>
-            more_vert
-          </span>
+          <span className='material-icons-outlined'>more_vert</span>
           {menu && <VideoCardMenu menuItems={menuItems} videoId={_id} />}
         </div>
       </div>

@@ -3,7 +3,7 @@ export const VideoCardMenu = ({ menuItems, videoId }) => {
   return (
     <div className='video-card-menu-outer-container'>
       <div className='video-card-menu-container'>
-        {/* {menuItems &&
+        {menuItems &&
           menuItems.map((item) => {
             console.log(typeof item.clickHandler);
             return (
@@ -12,7 +12,7 @@ export const VideoCardMenu = ({ menuItems, videoId }) => {
                 key={item.id}
                 onClick={(e) => {
                   console.log('vs');
-                  //   item.clickHandler(e, videoId);
+                  item.clickHandler(e, videoId);
                 }}
               >
                 {item.icon}
@@ -25,18 +25,7 @@ export const VideoCardMenu = ({ menuItems, videoId }) => {
                 </p>
               </div>
             );
-          })} */}
-        <div
-          className='video-card-menu-item'
-          onClick={(e) => {
-            // e.stopPropagation();
-            console.log('vs');
-            //   item.clickHandler(e, videoId);
-          }}
-        >
-          <span className='material-icons-outlined'>watch_later</span>
-          <p>Hello</p>
-        </div>
+          })}
       </div>
     </div>
   );
