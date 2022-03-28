@@ -4,6 +4,8 @@ import './HistoryPage.css';
 export const HistoryPage = () => {
   const { state, DeleteAllHistory, DeleteHistory } = useData();
 
+  const reversedHistoryArray = [...state.history].reverse();
+
   const clickHandler = (e, video, menuId) => {
     e.stopPropagation();
     switch (menuId) {
@@ -57,11 +59,11 @@ export const HistoryPage = () => {
 
   return (
     <div className='history-list-container'>
-      {state.history.length === 0 && (
+      {reversedHistoryArray.length === 0 && (
         <h2>Looks like you havn't watched anything yet</h2>
       )}
-      {state.history.length > 0 &&
-        state.history.map((video) => {
+      {reversedHistoryArray.length > 0 &&
+        reversedHistoryArray.map((video) => {
           return (
             <VideoCard
               video={video}
@@ -71,7 +73,7 @@ export const HistoryPage = () => {
             />
           );
         })}
-      {state.history.length > 0 && (
+      {reversedHistoryArray.length > 0 && (
         <div className='history-clear-all-button-container'>
           <button
             className='btn btn-primary background-danger brd-rd-semi-sq history-clear-all-button'
