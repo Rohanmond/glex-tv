@@ -1,7 +1,11 @@
 import { createContext, useReducer, useContext, useEffect } from 'react';
 import { ACTION_TYPE } from '../constants/constant';
 import { DataReducer, InitialState } from '../reducers/reducer';
-import { GetAllCategories, GetAllVideos } from '../Services/services';
+import {
+  GetAllCategories,
+  GetAllHistoryService,
+  GetAllVideos,
+} from '../Services/services';
 
 const DataContext = createContext();
 
@@ -31,6 +35,12 @@ export const DataProvider = ({ children }) => {
       }
     })();
   }, []);
+
+  const GetAllHistory = async ({ encodedToken }) => {
+    const historyRes = await GetAllHistoryService({ encodedToken });
+    if (historyRes.status === 200 || historyRes.status === 201) {
+    }
+  };
   return (
     <DataContext.Provider value={{ state, dispatch }}>
       {children}

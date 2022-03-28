@@ -4,30 +4,14 @@ import { useData } from '../../../../contexts';
 import { ACTION_TYPE } from '../../../../constants/constant';
 import { useRef, useEffect } from 'react';
 import { useOutsideClickHandler } from '../../../../custom-hooks/OutSideClickHandlerHook';
+import { VideoCardMenu } from '../VideoCardMenu/VideoCardMenu';
 
-const VideoCard = ({ video, VideoCardMenu }) => {
+const VideoCard = ({ video, menuItems }) => {
   const navigate = useNavigate();
   const { dispatch } = useData();
   const ref = useRef(null);
   const { resetMenu } = useOutsideClickHandler(ref);
   const { _id, title, creator, menu } = video;
-  const menuItems = [
-    {
-      id: 1,
-      icon: <span className='material-icons-outlined'>watch_later</span>,
-      text: 'Save to Watch Later',
-    },
-    {
-      id: 2,
-      icon: <span className='material-icons-outlined'>playlist_play</span>,
-      text: 'Save to Playlist',
-    },
-    {
-      id: 3,
-      icon: <span class='material-icons-outlined'>share</span>,
-      text: 'Share',
-    },
-  ];
 
   useEffect(() => {
     if (resetMenu)
@@ -50,17 +34,18 @@ const VideoCard = ({ video, VideoCardMenu }) => {
       </div>
       <div className='video-card-header-container font-wt-bold'>
         <p className='video-card-header'>{title}</p>
-
-        <span
+        <div
           ref={ref}
-          className='material-icons-outlined video-card-header-menu'
-          onClick={() =>
-            dispatch({ type: ACTION_TYPE.MENU_TOGGLE, payload: { _id } })
-          }
+          onClick={() => {
+            console.log('e');
+            dispatch({ type: ACTION_TYPE.MENU_TOGGLE, payload: { _id } });
+          }}
         >
-          more_vert
-        </span>
-        {menu && <VideoCardMenu menuItems={menuItems} />}
+          <span className='material-icons-outlined video-card-header-menu'>
+            more_vert
+          </span>
+          {menu && <VideoCardMenu menuItems={menuItems} videoId={_id} />}
+        </div>
       </div>
       <div className='video-card-subheader-container'>
         <p className='video-card-subheader'>{creator}</p>

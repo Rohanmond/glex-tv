@@ -1,7 +1,7 @@
 import { ChipsContainer } from '../../components';
+import { VIDEO_CARD_HOME_MENU } from '../../constants/constant';
 import { useFilter } from '../../custom-hooks/FilterHook';
 import VideoCard from './components/VideoCard/VideoCard';
-import { VideoCardMenu } from './components/VideoCardMenu/VideoCardMenu';
 import './VideoList.css';
 
 export const VideoList = () => {
@@ -17,7 +17,7 @@ export const VideoList = () => {
               <VideoCard
                 video={el}
                 key={el._id}
-                VideoCardMenu={VideoCardMenu}
+                menuItems={VIDEO_CARD_HOME_MENU}
               />
             );
           })}
