@@ -1,9 +1,12 @@
 .chips-outer-container {
-  position: relative;
+  position: absolute;
+  width: 100%;
+  height: auto;
 }
 .chips-container {
   padding: 1rem;
   display: flex;
+  flex-wrap: nowrap;
   align-items: center;
   overflow: auto;
   gap: 1rem;

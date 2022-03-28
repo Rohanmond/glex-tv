@@ -33,23 +33,25 @@ export const ChipsContainer = () => {
     }
   };
   return (
-    <div className='chips-outer-container'>
-      {scrollX !== 0 && (
-        <button className='prev-btn' onClick={() => slide(-50)}>
-          <span className='material-icons-outlined'>navigate_before</span>
-        </button>
-      )}
-      <div className='chips-container' ref={scrl} onScroll={scrollCheck}>
-        <Chip element={{ categoryName: 'all' }} />
-        {state.categories.map((el) => {
-          return <Chip element={el} key={el._id} />;
-        })}
+    <>
+      <div className='chips-outer-container'>
+        {scrollX !== 0 && (
+          <button className='prev-btn' onClick={() => slide(-50)}>
+            <span className='material-icons-outlined'>navigate_before</span>
+          </button>
+        )}
+        <div className='chips-container' ref={scrl} onScroll={scrollCheck}>
+          <Chip element={{ categoryName: 'all' }} />
+          {state.categories.map((el) => {
+            return <Chip element={el} key={el._id} />;
+          })}
+        </div>
+        {!scrolEnd && (
+          <button className='next-btn' onClick={() => slide(50)}>
+            <span className='material-icons-outlined'>navigate_next</span>
+          </button>
+        )}
       </div>
-      {!scrolEnd && (
-        <button className='next-btn' onClick={() => slide(50)}>
-          <span className='material-icons-outlined'>navigate_next</span>
-        </button>
-      )}
-    </div>
+    </>
   );
 };

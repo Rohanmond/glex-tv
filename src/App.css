@@ -12,3 +12,7 @@ body {
 .fill-watch-later {
   color: var(--blue-400);
 }
+.app {
+  display: flex;
+  flex-direction: column;
+}

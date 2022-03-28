@@ -5,7 +5,7 @@ import { LandingPage, Login, Signup, VideoDetails, VideoList } from './pages';
 
 function App() {
   return (
-    <>
+    <div className='app'>
       <Nav />
       <Routes>
         <Route path='/' element={<LandingPage />} />
@@ -17,7 +17,7 @@ function App() {
         <Route path='/signup' element={<Signup />} />
         <Route path='/login' element={<Login />} />
       </Routes>
-    </>
+    </div>
   );
 }
 
