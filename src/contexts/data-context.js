@@ -1,5 +1,4 @@
 import { createContext, useReducer, useContext, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { ACTION_TYPE } from '../constants/constant';
 import { DataReducer, InitialState } from '../reducers/reducer';
 import {
@@ -16,7 +15,6 @@ const DataContext = createContext();
 
 export const DataProvider = ({ children }) => {
   const [state, dispatch] = useReducer(DataReducer, InitialState);
-  const navigate = useNavigate();
   const { token } = useAuth();
 
   useEffect(() => {
