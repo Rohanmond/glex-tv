@@ -1,8 +1,10 @@
+import { useNavigate } from 'react-router-dom';
 import './Aside.css';
 export const Aside = () => {
+  const navigate = useNavigate();
   return (
     <ul className='video-list-aside-container'>
-      <li className='video-list-aside-item'>
+      <li className='video-list-aside-item' onClick={() => navigate('/videos')}>
         <span className='material-icons-outlined'>home</span>
         <p className='video-list-aside-item-text'>Home</p>
       </li>
