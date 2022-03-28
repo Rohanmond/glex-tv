@@ -1,8 +1,17 @@
 import { useNavigate } from 'react-router-dom';
 import './VideoCard.css';
-const VideoCard = ({ video }) => {
+import { useData } from '../../../../contexts';
+import { ACTION_TYPE } from '../../../../constants/constant';
+import { useRef } from 'react';
+import { useOutsideClickHandler } from '../../../../custom-hooks/OutSideClickHandlerHook';
+
+const VideoCard = ({ video, VideoCardMenu }) => {
   const navigate = useNavigate();
-  const { _id, title, creator } = video;
+  const { dispatch } = useData();
+  const ref = useRef(null);
+  useOutsideClickHandler(ref);
+  const { _id, title, creator, menu } = video;
+
   return (
     <div className='video-card-container'>
       <div
@@ -17,9 +26,17 @@ const VideoCard = ({ video }) => {
       </div>
       <div className='video-card-header-container font-wt-bold'>
         <p className='video-card-header'>{title}</p>
-        <span className='material-icons-outlined video-card-header-menu'>
+
+        <span
+          ref={ref}
+          className='material-icons-outlined video-card-header-menu'
+          onClick={() =>
+            dispatch({ type: ACTION_TYPE.MENU_TOGGLE, payload: { _id } })
+          }
+        >
           more_vert
         </span>
+        {menu && <VideoCardMenu />}
       </div>
       <div className='video-card-subheader-container'>
         <p className='video-card-subheader'>{creator}</p>
