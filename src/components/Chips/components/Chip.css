@@ -6,6 +6,6 @@
   cursor: pointer;
 }
 .chip-active {
-  background-color: var(--yellow-400);
+  background-color: var(--blue-200);
   color: var(--black-color);
 }
