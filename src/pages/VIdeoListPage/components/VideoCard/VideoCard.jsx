@@ -11,12 +11,31 @@ const VideoCard = ({ video, VideoCardMenu }) => {
   const ref = useRef(null);
   const { resetMenu } = useOutsideClickHandler(ref);
   const { _id, title, creator, menu } = video;
+  const menuItems = [
+    {
+      id: 1,
+      icon: <span className='material-icons-outlined'>watch_later</span>,
+      text: 'Save to Watch Later',
+    },
+    {
+      id: 2,
+      icon: <span className='material-icons-outlined'>playlist_play</span>,
+      text: 'Save to Playlist',
+    },
+    {
+      id: 3,
+      icon: <span class='material-icons-outlined'>share</span>,
+      text: 'Share',
+    },
+  ];
+
   useEffect(() => {
     if (resetMenu)
       dispatch({
         type: ACTION_TYPE.RESET_MENU,
       });
   }, [resetMenu, dispatch]);
+
   return (
     <div className='video-card-container'>
       <div
@@ -41,7 +60,7 @@ const VideoCard = ({ video, VideoCardMenu }) => {
         >
           more_vert
         </span>
-        {menu && <VideoCardMenu />}
+        {menu && <VideoCardMenu menuItems={menuItems} />}
       </div>
       <div className='video-card-subheader-container'>
         <p className='video-card-subheader'>{creator}</p>
