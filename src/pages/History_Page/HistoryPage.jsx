@@ -2,12 +2,17 @@ import { useData } from '../../contexts';
 import VideoCard from '../VIdeoListPage/components/VideoCard/VideoCard';
 import './HistoryPage.css';
 export const HistoryPage = () => {
-  const { state, DeleteAllHistory } = useData();
+  const { state, DeleteAllHistory, DeleteHistory } = useData();
 
-  const clickHandler = (e, video, id) => {
-    switch (id) {
+  const clickHandler = (e, video, menuId) => {
+    e.stopPropagation();
+    switch (menuId) {
+      case 0: {
+        DeleteHistory({ videoId: video._id });
+        break;
+      }
       case 1: {
-        console.log('hello');
+        console.log('hello', video);
         break;
       }
       case 2: {
@@ -23,6 +28,13 @@ export const HistoryPage = () => {
     }
   };
   const VIDEO_CARD_HOME_MENU = [
+    {
+      id: 0,
+      clickHandler: clickHandler,
+      danger: true,
+      icon: <span className='material-icons-outlined'>close</span>,
+      text: 'Remove from Watch History',
+    },
     {
       id: 1,
       clickHandler: clickHandler,
@@ -42,9 +54,12 @@ export const HistoryPage = () => {
       text: 'Share',
     },
   ];
-  console.log(state.history);
+
   return (
     <div className='history-list-container'>
+      {state.history.length === 0 && (
+        <h2>Looks like you havn't watched anything yet</h2>
+      )}
       {state.history.length > 0 &&
         state.history.map((video) => {
           return (
@@ -56,14 +71,16 @@ export const HistoryPage = () => {
             />
           );
         })}
-      <div className='history-clear-all-button-container'>
-        <button
-          className='btn btn-primary background-danger brd-rd-semi-sq history-clear-all-button'
-          onClick={DeleteAllHistory}
-        >
-          Clear All
-        </button>
-      </div>
+      {state.history.length > 0 && (
+        <div className='history-clear-all-button-container'>
+          <button
+            className='btn btn-primary background-danger brd-rd-semi-sq history-clear-all-button'
+            onClick={DeleteAllHistory}
+          >
+            Clear All
+          </button>
+        </div>
+      )}
     </div>
   );
 };

@@ -23,3 +23,6 @@
 .video-card-menu-item:hover {
   background-color: var(--grey-600);
 }
+.danger-color {
+  color: var(--red-400);
+}
