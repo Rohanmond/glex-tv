@@ -4,7 +4,6 @@
 
 .home-hero-img-container {
   display: grid;
-  /* height: ; */
   width: 100vw;
 }
 .home-hero-img-container::before {
