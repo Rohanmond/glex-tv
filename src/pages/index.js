@@ -3,3 +3,7 @@ export { VideoList } from './VIdeoListPage/VideoList';
 export { VideoDetails } from './VideoDetails/VideoDetails';
 export { Signup } from './Auth/Signup/Signup';
 export { Login } from './Auth/Login/Login';
+export { HistoryPage } from './History_Page/HistoryPage';
+export { LikedPage } from './Liked_Page/LikedPage';
+export { PlayList } from './Playlist_Page/PlayList';
+export { WatchLater } from './Watch_Later/WatchLater';
