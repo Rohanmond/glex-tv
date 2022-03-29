@@ -9,6 +9,7 @@ export const InitialState = {
   categories: [],
   videos: [],
   history: [],
+  playlists: [],
 };
 export const DataReducer = (state, action) => {
   switch (action.type) {
@@ -59,6 +60,15 @@ export const DataReducer = (state, action) => {
               return video;
             }),
           };
+        case 'playlist':
+          return {
+            ...state,
+            playlists: state.playlists.map((play) => {
+              if (play._id === action.payload._id)
+                return { ...play, menu: !play.menu };
+              return play;
+            }),
+          };
         default:
           return state;
       }
@@ -72,6 +82,9 @@ export const DataReducer = (state, action) => {
         history: state.history.map((video) => {
           return { ...video, menu: false };
         }),
+        playlists: state.playlists.map((play) => {
+          return { ...play, menu: false };
+        }),
       };
     case ACTION_TYPE.SET_HISTORY:
       return {
@@ -80,6 +93,14 @@ export const DataReducer = (state, action) => {
           return { ...video, menu: false };
         }),
       };
+    case ACTION_TYPE.SET_PLAYLIST:
+      return {
+        ...state,
+        playlists: action.payload.playlists.map((play) => {
+          return { ...play, menu: false };
+        }),
+      };
+
     default:
       return state;
   }

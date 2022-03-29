@@ -6,8 +6,10 @@ import {
   DeleteHistoryService,
   GetAllCategories,
   GetAllHistoryService,
+  GetAllPlaylistsService,
   GetAllVideos,
   PostHistoryService,
+  PostPlaylistService,
 } from '../Services/services';
 import { useAuth } from './auth-context';
 
@@ -102,6 +104,36 @@ export const DataProvider = ({ children }) => {
         dispatch({
           type: ACTION_TYPE.SET_HISTORY,
           payload: { history: historyRes.data.history },
+        });
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const GetAllPlaylist = async () => {
+    try {
+      const playlistRes = await GetAllPlaylistsService({ encodedToken: token });
+      if (playlistRes.status === 200 || playlistRes.status === 201) {
+        dispatch({
+          type: ACTION_TYPE.SET_PLAYLIST,
+          payload: { playlists: playlistRes.data.playlists },
+        });
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  const PostPlaylist = async ({ playlist }) => {
+    try {
+      const playlistRes = await PostPlaylistService({
+        playlist,
+        encodedToken: token,
+      });
+      if (playlistRes.status === 201 || playlistRes.status === 200) {
+        dispatch({
+          type: ACTION_TYPE.SET_PLAYLIST,
+          payload: { playlists: playlistRes.data.playlists },
         });
       }
     } catch (err) {

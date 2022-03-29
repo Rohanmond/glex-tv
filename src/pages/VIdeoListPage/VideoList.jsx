@@ -1,5 +1,6 @@
 import { ChipsContainer } from '../../components';
 import { useFilter } from '../../custom-hooks/FilterHook';
+import { PlayListModal } from '../Playlist_Page/components/PlayListModal/PlayListModal';
 import VideoCard from './components/VideoCard/VideoCard';
 import './VideoList.css';
 
@@ -47,6 +48,7 @@ export const VideoList = () => {
 
   return (
     <>
+      <PlayListModal />
       <ChipsContainer />
       <div className='video-list-container'>
         {filteredData.length > 0 &&

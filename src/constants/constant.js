@@ -5,6 +5,7 @@ export const ACTION_TYPE = {
   MENU_TOGGLE: 'ACTIVE_MENU',
   RESET_MENU: 'RESET_MENU',
   SET_HISTORY: 'SET_HISTORY',
+  SET_PLAYLIST: 'SET_PLAYLIST',
 };
 export const FILTER = {
   SEARCH: 'search',
