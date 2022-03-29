@@ -16,6 +16,7 @@ import {
   GetAllVideos,
   PostHistoryService,
   PostPlaylistService,
+  PostVideoPlaylistService,
 } from '../Services/services';
 import { useAuth } from './auth-context';
 
@@ -52,6 +53,7 @@ export const DataProvider = ({ children }) => {
   useEffect(() => {
     if (token) {
       GetAllHistory();
+      GetAllPlaylist();
     }
   }, [token]);
 
@@ -131,7 +133,8 @@ export const DataProvider = ({ children }) => {
       console.log(err);
     }
   };
-  const PostPlaylist = async ({ playlist }) => {
+  const PostPlaylist = async ({ title }) => {
+    const playlist = { title };
     try {
       const playlistRes = await PostPlaylistService({
         playlist,
@@ -147,6 +150,24 @@ export const DataProvider = ({ children }) => {
       console.log(err);
     }
   };
+
+  const PostSingleVideoPlaylist = async ({ playlistId, video }) => {
+    try {
+      const playlistRes = await PostVideoPlaylistService({
+        playlistId,
+        video,
+        encodedToken: token,
+      });
+      if (playlistRes.status === 201 || playlistRes.status === 200)
+        dispatch({
+          type: ACTION_TYPE.SET_SINGLE_PLAYLIST,
+          payload: { playlist: playlistRes.data.playlist },
+        });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <DataContext.Provider
       value={{
@@ -158,6 +179,9 @@ export const DataProvider = ({ children }) => {
         DeleteHistory,
         showPlaylistModal,
         setShowPlaylistModal,
+        PostPlaylist,
+        GetAllPlaylist,
+        PostSingleVideoPlaylist,
       }}
     >
       {children}

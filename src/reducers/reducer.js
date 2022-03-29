@@ -60,7 +60,7 @@ export const DataReducer = (state, action) => {
               return video;
             }),
           };
-        case 'playlist':
+        case 'playlists':
           return {
             ...state,
             playlists: state.playlists.map((play) => {
@@ -100,6 +100,16 @@ export const DataReducer = (state, action) => {
           return { ...play, menu: false };
         }),
       };
+    case ACTION_TYPE.SET_SINGLE_PLAYLIST: {
+      return {
+        ...state,
+        playlists: state.playlists.map((list) => {
+          if (list._id === action.payload.playlist._id)
+            return action.payload.playlist;
+          return list;
+        }),
+      };
+    }
 
     default:
       return state;

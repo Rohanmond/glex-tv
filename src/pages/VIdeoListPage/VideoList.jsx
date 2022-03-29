@@ -1,7 +1,6 @@
 import { ChipsContainer } from '../../components';
 import { useData } from '../../contexts';
 import { useFilter } from '../../custom-hooks/FilterHook';
-import { PlayListModal } from '../Playlist_Page/components/PlayListModal/PlayListModal';
 import VideoCard from './components/VideoCard/VideoCard';
 import './VideoList.css';
 

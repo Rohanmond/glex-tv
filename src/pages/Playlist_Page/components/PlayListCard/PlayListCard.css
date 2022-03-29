@@ -1,0 +1,36 @@
+.playlist-card-outer-container {
+  position: relative;
+}
+
+.playlist-card-container {
+  display: flex;
+  justify-self: auto;
+  align-self: center;
+  flex-direction: column;
+  gap: 0.7rem;
+  max-width: 20rem;
+}
+
+.playlist-card-header-container {
+  display: flex;
+  font-size: 0.95rem;
+  gap: 1rem;
+  padding-left: 0.375rem;
+  position: relative;
+}
+
+.playlist-card-header-menu {
+  margin-left: auto;
+  cursor: pointer;
+}
+
+.playlist-card-image {
+  object-fit: cover;
+  cursor: pointer;
+}
+
+@media only screen and (max-width: 750px) {
+  .playlist-card-container {
+    max-width: none;
+  }
+}

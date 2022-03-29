@@ -12,7 +12,7 @@ export const VideoCardMenu = ({ menuItems, video }) => {
           menuItems.map((item) => {
             return (
               <div key={item.id}>
-                {showPlaylistModal && <PlayListModal />}
+                {showPlaylistModal && <PlayListModal video={video} />}
                 <div
                   className={`video-card-menu-item ${
                     item.danger && 'danger-color'

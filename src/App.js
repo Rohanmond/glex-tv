@@ -33,7 +33,14 @@ function App() {
               </PrivateRoute>
             }
           />
-          <Route path='playlist_page' element={<PlayList />} />
+          <Route
+            path='playlist_page'
+            element={
+              <PrivateRoute>
+                <PlayList />
+              </PrivateRoute>
+            }
+          />
         </Route>
         <Route path='/signup' element={<Signup />} />
         <Route path='/login' element={<Login />} />
