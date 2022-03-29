@@ -6,13 +6,59 @@ import './VideoList.css';
 export const VideoList = () => {
   const { filteredData } = useFilter();
 
+  const clickHandler = (e, video, id) => {
+    switch (id) {
+      case 1: {
+        console.log('hello');
+        break;
+      }
+      case 2: {
+        console.log('heY');
+        break;
+      }
+      case 3: {
+        console.log('3rd');
+        break;
+      }
+      default:
+        break;
+    }
+  };
+  const VIDEO_CARD_HOME_MENU = [
+    {
+      id: 1,
+      clickHandler: clickHandler,
+      icon: <span className='material-icons-outlined'>watch_later</span>,
+      text: 'Save to Watch Later',
+    },
+    {
+      id: 2,
+      clickHandler,
+      icon: <span className='material-icons-outlined'>playlist_play</span>,
+      text: 'Save to Playlist',
+    },
+    {
+      id: 3,
+      clickHandler,
+      icon: <span className='material-icons-outlined'>share</span>,
+      text: 'Share',
+    },
+  ];
+
   return (
     <>
       <ChipsContainer />
       <div className='video-list-container'>
         {filteredData.length > 0 &&
           filteredData.map((el) => {
-            return <VideoCard video={el} key={el._id} />;
+            return (
+              <VideoCard
+                video={el}
+                key={el._id}
+                menuItems={VIDEO_CARD_HOME_MENU}
+                type={'videos'}
+              />
+            );
           })}
       </div>
     </>

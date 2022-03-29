@@ -22,3 +22,39 @@ export const SignUpService = async ({ email, password, name }) => {
     name,
   });
 };
+
+export const GetAllHistoryService = async ({ encodedToken }) => {
+  return axios.get('/api/user/history', {
+    headers: {
+      authorization: encodedToken,
+    },
+  });
+};
+
+export const PostHistoryService = async ({ video, encodedToken }) => {
+  return axios.post(
+    '/api/user/history',
+    { video },
+    {
+      headers: {
+        authorization: encodedToken,
+      },
+    }
+  );
+};
+
+export const DeleteHistoryService = async ({ videoId, encodedToken }) => {
+  return axios.delete(`/api/user/history/${videoId}`, {
+    headers: {
+      authorization: encodedToken,
+    },
+  });
+};
+
+export const DeleteAllHistoriesService = async ({ encodedToken }) => {
+  return axios.delete('/api/user/history/all', {
+    headers: {
+      authorization: encodedToken,
+    },
+  });
+};

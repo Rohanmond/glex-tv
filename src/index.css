@@ -4,6 +4,7 @@
   --text-color: #ffffff;
   --text-secondary-color: #aaaaaa;
   --nav-background-hover-color: #2d255c;
+  --background-color-secondary: #202020;
 }
 
 ::-webkit-scrollbar {
