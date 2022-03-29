@@ -83,7 +83,6 @@ export const DataProvider = ({ children }) => {
         encodedToken: token,
       });
       if (historyRes.status === 200 || historyRes.status === 201) {
-        console.log(historyRes);
         dispatch({
           type: ACTION_TYPE.SET_HISTORY,
           payload: { history: historyRes.data.history },
