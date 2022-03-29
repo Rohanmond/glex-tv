@@ -1,9 +1,10 @@
 import { useData } from '../../../../contexts';
+import { PlayListModal } from '../../../Playlist_Page/components/PlayListModal/PlayListModal';
 import './VideoCardMenu.css';
 
 export const VideoCardMenu = ({ menuItems, video }) => {
   const { showPlaylistModal } = useData();
-  console.log(showPlaylistModal, 'showplaylist');
+
   return (
     <div className='video-card-menu-outer-container'>
       <div className='video-card-menu-container'>
@@ -11,7 +12,7 @@ export const VideoCardMenu = ({ menuItems, video }) => {
           menuItems.map((item) => {
             return (
               <div key={item.id}>
-                {showPlaylistModal && item.playlistModal}
+                {showPlaylistModal && <PlayListModal />}
                 <div
                   className={`video-card-menu-item ${
                     item.danger && 'danger-color'

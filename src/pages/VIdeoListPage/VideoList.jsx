@@ -40,7 +40,6 @@ export const VideoList = () => {
       clickHandler,
       icon: <span className='material-icons-outlined'>playlist_play</span>,
       text: 'Save to Playlist',
-      playlistModal: <PlayListModal />,
     },
     {
       id: 3,
