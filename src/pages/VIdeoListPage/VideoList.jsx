@@ -1,4 +1,5 @@
 import { ChipsContainer } from '../../components';
+import { useData } from '../../contexts';
 import { useFilter } from '../../custom-hooks/FilterHook';
 import { PlayListModal } from '../Playlist_Page/components/PlayListModal/PlayListModal';
 import VideoCard from './components/VideoCard/VideoCard';
@@ -6,8 +7,9 @@ import './VideoList.css';
 
 export const VideoList = () => {
   const { filteredData } = useFilter();
+  const { setShowPlaylistModal } = useData();
 
-  const clickHandler = (e, video, id) => {
+  const clickHandler = (e, video, id, setShowModal) => {
     switch (id) {
       case 1: {
         console.log('hello');
@@ -15,6 +17,7 @@ export const VideoList = () => {
       }
       case 2: {
         console.log('heY');
+        setShowPlaylistModal(true);
         break;
       }
       case 3: {
@@ -37,6 +40,7 @@ export const VideoList = () => {
       clickHandler,
       icon: <span className='material-icons-outlined'>playlist_play</span>,
       text: 'Save to Playlist',
+      playlistModal: <PlayListModal />,
     },
     {
       id: 3,
@@ -48,7 +52,7 @@ export const VideoList = () => {
 
   return (
     <>
-      <PlayListModal />
+      {/* <PlayListModal /> */}
       <ChipsContainer />
       <div className='video-list-container'>
         {filteredData.length > 0 &&

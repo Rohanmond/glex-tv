@@ -1,4 +1,10 @@
-import { createContext, useReducer, useContext, useEffect } from 'react';
+import {
+  createContext,
+  useReducer,
+  useContext,
+  useEffect,
+  useState,
+} from 'react';
 import { ACTION_TYPE } from '../constants/constant';
 import { DataReducer, InitialState } from '../reducers/reducer';
 import {
@@ -17,6 +23,7 @@ const DataContext = createContext();
 
 export const DataProvider = ({ children }) => {
   const [state, dispatch] = useReducer(DataReducer, InitialState);
+  const [showPlaylistModal, setShowPlaylistModal] = useState(false);
   const { token } = useAuth();
 
   useEffect(() => {
@@ -149,6 +156,8 @@ export const DataProvider = ({ children }) => {
         PostHistory,
         DeleteAllHistory,
         DeleteHistory,
+        showPlaylistModal,
+        setShowPlaylistModal,
       }}
     >
       {children}
