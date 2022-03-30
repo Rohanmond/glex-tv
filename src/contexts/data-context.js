@@ -5,6 +5,7 @@ import {
   useEffect,
   useState,
 } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ACTION_TYPE } from '../constants/constant';
 import { DataReducer, InitialState } from '../reducers/reducer';
 import {
@@ -31,6 +32,7 @@ export const DataProvider = ({ children }) => {
   const [state, dispatch] = useReducer(DataReducer, InitialState);
   const [playlistModalState, setPlaylistModalState] = useState(null);
   const { token } = useAuth();
+  const navigate = useNavigate();
 
   useEffect(() => {
     (async () => {
@@ -68,6 +70,10 @@ export const DataProvider = ({ children }) => {
   }, [token]);
 
   const GetAllHistory = async () => {
+    if (!token) {
+      navigate('/login');
+      return;
+    }
     try {
       const historyRes = await GetAllHistoryService({ encodedToken: token });
       if (historyRes.status === 200 || historyRes.status === 201) {
@@ -81,6 +87,10 @@ export const DataProvider = ({ children }) => {
     }
   };
   const PostHistory = async ({ video }) => {
+    if (!token) {
+      navigate('/login');
+      return;
+    }
     try {
       const historyRes = await PostHistoryService({
         video,
@@ -98,6 +108,10 @@ export const DataProvider = ({ children }) => {
   };
 
   const DeleteHistory = async ({ videoId }) => {
+    if (!token) {
+      navigate('/login');
+      return;
+    }
     try {
       const historyRes = await DeleteHistoryService({
         videoId,
@@ -115,6 +129,10 @@ export const DataProvider = ({ children }) => {
   };
 
   const DeleteAllHistory = async () => {
+    if (!token) {
+      navigate('/login');
+      return;
+    }
     try {
       const historyRes = await DeleteAllHistoriesService({
         encodedToken: token,
@@ -131,6 +149,10 @@ export const DataProvider = ({ children }) => {
   };
 
   const GetAllPlaylist = async () => {
+    if (!token) {
+      navigate('/login');
+      return;
+    }
     try {
       const playlistRes = await GetAllPlaylistsService({ encodedToken: token });
       if (playlistRes.status === 200 || playlistRes.status === 201) {
@@ -144,6 +166,10 @@ export const DataProvider = ({ children }) => {
     }
   };
   const PostPlaylist = async ({ title }) => {
+    if (!token) {
+      navigate('/login');
+      return;
+    }
     const playlist = { title };
     try {
       const playlistRes = await PostPlaylistService({
@@ -162,6 +188,10 @@ export const DataProvider = ({ children }) => {
   };
 
   const DeletePlaylist = async ({ playlistId }) => {
+    if (!token) {
+      navigate('/login');
+      return;
+    }
     try {
       const playlistRes = await DeletePlayListService({
         playlistId,
@@ -179,6 +209,10 @@ export const DataProvider = ({ children }) => {
   };
 
   const PostSingleVideoPlaylist = async ({ playlistId, video }) => {
+    if (!token) {
+      navigate('/login');
+      return;
+    }
     try {
       const playlistRes = await PostVideoPlaylistService({
         playlistId,
@@ -196,6 +230,10 @@ export const DataProvider = ({ children }) => {
   };
 
   const DeleteSingleVideoFromPlaylist = async ({ playlistId, videoId }) => {
+    if (!token) {
+      navigate('/login');
+      return;
+    }
     try {
       const response = await DeleteVideoPlaylistService({
         playlistId,
@@ -214,6 +252,10 @@ export const DataProvider = ({ children }) => {
   };
 
   const GetWatchLater = async () => {
+    if (!token) {
+      navigate('/login');
+      return;
+    }
     try {
       const watchlaterRes = await GetWatchLaterService({ encodedToken: token });
       if (watchlaterRes.status === 200 || watchlaterRes.status === 201) {
@@ -228,6 +270,10 @@ export const DataProvider = ({ children }) => {
   };
 
   const PostWatchLater = async ({ video }) => {
+    if (!token) {
+      navigate('/login');
+      return;
+    }
     try {
       if (state.laters.some((el) => el._id === video._id)) {
         console.log('already added in your watch later');
@@ -249,6 +295,10 @@ export const DataProvider = ({ children }) => {
   };
 
   const DeleteVideoFromWatchLater = async ({ videoId }) => {
+    if (!token) {
+      navigate('/login');
+      return;
+    }
     try {
       const watchlaterRes = await DeleteVideoFromWatchLaterService({
         videoId,

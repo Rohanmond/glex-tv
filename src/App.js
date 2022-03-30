@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import { Home, MockAPI, Nav, PrivateRoute } from './components';
-import { useData } from './contexts';
+import { useAuth, useData } from './contexts';
 import {
   HistoryPage,
   LandingPage,
@@ -18,9 +18,12 @@ import { PlayListModal } from './pages/Playlist_Page/components/PlayListModal/Pl
 
 function App() {
   const { playlistModalState } = useData();
+  const { token } = useAuth();
   return (
     <div className='app'>
-      {playlistModalState && <PlayListModal video={playlistModalState} />}
+      {token && playlistModalState && (
+        <PlayListModal video={playlistModalState} />
+      )}
       <Nav />
       <Routes>
         <Route path='/' element={<LandingPage />} />

@@ -1,7 +1,8 @@
 import './PlayListModal.css';
 import { useData } from '../../../../contexts';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { ACTION_TYPE } from '../../../../constants/constant';
+import { useOutsideClickHandler } from '../../../../custom-hooks/OutSideClickHandlerHook';
 
 export const PlayListModal = ({ video }) => {
   const {
@@ -16,7 +17,12 @@ export const PlayListModal = ({ video }) => {
   } = useData();
   const [input, setInput] = useState('');
   const [showCreate, setShowCreate] = useState(false);
+  const ref = useRef(null);
+  const { resetMenu } = useOutsideClickHandler(ref);
 
+  useEffect(() => {
+    if (resetMenu) setPlaylistModalState(null);
+  });
   const createSubmitHandler = (e) => {
     e.preventDefault();
     setShowCreate(false);
@@ -44,7 +50,7 @@ export const PlayListModal = ({ video }) => {
     <>
       {
         <div className='modal-wrapper'>
-          <div className='playlist-modal'>
+          <div ref={ref} className='playlist-modal'>
             <div className='playlist-header'>
               <p>Save to...</p>
               <span
