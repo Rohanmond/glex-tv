@@ -1,9 +1,17 @@
 import './PlayListModal.css';
 import { useData } from '../../../../contexts';
 import { useState } from 'react';
+import { ACTION_TYPE } from '../../../../constants/constant';
 
 export const PlayListModal = ({ video }) => {
-  const { setShowPlaylistModal, PostPlaylist, state } = useData();
+  const {
+    setShowPlaylistModal,
+    PostPlaylist,
+    state,
+    dispatch,
+    PostSingleVideoPlaylist,
+    DeleteSingleVideoFromPlaylist,
+  } = useData();
   const [input, setInput] = useState('');
   const [showCreate, setShowCreate] = useState(false);
 
@@ -15,6 +23,21 @@ export const PlayListModal = ({ video }) => {
     setInput('');
     PostPlaylist({ title: input });
   };
+  const checkboxChangeHandler = (e, list) => {
+    e.stopPropagation();
+    console.log('check', e);
+    console.log(e.target.checked);
+    if (!e.target.checked) {
+      DeleteSingleVideoFromPlaylist({
+        playlistId: list._id,
+        videoId: video._id,
+      });
+      console.log('delete');
+    } else {
+      PostSingleVideoPlaylist({ playlistId: list._id, video });
+      console.log('post single video');
+    }
+  };
   return (
     <>
       {
@@ -24,8 +47,11 @@ export const PlayListModal = ({ video }) => {
               <p>Save to...</p>
               <span
                 onClick={(e) => {
-                  e.stopPropagation();
+                  // e.stopPropagation();
                   setShowPlaylistModal(false);
+                  dispatch({
+                    type: ACTION_TYPE.RESET_MENU,
+                  });
                 }}
                 className='material-icons-outlined playlist-close-btn'
               >
@@ -34,15 +60,30 @@ export const PlayListModal = ({ video }) => {
             </div>
             <div className='playlist-lists'>
               <div className='playlist'>
-                <input id='watch-later' type='checkbox' />
-                <label htmlFor='watch-later'>Watch Later</label>
+                <label className='playlist-checkbox-container'>
+                  <input type={'checkbox'} />
+                  Watch Later
+                </label>
               </div>
               {state.playlists.length > 0 &&
                 state.playlists.map((list) => {
                   return (
                     <div key={list._id} className='playlist'>
-                      <input id={list.title} type='checkbox' />
-                      <label htmlFor={list.title}>{list.title}</label>
+                      <label
+                        onClick={(e) => e.stopPropagation()}
+                        htmlFor={list._id}
+                        className='playlist-checkbox-container'
+                      >
+                        <input
+                          id={list._id}
+                          type={'checkbox'}
+                          checked={list.videos.some(
+                            (item) => item._id === video._id
+                          )}
+                          onChange={(e) => checkboxChangeHandler(e, list)}
+                        />
+                        {list.title}
+                      </label>
                     </div>
                   );
                 })}

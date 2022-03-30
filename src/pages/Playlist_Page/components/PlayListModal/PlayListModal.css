@@ -37,6 +37,11 @@
   align-items: center;
   gap: 1rem;
 }
+.playlist-checkbox-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
 .playlist-create-section {
   border-top: 0.1px solid var(--grey-400);
   display: flex;

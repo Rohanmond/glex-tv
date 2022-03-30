@@ -1,14 +1,17 @@
+import { useNavigate } from 'react-router-dom';
 import { ChipsContainer } from '../../components';
-import { useData } from '../../contexts';
+import { useAuth, useData } from '../../contexts';
 import { useFilter } from '../../custom-hooks/FilterHook';
 import VideoCard from './components/VideoCard/VideoCard';
 import './VideoList.css';
 
 export const VideoList = () => {
   const { filteredData } = useFilter();
+  const { token } = useAuth();
+  const navigate = useNavigate();
   const { setShowPlaylistModal } = useData();
 
-  const clickHandler = (e, video, id, setShowModal) => {
+  const clickHandler = (e, video, id) => {
     switch (id) {
       case 1: {
         console.log('hello');
@@ -16,6 +19,7 @@ export const VideoList = () => {
       }
       case 2: {
         console.log('heY');
+        if (!token) navigate('/login');
         setShowPlaylistModal(true);
         break;
       }

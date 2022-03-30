@@ -1,21 +1,25 @@
 import { useNavigate } from 'react-router-dom';
+import { useRef, useEffect } from 'react';
 import { useData } from '../../../../contexts';
 import './PlayListCard.css';
+import { useOutsideClickHandler } from '../../../../custom-hooks/OutSideClickHandlerHook';
+import { ACTION_TYPE } from '../../../../constants/constant';
+import { VideoCardMenu } from '../../../VIdeoListPage/components/VideoCardMenu/VideoCardMenu';
 
 export const PlayListCard = ({ playlist, menuItems, type }) => {
   const navigate = useNavigate();
   const { dispatch } = useData();
-  // const ref = useRef(null);
-  // const { resetMenu } = useOutsideClickHandler(ref);
-  const { _id, videos, title } = playlist;
+  const ref = useRef(null);
+  const { resetMenu } = useOutsideClickHandler(ref);
+  const { _id, videos, title, menu } = playlist;
 
-  // useEffect(() => {
-  //   if (resetMenu) {
-  //     dispatch({
-  //       type: ACTION_TYPE.RESET_MENU,
-  //     });
-  //   }
-  // }, [resetMenu, dispatch]);
+  useEffect(() => {
+    if (resetMenu) {
+      dispatch({
+        type: ACTION_TYPE.RESET_MENU,
+      });
+    }
+  }, [resetMenu, dispatch]);
 
   return (
     <div className='playlist-card-container'>
@@ -36,13 +40,23 @@ export const PlayListCard = ({ playlist, menuItems, type }) => {
         )}
         <div className='playlist-card-number-wrapper'>
           <p>{videos.length}</p>
-          <span class='material-icons-outlined'>playlist_play</span>
+          <span className='material-icons-outlined'>playlist_play</span>
         </div>
       </div>
       <div className='playlist-card-header-container font-wt-bold'>
         <p className='playlist-card-header'>{title}</p>
-        <div className='playlist-card-header-menu'>
+        <div
+          className='playlist-card-header-menu'
+          ref={ref}
+          onClick={() => {
+            dispatch({
+              type: ACTION_TYPE.MENU_TOGGLE,
+              payload: { _id, type },
+            });
+          }}
+        >
           <span className='material-icons-outlined'>more_vert</span>
+          {menu && <VideoCardMenu menuItems={menuItems} video={playlist} />}
         </div>
       </div>
     </div>

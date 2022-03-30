@@ -83,15 +83,19 @@ export const DataReducer = (state, action) => {
           return { ...video, menu: false };
         }),
         playlists: state.playlists.map((play) => {
-          return { ...play, menu: false };
+          return {
+            ...play,
+            menu: false,
+            videos: play.videos.map((video) => {
+              return { ...video, menu: false };
+            }),
+          };
         }),
       };
     case ACTION_TYPE.SET_HISTORY:
       return {
         ...state,
-        history: action.payload.history.map((video) => {
-          return { ...video, menu: false };
-        }),
+        history: action.payload.history,
       };
     case ACTION_TYPE.SET_PLAYLIST:
       return {

@@ -59,10 +59,12 @@ export const HistoryPage = () => {
 
   return (
     <>
-      <div className='history-page-header-container'>
-        <h3>History</h3>
-        <p>{reversedHistoryArray.length} videos</p>
-      </div>
+      {reversedHistoryArray.length > 0 && (
+        <div className='history-page-header-container'>
+          <h3>History</h3>
+          <p>{reversedHistoryArray.length} videos</p>
+        </div>
+      )}
       <div className='history-list-container'>
         {reversedHistoryArray.length === 0 && (
           <h2>Looks like you havn't watched anything yet</h2>

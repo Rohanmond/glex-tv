@@ -10,6 +10,8 @@ import { DataReducer, InitialState } from '../reducers/reducer';
 import {
   DeleteAllHistoriesService,
   DeleteHistoryService,
+  DeletePlayListService,
+  DeleteVideoPlaylistService,
   GetAllCategories,
   GetAllHistoryService,
   GetAllPlaylistsService,
@@ -77,6 +79,7 @@ export const DataProvider = ({ children }) => {
         encodedToken: token,
       });
       if (historyRes.status === 200 || historyRes.status === 201) {
+        console.log(historyRes);
         dispatch({
           type: ACTION_TYPE.SET_HISTORY,
           payload: { history: historyRes.data.history },
@@ -151,6 +154,23 @@ export const DataProvider = ({ children }) => {
     }
   };
 
+  const DeletePlaylist = async ({ playlistId }) => {
+    try {
+      const playlistRes = await DeletePlayListService({
+        playlistId,
+        encodedToken: token,
+      });
+      if (playlistRes.status === 201 || playlistRes.status === 200) {
+        dispatch({
+          type: ACTION_TYPE.SET_PLAYLIST,
+          payload: { playlists: playlistRes.data.playlists },
+        });
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   const PostSingleVideoPlaylist = async ({ playlistId, video }) => {
     try {
       const playlistRes = await PostVideoPlaylistService({
@@ -163,6 +183,24 @@ export const DataProvider = ({ children }) => {
           type: ACTION_TYPE.SET_SINGLE_PLAYLIST,
           payload: { playlist: playlistRes.data.playlist },
         });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const DeleteSingleVideoFromPlaylist = async ({ playlistId, videoId }) => {
+    try {
+      const response = await DeleteVideoPlaylistService({
+        playlistId,
+        videoId,
+        encodedToken: token,
+      });
+      if (response.status === 201 || response.status === 200) {
+        dispatch({
+          type: ACTION_TYPE.SET_SINGLE_PLAYLIST,
+          payload: { playlist: response.data.playlist },
+        });
+      }
     } catch (err) {
       console.log(err);
     }
@@ -181,7 +219,9 @@ export const DataProvider = ({ children }) => {
         setShowPlaylistModal,
         PostPlaylist,
         GetAllPlaylist,
+        DeletePlaylist,
         PostSingleVideoPlaylist,
+        DeleteSingleVideoFromPlaylist,
       }}
     >
       {children}
