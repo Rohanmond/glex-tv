@@ -9,8 +9,10 @@ import { useNavigate } from 'react-router-dom';
 import { ACTION_TYPE } from '../constants/constant';
 import { DataReducer, InitialState } from '../reducers/reducer';
 import {
+  AddToLikedVideosService,
   DeleteAllHistoriesService,
   DeleteHistoryService,
+  DeleteLikedVideosService,
   DeletePlayListService,
   DeleteVideoFromWatchLaterService,
   DeleteVideoPlaylistService,
@@ -18,6 +20,7 @@ import {
   GetAllHistoryService,
   GetAllPlaylistsService,
   GetAllVideos,
+  GetLikedVideosService,
   GetWatchLaterService,
   PostHistoryService,
   PostPlaylistService,
@@ -62,6 +65,7 @@ export const DataProvider = ({ children }) => {
       GetAllHistory();
       GetAllPlaylist();
       GetWatchLater();
+      GetLikedVideos();
     } else {
       dispatch({
         type: ACTION_TYPE.RESET,
@@ -315,6 +319,65 @@ export const DataProvider = ({ children }) => {
     }
   };
 
+  const GetLikedVideos = async () => {
+    if (!token) {
+      navigate('/login');
+      return;
+    }
+    try {
+      const likedRes = await GetLikedVideosService({ encodedToken: token });
+      if (likedRes.status === 201 || likedRes.status === 200) {
+        dispatch({
+          type: ACTION_TYPE.SET_LIKED,
+          payload: { likes: likedRes.data.likes },
+        });
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const AddToLikeVideos = async ({ video }) => {
+    if (!token) {
+      navigate('/login');
+      return;
+    }
+    try {
+      const likedRes = await AddToLikedVideosService({
+        encodedToken: token,
+        video,
+      });
+      if (likedRes.status === 201 || likedRes.status === 200) {
+        dispatch({
+          type: ACTION_TYPE.SET_LIKED,
+          payload: { likes: likedRes.data.likes },
+        });
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const DeleteLikedVideos = async ({ videoId }) => {
+    if (!token) {
+      navigate('/login');
+      return;
+    }
+    try {
+      const likedRes = await DeleteLikedVideosService({
+        encodedToken: token,
+        videoId,
+      });
+      if (likedRes.status === 201 || likedRes.status === 200) {
+        dispatch({
+          type: ACTION_TYPE.SET_LIKED,
+          payload: { likes: likedRes.data.likes },
+        });
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <DataContext.Provider
       value={{
@@ -334,6 +397,9 @@ export const DataProvider = ({ children }) => {
         PostWatchLater,
         GetWatchLater,
         DeleteVideoFromWatchLater,
+        GetLikedVideos,
+        AddToLikeVideos,
+        DeleteLikedVideos,
       }}
     >
       {children}
