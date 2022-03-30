@@ -1,7 +1,7 @@
 .modal-wrapper {
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: var(--background-transparent);
   z-index: 9999;
   position: fixed;
   top: 0;

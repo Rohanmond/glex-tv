@@ -5,6 +5,7 @@
   --text-secondary-color: #aaaaaa;
   --nav-background-hover-color: #2d255c;
   --background-color-secondary: #202020;
+  --background-transparent: rgba(0, 0, 0, 0.5);
 }
 
 ::-webkit-scrollbar {
