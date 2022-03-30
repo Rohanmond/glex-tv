@@ -7,3 +7,4 @@ export { HistoryPage } from './History_Page/HistoryPage';
 export { LikedPage } from './Liked_Page/LikedPage';
 export { PlayList } from './Playlist_Page/PlayList';
 export { WatchLater } from './Watch_Later/WatchLater';
+export { PlaylistDetials } from './PlayListDetailsPage/PlaylistDetails';

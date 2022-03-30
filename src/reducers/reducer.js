@@ -9,6 +9,8 @@ export const InitialState = {
   categories: [],
   videos: [],
   history: [],
+  playlists: [],
+  laters: [],
 };
 export const DataReducer = (state, action) => {
   switch (action.type) {
@@ -59,6 +61,41 @@ export const DataReducer = (state, action) => {
               return video;
             }),
           };
+        case 'watch_later':
+          return {
+            ...state,
+            laters: state.laters.map((video) => {
+              if (video._id === action.payload._id)
+                return { ...video, menu: !video.menu };
+              return video;
+            }),
+          };
+        case 'playlists':
+          return {
+            ...state,
+            playlists: state.playlists.map((play) => {
+              if (play._id === action.payload._id)
+                return { ...play, menu: !play.menu };
+              return play;
+            }),
+          };
+        case 'playlist':
+          return {
+            ...state,
+            playlists: state.playlists.map((play) => {
+              if (play._id === action.payload.playlist_id)
+                return {
+                  ...play,
+                  videos: play.videos.map((video) => {
+                    if (video._id === action.payload._id)
+                      return { ...video, menu: !video.menu };
+                    return video;
+                  }),
+                };
+              return play;
+            }),
+          };
+
         default:
           return state;
       }
@@ -72,6 +109,18 @@ export const DataReducer = (state, action) => {
         history: state.history.map((video) => {
           return { ...video, menu: false };
         }),
+        playlists: state.playlists.map((play) => {
+          return {
+            ...play,
+            menu: false,
+            videos: play.videos.map((video) => {
+              return { ...video, menu: false };
+            }),
+          };
+        }),
+        laters: state.laters.map((video) => {
+          return { ...video, menu: false };
+        }),
       };
     case ACTION_TYPE.SET_HISTORY:
       return {
@@ -80,6 +129,46 @@ export const DataReducer = (state, action) => {
           return { ...video, menu: false };
         }),
       };
+    case ACTION_TYPE.SET_PLAYLIST:
+      return {
+        ...state,
+        playlists: action.payload.playlists.map((play) => {
+          return {
+            ...play,
+            menu: false,
+            videos: play.videos.map((video) => {
+              return { ...video, menu: false };
+            }),
+          };
+        }),
+      };
+    case ACTION_TYPE.SET_SINGLE_PLAYLIST: {
+      return {
+        ...state,
+        playlists: state.playlists.map((list) => {
+          if (list._id === action.payload.playlist._id)
+            return {
+              ...action.payload.playlist,
+              videos: action.payload.playlist.videos.map((video) => {
+                return { ...video, menu: false };
+              }),
+            };
+          return list;
+        }),
+      };
+    }
+    case ACTION_TYPE.SET_WATCH_LATER: {
+      return {
+        ...state,
+        laters: action.payload.laters.map((video) => {
+          return { ...video, menu: false };
+        }),
+      };
+    }
+    case ACTION_TYPE.RESET: {
+      return { ...state, history: [], playlists: [], laters: [] };
+    }
+
     default:
       return state;
   }

@@ -10,7 +10,7 @@ body {
   color: var(--red-400);
 }
 .fill-watch-later {
-  color: var(--blue-400);
+  color: var(--yellow-400);
 }
 .app {
   display: flex;

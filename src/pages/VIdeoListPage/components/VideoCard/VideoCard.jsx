@@ -6,7 +6,7 @@ import { useRef, useEffect } from 'react';
 import { useOutsideClickHandler } from '../../../../custom-hooks/OutSideClickHandlerHook';
 import { VideoCardMenu } from '../VideoCardMenu/VideoCardMenu';
 
-const VideoCard = ({ video, menuItems, type }) => {
+const VideoCard = ({ video, menuItems, type, playlist_id }) => {
   const navigate = useNavigate();
   const { dispatch } = useData();
   const ref = useRef(null);
@@ -40,7 +40,7 @@ const VideoCard = ({ video, menuItems, type }) => {
           onClick={() => {
             dispatch({
               type: ACTION_TYPE.MENU_TOGGLE,
-              payload: { _id, type },
+              payload: { _id, type, playlist_id },
             });
           }}
         >
