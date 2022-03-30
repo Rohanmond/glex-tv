@@ -1,7 +1,3 @@
-.playlist-card-outer-container {
-  position: relative;
-}
-
 .playlist-card-container {
   display: flex;
   justify-self: auto;
@@ -9,6 +5,11 @@
   flex-direction: column;
   gap: 0.7rem;
   max-width: 20rem;
+}
+
+.playlist-image-placeholder {
+  height: 10rem;
+  background-color: var(--grey-600);
 }
 
 .playlist-card-header-container {
@@ -27,6 +28,24 @@
 .playlist-card-image {
   object-fit: cover;
   cursor: pointer;
+}
+
+.playlist-card-image-container {
+  position: relative;
+}
+
+.playlist-card-number-wrapper {
+  height: 100%;
+  width: 40%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  flex-direction: column;
+  font-size: 1.5rem;
 }
 
 @media only screen and (max-width: 750px) {

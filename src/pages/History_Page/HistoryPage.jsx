@@ -58,31 +58,37 @@ export const HistoryPage = () => {
   ];
 
   return (
-    <div className='history-list-container'>
-      {reversedHistoryArray.length === 0 && (
-        <h2>Looks like you havn't watched anything yet</h2>
-      )}
-      {reversedHistoryArray.length > 0 &&
-        reversedHistoryArray.map((video) => {
-          return (
-            <VideoCard
-              video={video}
-              key={video._id}
-              menuItems={VIDEO_CARD_HOME_MENU}
-              type={'history'}
-            />
-          );
-        })}
-      {reversedHistoryArray.length > 0 && (
-        <div className='history-clear-all-button-container'>
-          <button
-            className='btn btn-primary background-danger brd-rd-semi-sq history-clear-all-button'
-            onClick={DeleteAllHistory}
-          >
-            Clear All
-          </button>
-        </div>
-      )}
-    </div>
+    <>
+      <div className='history-page-header-container'>
+        <h3>History</h3>
+        <p>{reversedHistoryArray.length} videos</p>
+      </div>
+      <div className='history-list-container'>
+        {reversedHistoryArray.length === 0 && (
+          <h2>Looks like you havn't watched anything yet</h2>
+        )}
+        {reversedHistoryArray.length > 0 &&
+          reversedHistoryArray.map((video) => {
+            return (
+              <VideoCard
+                video={video}
+                key={video._id}
+                menuItems={VIDEO_CARD_HOME_MENU}
+                type={'history'}
+              />
+            );
+          })}
+        {reversedHistoryArray.length > 0 && (
+          <div className='history-clear-all-button-container'>
+            <button
+              className='btn btn-primary background-danger brd-rd-semi-sq history-clear-all-button'
+              onClick={DeleteAllHistory}
+            >
+              Clear All
+            </button>
+          </div>
+        )}
+      </div>
+    </>
   );
 };
