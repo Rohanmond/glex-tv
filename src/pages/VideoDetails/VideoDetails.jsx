@@ -38,7 +38,6 @@ export const VideoDetails = () => {
   const clickHandler = (e, video, id) => {
     switch (id) {
       case 1: {
-        console.log('hello');
         if (!token) {
           navigate('/login', { replace: true });
         }
@@ -49,7 +48,6 @@ export const VideoDetails = () => {
         break;
       }
       case 2: {
-        console.log('heY');
         if (!token) {
           navigate('/login', { replace: true });
         }
@@ -57,7 +55,6 @@ export const VideoDetails = () => {
         break;
       }
       case 3: {
-        console.log('3rd');
         break;
       }
       default:

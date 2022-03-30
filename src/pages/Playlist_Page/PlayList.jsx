@@ -3,12 +3,10 @@ import { PlayListCard } from './components/PlayListCard/PlayListCard';
 import './PlayList.css';
 export const PlayList = () => {
   const { state, DeletePlaylist } = useData();
-  console.log(state);
   const clickHandler = (e, playlist, id) => {
     switch (id) {
       case 1: {
         DeletePlaylist({ playlistId: playlist._id });
-        console.log('play delete');
         break;
       }
       default:

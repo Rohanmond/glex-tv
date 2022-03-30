@@ -28,7 +28,7 @@ export const PlaylistDetials = () => {
       text: 'Remove video from playlist',
     },
   ];
-  console.log(playlist);
+
   return (
     <>
       {(!playlist || playlist.videos.length === 0) && (

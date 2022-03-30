@@ -19,17 +19,14 @@ export const HistoryPage = () => {
         break;
       }
       case 1: {
-        console.log('hello', video);
         PostWatchLater({ video });
         break;
       }
       case 2: {
-        console.log('heY');
         setShowPlaylistModal(true);
         break;
       }
       case 3: {
-        console.log('3rd');
         break;
       }
       default:

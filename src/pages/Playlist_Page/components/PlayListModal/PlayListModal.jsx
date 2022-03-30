@@ -20,24 +20,18 @@ export const PlayListModal = ({ video }) => {
   const createSubmitHandler = (e) => {
     e.preventDefault();
     setShowCreate(false);
-    console.log(video);
-    console.log(input);
     setInput('');
     PostPlaylist({ title: input });
   };
   const checkboxChangeHandler = (e, list) => {
     e.stopPropagation();
-    console.log('check', e);
-    console.log(e.target.checked);
     if (!e.target.checked) {
       DeleteSingleVideoFromPlaylist({
         playlistId: list._id,
         videoId: video._id,
       });
-      console.log('delete');
     } else {
       PostSingleVideoPlaylist({ playlistId: list._id, video });
-      console.log('post single video');
     }
   };
   const watchLaterCheckboxHandler = (e) => {
@@ -57,7 +51,6 @@ export const PlayListModal = ({ video }) => {
               <p>Save to...</p>
               <span
                 onClick={(e) => {
-                  // e.stopPropagation();
                   setShowPlaylistModal(false);
                   dispatch({
                     type: ACTION_TYPE.RESET_MENU,
