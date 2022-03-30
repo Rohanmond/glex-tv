@@ -119,13 +119,7 @@ export const VideoDetails = () => {
                   <i className='fas fa-clock'></i>
                   <p>Watch Later</p>
                 </div>
-                <div
-                  className='details-video-footer-button'
-                  onClick={savePlaylistHandler}
-                >
-                  <i className='fas fa-bookmark'></i>
-                  <p>Save</p>
-                </div>
+
                 <div className='details-video-footer-button'>
                   <i className='fas fa-share-alt'></i>
                   <p>Copy Link</p>
