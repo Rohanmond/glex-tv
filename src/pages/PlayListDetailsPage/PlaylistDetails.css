@@ -1,0 +1,12 @@
+.playlist-details-container {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  column-gap: 1.5rem;
+  row-gap: 3rem;
+  padding: 0.5rem 1.5rem;
+}
+.playlist-details-header-container {
+  padding: 1rem;
+  color: var(--text-secondary-color);
+}

@@ -7,7 +7,6 @@ export const HistoryPage = () => {
   const reversedHistoryArray = [...state.history].reverse();
 
   const clickHandler = (e, video, menuId) => {
-    e.stopPropagation();
     switch (menuId) {
       case 0: {
         DeleteHistory({ videoId: video._id });
@@ -29,7 +28,7 @@ export const HistoryPage = () => {
         break;
     }
   };
-  const VIDEO_CARD_HOME_MENU = [
+  const HISTORY_MENU = [
     {
       id: 0,
       clickHandler: clickHandler,
@@ -75,7 +74,7 @@ export const HistoryPage = () => {
               <VideoCard
                 video={video}
                 key={video._id}
-                menuItems={VIDEO_CARD_HOME_MENU}
+                menuItems={HISTORY_MENU}
                 type={'history'}
               />
             );

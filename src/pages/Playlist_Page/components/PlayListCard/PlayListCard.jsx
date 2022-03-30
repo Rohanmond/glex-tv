@@ -23,7 +23,10 @@ export const PlayListCard = ({ playlist, menuItems, type }) => {
 
   return (
     <div className='playlist-card-container'>
-      <div className='playlist-card-image-container'>
+      <div
+        className='playlist-card-image-container'
+        onClick={() => navigate(`/playlist/${_id}`)}
+      >
         {videos.length > 0 && (
           <img
             className='img-responsive playlist-card-image'

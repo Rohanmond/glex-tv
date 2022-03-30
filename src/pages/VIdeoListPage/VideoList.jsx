@@ -19,7 +19,9 @@ export const VideoList = () => {
       }
       case 2: {
         console.log('heY');
-        if (!token) navigate('/login');
+        if (!token) {
+          navigate('/login', { replace: true });
+        }
         setShowPlaylistModal(true);
         break;
       }

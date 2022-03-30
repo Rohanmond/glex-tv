@@ -69,6 +69,22 @@ export const DataReducer = (state, action) => {
               return play;
             }),
           };
+        case 'playlist':
+          return {
+            ...state,
+            playlists: state.playlists.map((play) => {
+              if (play._id === action.payload.playlist_id)
+                return {
+                  ...play,
+                  videos: play.videos.map((video) => {
+                    if (video._id === action.payload._id)
+                      return { ...video, menu: !video.menu };
+                    return video;
+                  }),
+                };
+              return play;
+            }),
+          };
         default:
           return state;
       }
@@ -101,7 +117,13 @@ export const DataReducer = (state, action) => {
       return {
         ...state,
         playlists: action.payload.playlists.map((play) => {
-          return { ...play, menu: false };
+          return {
+            ...play,
+            menu: false,
+            videos: play.videos.map((video) => {
+              return { ...video, menu: false };
+            }),
+          };
         }),
       };
     case ACTION_TYPE.SET_SINGLE_PLAYLIST: {
@@ -109,10 +131,18 @@ export const DataReducer = (state, action) => {
         ...state,
         playlists: state.playlists.map((list) => {
           if (list._id === action.payload.playlist._id)
-            return action.payload.playlist;
+            return {
+              ...action.payload.playlist,
+              videos: action.payload.playlist.videos.map((video) => {
+                return { ...video, menu: false };
+              }),
+            };
           return list;
         }),
       };
+    }
+    case ACTION_TYPE.RESET: {
+      return { ...state, history: [], playlists: [] };
     }
 
     default:

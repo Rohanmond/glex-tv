@@ -56,6 +56,10 @@ export const DataProvider = ({ children }) => {
     if (token) {
       GetAllHistory();
       GetAllPlaylist();
+    } else {
+      dispatch({
+        type: ACTION_TYPE.RESET,
+      });
     }
   }, [token]);
 

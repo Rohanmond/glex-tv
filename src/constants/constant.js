@@ -7,6 +7,7 @@ export const ACTION_TYPE = {
   SET_HISTORY: 'SET_HISTORY',
   SET_PLAYLIST: 'SET_PLAYLIST',
   SET_SINGLE_PLAYLIST: 'SET_SINGLE_PLAYLIST',
+  RESET: 'RESET',
 };
 export const FILTER = {
   SEARCH: 'search',

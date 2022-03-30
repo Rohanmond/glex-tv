@@ -7,6 +7,7 @@ import {
   LikedPage,
   Login,
   PlayList,
+  PlaylistDetials,
   Signup,
   VideoDetails,
   VideoList,
@@ -38,6 +39,14 @@ function App() {
             element={
               <PrivateRoute>
                 <PlayList />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path='playlist/:playlistId'
+            element={
+              <PrivateRoute>
+                <PlaylistDetials />
               </PrivateRoute>
             }
           />
