@@ -15,8 +15,8 @@ export const VideoDetails = () => {
     PostHistory,
     PostWatchLater,
     dispatch,
-    setShowPlaylistModal,
     showPlaylistModal,
+    setPlaylistModalState,
     DeleteVideoFromWatchLater,
   } = useData();
   const video = state.videos.find((ele) => ele._id === videoId) || {};
@@ -33,7 +33,7 @@ export const VideoDetails = () => {
       : PostWatchLater({ video });
   };
   const savePlaylistHandler = () => {
-    setShowPlaylistModal(true);
+    setPlaylistModalState(video);
   };
   const clickHandler = (e, video, id) => {
     switch (id) {
@@ -51,7 +51,7 @@ export const VideoDetails = () => {
         if (!token) {
           navigate('/login', { replace: true });
         }
-        setShowPlaylistModal(true);
+        setPlaylistModalState(video);
         break;
       }
       case 3: {

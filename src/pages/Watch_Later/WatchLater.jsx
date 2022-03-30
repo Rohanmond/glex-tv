@@ -2,7 +2,7 @@ import { useData } from '../../contexts';
 import VideoCard from '../VIdeoListPage/components/VideoCard/VideoCard';
 import './WatchLater.css';
 export const WatchLater = () => {
-  const { state, DeleteVideoFromWatchLater, setShowPlaylistModal } = useData();
+  const { state, DeleteVideoFromWatchLater, setPlaylistModalState } = useData();
   const reversedWatchLater = [...state.laters].reverse();
 
   const clickHandler = (e, video, menuId) => {
@@ -12,7 +12,7 @@ export const WatchLater = () => {
         break;
       }
       case 1: {
-        setShowPlaylistModal(true);
+        setPlaylistModalState(video);
         break;
       }
       default:

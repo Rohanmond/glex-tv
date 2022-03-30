@@ -8,7 +8,7 @@ import { VideoCardMenu } from '../VideoCardMenu/VideoCardMenu';
 
 const VideoCard = ({ video, menuItems, type, playlist_id }) => {
   const navigate = useNavigate();
-  const { dispatch, setShowPlaylistModal } = useData();
+  const { dispatch, setPlaylistModalState } = useData();
   const ref = useRef(null);
   const { resetMenu } = useOutsideClickHandler(ref);
   const { _id, title, creator, menu } = video;
@@ -18,7 +18,7 @@ const VideoCard = ({ video, menuItems, type, playlist_id }) => {
       dispatch({
         type: ACTION_TYPE.RESET_MENU,
       });
-    setShowPlaylistModal(false);
+    // setPlaylistModalState(null);
   }, [resetMenu, dispatch]);
 
   return (

@@ -1,3 +1,4 @@
+import { ACTION_TYPE } from '../../constants/constant';
 import { useData } from '../../contexts';
 import VideoCard from '../VIdeoListPage/components/VideoCard/VideoCard';
 import './HistoryPage.css';
@@ -7,7 +8,8 @@ export const HistoryPage = () => {
     DeleteAllHistory,
     DeleteHistory,
     PostWatchLater,
-    setShowPlaylistModal,
+    dispatch,
+    setPlaylistModalState,
   } = useData();
 
   const reversedHistoryArray = [...state.history].reverse();
@@ -16,14 +18,17 @@ export const HistoryPage = () => {
     switch (menuId) {
       case 0: {
         DeleteHistory({ videoId: video._id });
+        dispatch({ type: ACTION_TYPE.RESET_MENU });
         break;
       }
       case 1: {
         PostWatchLater({ video });
+        dispatch({ type: ACTION_TYPE.RESET_MENU });
         break;
       }
       case 2: {
-        setShowPlaylistModal(true);
+        setPlaylistModalState(video);
+        dispatch({ type: ACTION_TYPE.RESET_MENU });
         break;
       }
       case 3: {

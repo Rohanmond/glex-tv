@@ -29,7 +29,7 @@ const DataContext = createContext();
 
 export const DataProvider = ({ children }) => {
   const [state, dispatch] = useReducer(DataReducer, InitialState);
-  const [showPlaylistModal, setShowPlaylistModal] = useState(false);
+  const [playlistModalState, setPlaylistModalState] = useState(null);
   const { token } = useAuth();
 
   useEffect(() => {
@@ -274,8 +274,8 @@ export const DataProvider = ({ children }) => {
         PostHistory,
         DeleteAllHistory,
         DeleteHistory,
-        showPlaylistModal,
-        setShowPlaylistModal,
+        playlistModalState,
+        setPlaylistModalState,
         PostPlaylist,
         GetAllPlaylist,
         DeletePlaylist,

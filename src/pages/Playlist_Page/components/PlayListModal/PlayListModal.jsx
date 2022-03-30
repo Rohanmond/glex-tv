@@ -5,7 +5,7 @@ import { ACTION_TYPE } from '../../../../constants/constant';
 
 export const PlayListModal = ({ video }) => {
   const {
-    setShowPlaylistModal,
+    setPlaylistModalState,
     PostPlaylist,
     state,
     dispatch,
@@ -24,7 +24,6 @@ export const PlayListModal = ({ video }) => {
     PostPlaylist({ title: input });
   };
   const checkboxChangeHandler = (e, list) => {
-    e.stopPropagation();
     if (!e.target.checked) {
       DeleteSingleVideoFromPlaylist({
         playlistId: list._id,
@@ -35,7 +34,6 @@ export const PlayListModal = ({ video }) => {
     }
   };
   const watchLaterCheckboxHandler = (e) => {
-    e.stopPropagation();
     if (!e.target.checked) {
       DeleteVideoFromWatchLater({ videoId: video._id });
     } else {
@@ -46,12 +44,12 @@ export const PlayListModal = ({ video }) => {
     <>
       {
         <div className='modal-wrapper'>
-          <div className='playlist-modal' onClick={(e) => e.stopPropagation()}>
+          <div className='playlist-modal'>
             <div className='playlist-header'>
               <p>Save to...</p>
               <span
                 onClick={(e) => {
-                  setShowPlaylistModal(false);
+                  setPlaylistModalState(null);
                   dispatch({
                     type: ACTION_TYPE.RESET_MENU,
                   });
@@ -69,7 +67,9 @@ export const PlayListModal = ({ video }) => {
                     checked={state.laters.some(
                       (item) => item._id === video._id
                     )}
-                    onChange={(e) => watchLaterCheckboxHandler(e)}
+                    onChange={(e) => {
+                      watchLaterCheckboxHandler(e);
+                    }}
                   />
                   Watch Later
                 </label>
@@ -79,7 +79,6 @@ export const PlayListModal = ({ video }) => {
                   return (
                     <div key={list._id} className='playlist'>
                       <label
-                        onClick={(e) => e.stopPropagation()}
                         htmlFor={list._id}
                         className='playlist-checkbox-container'
                       >
@@ -89,7 +88,9 @@ export const PlayListModal = ({ video }) => {
                           checked={list.videos.some(
                             (item) => item._id === video._id
                           )}
-                          onChange={(e) => checkboxChangeHandler(e, list)}
+                          onChange={(e) => {
+                            checkboxChangeHandler(e, list);
+                          }}
                         />
                         {list.title}
                       </label>
@@ -101,7 +102,9 @@ export const PlayListModal = ({ video }) => {
               <div className='playlist-create-section'>
                 <form
                   className='playlist-create-input-container'
-                  onSubmit={createSubmitHandler}
+                  onSubmit={(e) => {
+                    createSubmitHandler(e);
+                  }}
                 >
                   <p>Enter title to create playlist</p>
                   <input

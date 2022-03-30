@@ -10,7 +10,7 @@ export const VideoList = () => {
   const { filteredData } = useFilter();
   const { token } = useAuth();
   const navigate = useNavigate();
-  const { setShowPlaylistModal, PostWatchLater, dispatch } = useData();
+  const { setPlaylistModalState, PostWatchLater, dispatch } = useData();
 
   const clickHandler = (e, video, id) => {
     switch (id) {
@@ -28,7 +28,10 @@ export const VideoList = () => {
         if (!token) {
           navigate('/login', { replace: true });
         }
-        setShowPlaylistModal(true);
+        setPlaylistModalState(video);
+        dispatch({
+          type: ACTION_TYPE.RESET_MENU,
+        });
         break;
       }
       case 3: {

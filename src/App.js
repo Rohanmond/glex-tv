@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import { Home, MockAPI, Nav, PrivateRoute } from './components';
+import { useData } from './contexts';
 import {
   HistoryPage,
   LandingPage,
@@ -13,10 +14,13 @@ import {
   VideoList,
   WatchLater,
 } from './pages';
+import { PlayListModal } from './pages/Playlist_Page/components/PlayListModal/PlayListModal';
 
 function App() {
+  const { playlistModalState } = useData();
   return (
     <div className='app'>
+      {playlistModalState && <PlayListModal video={playlistModalState} />}
       <Nav />
       <Routes>
         <Route path='/' element={<LandingPage />} />
