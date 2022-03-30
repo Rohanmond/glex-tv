@@ -50,7 +50,6 @@ export const VideoList = () => {
 
   return (
     <>
-      {/* <PlayListModal /> */}
       <ChipsContainer />
       <div className='video-list-container'>
         {filteredData.length > 0 &&
