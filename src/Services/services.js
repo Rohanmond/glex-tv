@@ -123,3 +123,36 @@ export const DeleteVideoPlaylistService = async ({
     },
   });
 };
+
+export const GetWatchLaterService = async ({ encodedToken }) => {
+  return axios.get('/api/user/laters', {
+    headers: {
+      authorization: encodedToken,
+    },
+  });
+};
+
+export const PostWatchLaterService = async ({ video, encodedToken }) => {
+  return axios.post(
+    '/api/user/laters',
+    {
+      video,
+    },
+    {
+      headers: {
+        authorization: encodedToken,
+      },
+    }
+  );
+};
+
+export const DeleteVideoFromWatchLaterService = async ({
+  videoId,
+  encodedToken,
+}) => {
+  return axios.delete(`/api/user/laters/${videoId}`, {
+    headers: {
+      authorization: encodedToken,
+    },
+  });
+};

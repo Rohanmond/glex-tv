@@ -24,7 +24,14 @@ function App() {
         <Route path='' element={<Home />}>
           <Route path='videos' element={<VideoList />} />
           <Route path='video/:videoId' element={<VideoDetails />} />
-          <Route path='watch_later' element={<WatchLater />} />
+          <Route
+            path='watch_later'
+            element={
+              <PrivateRoute>
+                <WatchLater />
+              </PrivateRoute>
+            }
+          />
           <Route path='liked_page' element={<LikedPage />} />
           <Route
             path='history_page'

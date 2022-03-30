@@ -11,6 +11,8 @@ export const PlayListModal = ({ video }) => {
     dispatch,
     PostSingleVideoPlaylist,
     DeleteSingleVideoFromPlaylist,
+    PostWatchLater,
+    DeleteVideoFromWatchLater,
   } = useData();
   const [input, setInput] = useState('');
   const [showCreate, setShowCreate] = useState(false);
@@ -38,6 +40,14 @@ export const PlayListModal = ({ video }) => {
       console.log('post single video');
     }
   };
+  const watchLaterCheckboxHandler = (e) => {
+    e.stopPropagation();
+    if (!e.target.checked) {
+      DeleteVideoFromWatchLater({ videoId: video._id });
+    } else {
+      PostWatchLater({ video });
+    }
+  };
   return (
     <>
       {
@@ -61,7 +71,13 @@ export const PlayListModal = ({ video }) => {
             <div className='playlist-lists'>
               <div className='playlist'>
                 <label className='playlist-checkbox-container'>
-                  <input type={'checkbox'} />
+                  <input
+                    type={'checkbox'}
+                    checked={state.laters.some(
+                      (item) => item._id === video._id
+                    )}
+                    onChange={(e) => watchLaterCheckboxHandler(e)}
+                  />
                   Watch Later
                 </label>
               </div>

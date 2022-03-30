@@ -11,14 +11,17 @@ import {
   DeleteAllHistoriesService,
   DeleteHistoryService,
   DeletePlayListService,
+  DeleteVideoFromWatchLaterService,
   DeleteVideoPlaylistService,
   GetAllCategories,
   GetAllHistoryService,
   GetAllPlaylistsService,
   GetAllVideos,
+  GetWatchLaterService,
   PostHistoryService,
   PostPlaylistService,
   PostVideoPlaylistService,
+  PostWatchLaterService,
 } from '../Services/services';
 import { useAuth } from './auth-context';
 
@@ -56,6 +59,7 @@ export const DataProvider = ({ children }) => {
     if (token) {
       GetAllHistory();
       GetAllPlaylist();
+      GetWatchLater();
     } else {
       dispatch({
         type: ACTION_TYPE.RESET,
@@ -210,6 +214,54 @@ export const DataProvider = ({ children }) => {
     }
   };
 
+  const GetWatchLater = async () => {
+    try {
+      const watchlaterRes = await GetWatchLaterService({ encodedToken: token });
+      if (watchlaterRes.status === 200 || watchlaterRes.status === 201) {
+        dispatch({
+          type: ACTION_TYPE.SET_WATCH_LATER,
+          payload: { laters: watchlaterRes.data.laters },
+        });
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const PostWatchLater = async ({ video }) => {
+    try {
+      const watchlaterRes = await PostWatchLaterService({
+        video,
+        encodedToken: token,
+      });
+      if (watchlaterRes.status === 201 || watchlaterRes.status === 200) {
+        dispatch({
+          type: ACTION_TYPE.SET_WATCH_LATER,
+          payload: { laters: watchlaterRes.data.laters },
+        });
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const DeleteVideoFromWatchLater = async ({ videoId }) => {
+    try {
+      const watchlaterRes = await DeleteVideoFromWatchLaterService({
+        videoId,
+        encodedToken: token,
+      });
+      if (watchlaterRes.status === 201 || watchlaterRes.status === 200) {
+        dispatch({
+          type: ACTION_TYPE.SET_WATCH_LATER,
+          payload: { laters: watchlaterRes.data.laters },
+        });
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <DataContext.Provider
       value={{
@@ -226,6 +278,9 @@ export const DataProvider = ({ children }) => {
         DeletePlaylist,
         PostSingleVideoPlaylist,
         DeleteSingleVideoFromPlaylist,
+        PostWatchLater,
+        GetWatchLater,
+        DeleteVideoFromWatchLater,
       }}
     >
       {children}
