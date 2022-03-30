@@ -95,6 +95,7 @@ export const DataReducer = (state, action) => {
               return play;
             }),
           };
+
         default:
           return state;
       }
@@ -116,6 +117,9 @@ export const DataReducer = (state, action) => {
               return { ...video, menu: false };
             }),
           };
+        }),
+        laters: state.laters.map((video) => {
+          return { ...video, menu: false };
         }),
       };
     case ACTION_TYPE.SET_HISTORY:

@@ -230,6 +230,10 @@ export const DataProvider = ({ children }) => {
 
   const PostWatchLater = async ({ video }) => {
     try {
+      if (state.laters.some((el) => el._id === video._id)) {
+        console.log('already added in your watch later');
+        return;
+      }
       const watchlaterRes = await PostWatchLaterService({
         video,
         encodedToken: token,

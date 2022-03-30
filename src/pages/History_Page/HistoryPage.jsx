@@ -2,7 +2,13 @@ import { useData } from '../../contexts';
 import VideoCard from '../VIdeoListPage/components/VideoCard/VideoCard';
 import './HistoryPage.css';
 export const HistoryPage = () => {
-  const { state, DeleteAllHistory, DeleteHistory } = useData();
+  const {
+    state,
+    DeleteAllHistory,
+    DeleteHistory,
+    PostWatchLater,
+    setShowPlaylistModal,
+  } = useData();
 
   const reversedHistoryArray = [...state.history].reverse();
 
@@ -14,10 +20,12 @@ export const HistoryPage = () => {
       }
       case 1: {
         console.log('hello', video);
+        PostWatchLater({ video });
         break;
       }
       case 2: {
         console.log('heY');
+        setShowPlaylistModal(true);
         break;
       }
       case 3: {
