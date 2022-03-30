@@ -16,6 +16,7 @@ export const VideoDetails = () => {
     PostWatchLater,
     dispatch,
     setShowPlaylistModal,
+    showPlaylistModal,
     DeleteVideoFromWatchLater,
   } = useData();
   const video = state.videos.find((ele) => ele._id === videoId) || {};
@@ -31,7 +32,9 @@ export const VideoDetails = () => {
       ? DeleteVideoFromWatchLater({ videoId })
       : PostWatchLater({ video });
   };
-  const savePlaylistHandler = () => {};
+  const savePlaylistHandler = () => {
+    setShowPlaylistModal(true);
+  };
   const clickHandler = (e, video, id) => {
     switch (id) {
       case 1: {
@@ -83,6 +86,7 @@ export const VideoDetails = () => {
   ];
   return (
     <>
+      {showPlaylistModal && <PlayListModal video={video} />}
       {video && (
         <div className='video-details-outer-container'>
           <section className='details-video-section'>
@@ -119,7 +123,13 @@ export const VideoDetails = () => {
                   <i className='fas fa-clock'></i>
                   <p>Watch Later</p>
                 </div>
-
+                <div
+                  className='details-video-footer-button'
+                  onClick={savePlaylistHandler}
+                >
+                  <i className='fas fa-bookmark'></i>
+                  <p>Save</p>
+                </div>
                 <div className='details-video-footer-button'>
                   <i className='fas fa-share-alt'></i>
                   <p>Copy Link</p>
