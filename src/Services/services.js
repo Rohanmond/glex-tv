@@ -156,3 +156,33 @@ export const DeleteVideoFromWatchLaterService = async ({
     },
   });
 };
+
+export const GetLikedVideosService = async ({ encodedToken }) => {
+  return axios.get('/api/user/likes', {
+    headers: {
+      authorization: encodedToken,
+    },
+  });
+};
+
+export const AddToLikedVideosService = async ({ encodedToken, video }) => {
+  return axios.post(
+    '/api/user/likes',
+    {
+      video,
+    },
+    {
+      headers: {
+        authorization: encodedToken,
+      },
+    }
+  );
+};
+
+export const DeleteLikedVideosService = async ({ videoId, encodedToken }) => {
+  return axios.delete(`/api/user/likes/${videoId}`, {
+    headers: {
+      authorization: encodedToken,
+    },
+  });
+};

@@ -11,6 +11,7 @@ export const InitialState = {
   history: [],
   playlists: [],
   laters: [],
+  likes: [],
 };
 export const DataReducer = (state, action) => {
   switch (action.type) {
@@ -56,6 +57,15 @@ export const DataReducer = (state, action) => {
           return {
             ...state,
             history: state.history.map((video) => {
+              if (video._id === action.payload._id)
+                return { ...video, menu: !video.menu };
+              return video;
+            }),
+          };
+        case 'likes':
+          return {
+            ...state,
+            likes: state.likes.map((video) => {
               if (video._id === action.payload._id)
                 return { ...video, menu: !video.menu };
               return video;
@@ -129,6 +139,13 @@ export const DataReducer = (state, action) => {
           return { ...video, menu: false };
         }),
       };
+    case ACTION_TYPE.SET_LIKED:
+      return {
+        ...state,
+        likes: action.payload.likes.map((video) => {
+          return { ...video, menu: false };
+        }),
+      };
     case ACTION_TYPE.SET_PLAYLIST:
       return {
         ...state,
@@ -166,7 +183,7 @@ export const DataReducer = (state, action) => {
       };
     }
     case ACTION_TYPE.RESET: {
-      return { ...state, history: [], playlists: [], laters: [] };
+      return { ...state, history: [], playlists: [], laters: [], likes: [] };
     }
 
     default:

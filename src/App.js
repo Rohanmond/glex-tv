@@ -26,7 +26,7 @@ function App() {
       )}
       <Nav />
       <Routes>
-        <Route path='/' element={<LandingPage />} />
+        <Route path='/' element={<LandingPage />} exact />
         <Route path='/mock-man' element={<MockAPI />} />
         <Route path='' element={<Home />}>
           <Route path='videos' element={<VideoList />} />
@@ -39,7 +39,14 @@ function App() {
               </PrivateRoute>
             }
           />
-          <Route path='liked_page' element={<LikedPage />} />
+          <Route
+            path='liked_page'
+            element={
+              <PrivateRoute>
+                <LikedPage />
+              </PrivateRoute>
+            }
+          />
           <Route
             path='history_page'
             element={
