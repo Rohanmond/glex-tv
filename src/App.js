@@ -32,7 +32,7 @@ function App() {
           <Route path='videos' element={<VideoList />} />
           <Route path='video/:videoId' element={<VideoDetails />} />
           <Route
-            path='watch_later'
+            path='watchlater'
             element={
               <PrivateRoute>
                 <WatchLater />
@@ -40,7 +40,7 @@ function App() {
             }
           />
           <Route
-            path='liked_page'
+            path='likes'
             element={
               <PrivateRoute>
                 <LikedPage />
@@ -48,7 +48,7 @@ function App() {
             }
           />
           <Route
-            path='history_page'
+            path='history'
             element={
               <PrivateRoute>
                 <HistoryPage />
@@ -56,7 +56,7 @@ function App() {
             }
           />
           <Route
-            path='playlist_page'
+            path='playlist'
             element={
               <PrivateRoute>
                 <PlayList />

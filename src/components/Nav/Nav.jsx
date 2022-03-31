@@ -104,13 +104,6 @@ export const Nav = () => {
                 </button>
               )}
             </li>
-            <li className='nav-link-item nav-mob'>
-              <div className='badge-container'>
-                <div className='badge-icon'>
-                  <span className='material-icons-outlined'>menu</span>
-                </div>
-              </div>
-            </li>
           </ul>
         </div>
       </div>

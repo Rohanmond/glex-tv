@@ -7,7 +7,7 @@
 .nav-left {
   display: flex;
   flex-direction: row;
-  padding-left: 1.5rem;
+  padding: 0.5rem 0.2rem;
 }
 .navigation {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -23,7 +23,7 @@
 }
 .nav-logo-container {
   height: max-content;
-  max-width: 8rem;
+  width: 7rem;
   display: flex;
   align-items: center;
 }
@@ -110,6 +110,8 @@
 @media screen and (max-width: 500px) {
   .nav-search {
     width: 18rem;
+  }
+  .nav-logo-link {
   }
   .navigation {
     height: max-content;

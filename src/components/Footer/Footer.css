@@ -1,0 +1,31 @@
+.footer-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: none;
+
+  background-color: var(--nav-background-color);
+}
+.footer-element {
+  padding: 0.5rem;
+}
+
+.footer-icon {
+  font-size: 2rem;
+}
+
+.footer-nav-link {
+  color: var(--text-color);
+}
+
+.footer-nav-link-active {
+  color: var(--warn-color);
+}
+
+@media screen and (max-width: 1050px) {
+  .footer-container {
+    display: flex;
+    justify-content: space-around;
+  }
+}
