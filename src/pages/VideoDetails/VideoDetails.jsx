@@ -18,6 +18,8 @@ export const VideoDetails = () => {
     showPlaylistModal,
     setPlaylistModalState,
     DeleteVideoFromWatchLater,
+    AddToLikeVideos,
+    DeleteLikedVideos,
   } = useData();
   const video = state.videos.find((ele) => ele._id === videoId) || {};
   const { title, creator } = video;
@@ -34,6 +36,11 @@ export const VideoDetails = () => {
   };
   const savePlaylistHandler = () => {
     setPlaylistModalState(video);
+  };
+  const likeHandler = () => {
+    state.likes.some((el) => el._id === videoId)
+      ? DeleteLikedVideos({ videoId })
+      : AddToLikeVideos({ video });
   };
   const clickHandler = (e, video, id) => {
     switch (id) {
@@ -106,7 +113,12 @@ export const VideoDetails = () => {
               </div>
 
               <div className='details-video-footer-buttons'>
-                <div className='details-video-footer-button'>
+                <div
+                  className={`details-video-footer-button ${
+                    state.likes.some((el) => el._id === videoId) && 'fill-like'
+                  }`}
+                  onClick={likeHandler}
+                >
                   <i className='fas fa-heart'></i>
                   <p>Like</p>
                 </div>
