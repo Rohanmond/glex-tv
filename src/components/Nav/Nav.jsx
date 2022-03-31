@@ -96,12 +96,12 @@ export const Nav = () => {
                 </button>
               )}
               {token && (
-                <button
-                  className='btn btn-primary background-secondary brd-rd-semi-sq nav-link-item-btn'
-                  onClick={() => logoutHandler()}
+                <span
+                  onClick={logoutHandler}
+                  class='material-icons-outlined nav-link-icon'
                 >
-                  Logout
-                </button>
+                  person
+                </span>
               )}
             </li>
           </ul>

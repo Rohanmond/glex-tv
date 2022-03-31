@@ -75,7 +75,13 @@
 .nav-text-input::placeholder {
   color: var(--text-secondary-color);
 }
+.nav-right {
+  padding: 0 0.375rem;
+}
 
+.nav-link-icon {
+  font-size: 1.75rem;
+}
 .nav-link-item {
   cursor: pointer;
 }

@@ -9,16 +9,21 @@ export const Footer = () => {
   };
   return (
     <div className='footer-container'>
-      <NavLink to={'/videos'} className={toggleActive}>
-        <span className='material-icons-outlined footer-icon'>home</span>
+      <NavLink to={'/watchlater'} className={toggleActive}>
+        <span class='material-icons-outlined footer-icon'>watch_later</span>
       </NavLink>
-      <NavLink to={'playlist'} className={toggleActive}>
+      <NavLink to={'/playlist'} className={toggleActive}>
         <span className='material-icons-outlined footer-icon'>
           playlist_play
         </span>
       </NavLink>
-      <NavLink to={'/profile'} className={toggleActive}>
-        <span class='material-icons-outlined footer-icon'>person</span>
+      <NavLink to={'/history'} className={toggleActive}>
+        <span className='material-icons-outlined footer-icon'>history</span>
+      </NavLink>
+      <NavLink to={'/likes'} className={toggleActive}>
+        <span className='material-icons-outlined footer-icon'>
+          favorite_border
+        </span>
       </NavLink>
     </div>
   );
