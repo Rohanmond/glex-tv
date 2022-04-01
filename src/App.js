@@ -9,6 +9,7 @@ import {
   Login,
   PlayList,
   PlaylistDetials,
+  Profile,
   Signup,
   VideoDetails,
   VideoList,
@@ -74,6 +75,14 @@ function App() {
         </Route>
         <Route path='/signup' element={<Signup />} />
         <Route path='/login' element={<Login />} />
+        <Route
+          path='/profile'
+          element={
+            <PrivateRoute>
+              <Profile />
+            </PrivateRoute>
+          }
+        />
       </Routes>
     </div>
   );

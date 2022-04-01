@@ -7,7 +7,7 @@ import { useRef } from 'react';
 export const Nav = () => {
   const navigate = useNavigate();
   const { dispatch } = useData();
-  const { token, logoutHandler } = useAuth();
+  const { token } = useAuth();
   const searchRef = useRef();
   const smallSearchRef = useRef();
   const searchHandler = (e) => {
@@ -97,7 +97,7 @@ export const Nav = () => {
               )}
               {token && (
                 <span
-                  onClick={logoutHandler}
+                  onClick={() => navigate('/profile')}
                   class='material-icons-outlined nav-link-icon'
                 >
                   person
