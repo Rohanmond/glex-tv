@@ -14,25 +14,25 @@ export const Aside = () => {
         </li>
       </NavLink>
 
-      <NavLink to={'/playlist_page'} className={toggleActive}>
+      <NavLink to={'/playlist'} className={toggleActive}>
         <li className='video-list-aside-item' title='playlist'>
           <span className='material-icons-outlined'>playlist_play</span>
           <p className='video-list-aside-item-text'>Playlist</p>
         </li>
       </NavLink>
-      <NavLink to={'/history_page'} className={toggleActive}>
+      <NavLink to={'/history'} className={toggleActive}>
         <li className='video-list-aside-item' title='history'>
           <span className='material-icons-outlined'>history</span>
           <p className='video-list-aside-item-text'>History</p>
         </li>
       </NavLink>
-      <NavLink to={'/liked_page'} className={toggleActive}>
+      <NavLink to={'/likes'} className={toggleActive}>
         <li className='video-list-aside-item' title='liked videos'>
           <span className='material-icons-outlined'>favorite_border</span>
           <p className='video-list-aside-item-text'>Liked Videos</p>
         </li>
       </NavLink>
-      <NavLink to={'/watch_later'} className={toggleActive}>
+      <NavLink to={'/watchlater'} className={toggleActive}>
         <li className='video-list-aside-item' title='watch later'>
           <span className='material-icons-outlined'>watch_later</span>
           <p className='video-list-aside-item-text'>Watch Later</p>

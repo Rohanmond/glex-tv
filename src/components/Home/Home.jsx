@@ -1,5 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import { Aside } from '../Aside/Aside';
+import { Footer } from '../Footer/Footer';
 import './Home.css';
 export const Home = () => {
   return (
@@ -9,6 +10,7 @@ export const Home = () => {
       </div>
       <div className='main-container'>
         <Outlet />
+        <Footer />
       </div>
     </div>
   );

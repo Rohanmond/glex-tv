@@ -7,7 +7,7 @@ import { useRef } from 'react';
 export const Nav = () => {
   const navigate = useNavigate();
   const { dispatch } = useData();
-  const { token, logoutHandler } = useAuth();
+  const { token } = useAuth();
   const searchRef = useRef();
   const smallSearchRef = useRef();
   const searchHandler = (e) => {
@@ -96,20 +96,13 @@ export const Nav = () => {
                 </button>
               )}
               {token && (
-                <button
-                  className='btn btn-primary background-secondary brd-rd-semi-sq nav-link-item-btn'
-                  onClick={() => logoutHandler()}
+                <span
+                  onClick={() => navigate('/profile')}
+                  class='material-icons-outlined nav-link-icon'
                 >
-                  Logout
-                </button>
+                  person
+                </span>
               )}
-            </li>
-            <li className='nav-link-item nav-mob'>
-              <div className='badge-container'>
-                <div className='badge-icon'>
-                  <span className='material-icons-outlined'>menu</span>
-                </div>
-              </div>
             </li>
           </ul>
         </div>
