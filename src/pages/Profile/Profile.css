@@ -21,8 +21,8 @@
 }
 .profile-header {
   text-align: center;
-  background-color: var(--blue-400);
-  color: var(--blue-800);
+  background-color: var(--primary-color);
+  color: var(--white-color);
   border-top-left-radius: 0.5rem;
   border-top-right-radius: 0.5rem;
   padding: 0.5rem;

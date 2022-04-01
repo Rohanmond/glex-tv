@@ -13,11 +13,11 @@ export const Profile = () => {
         <div className='profile-details'>
           <h3 className='profile-details-header'>User Details</h3>
           <p className='profile-details-item'>
-            <span className='profile-details-label'>Name :</span>
+            <span className='profile-details-label'>Name: </span>
             <span>{user.name}</span>
           </p>
           <p className='profile-details-item'>
-            <span className='profile-details-label'>Email :</span>
+            <span className='profile-details-label'>Email: </span>
             <span>{user.email}</span>
           </p>
         </div>

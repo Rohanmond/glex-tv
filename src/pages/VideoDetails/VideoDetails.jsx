@@ -119,8 +119,18 @@ export const VideoDetails = () => {
                   }`}
                   onClick={likeHandler}
                 >
-                  <i className='fas fa-heart'></i>
-                  <p>Like</p>
+                  <i
+                    class={`fa-thumbs-up ${
+                      state.likes.some((el) => el._id === videoId)
+                        ? 'fas'
+                        : 'far'
+                    }`}
+                  ></i>
+                  {state.likes.some((el) => el._id === videoId) ? (
+                    <p className='font-wt-semibold'>Liked</p>
+                  ) : (
+                    <p className='font-wt-semibold'>Like</p>
+                  )}
                 </div>
                 <div
                   className={`details-video-footer-button ${
@@ -129,19 +139,25 @@ export const VideoDetails = () => {
                   }`}
                   onClick={watchlaterHandler}
                 >
-                  <i className='fas fa-clock'></i>
-                  <p>Watch Later</p>
+                  <i
+                    className={`fa-clock ${
+                      state.laters.some((el) => el._id === videoId)
+                        ? 'fas'
+                        : 'far'
+                    }`}
+                  ></i>
+                  <p className='font-wt-semibold'>Watch Later</p>
                 </div>
                 <div
                   className='details-video-footer-button'
                   onClick={savePlaylistHandler}
                 >
-                  <i className='fas fa-bookmark'></i>
-                  <p>Save</p>
+                  <span class='material-icons-outlined'>playlist_play</span>
+                  <p className='font-wt-semibold'>Save</p>
                 </div>
                 <div className='details-video-footer-button'>
                   <i className='fas fa-share-alt'></i>
-                  <p>Copy Link</p>
+                  <p className='font-wt-semibold'>Share</p>
                 </div>
               </div>
             </div>
