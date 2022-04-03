@@ -23,3 +23,9 @@
     display: none;
   }
 }
+@media only screen and (max-width: 750px) {
+  .main-container {
+    min-height: calc(100vh - 159px);
+    margin-bottom: 60px;
+  }
+}

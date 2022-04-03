@@ -9,7 +9,7 @@
 .home-hero-img-container::before {
   content: '';
   position: absolute;
-  background-color: var(--background-color);
+  background-color: var(--black-color);
   width: 100vw;
   height: 100vh;
   opacity: 0.8;
@@ -32,7 +32,7 @@
   gap: 1rem;
   opacity: 1;
   padding: 1rem;
-  color: #fff;
+  color: var(--white-color);
   z-index: 1;
 }
 .home-hero-subheading {

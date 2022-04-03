@@ -13,6 +13,7 @@
 
 .footer-icon {
   font-size: 2rem;
+  font-weight: 580;
 }
 
 .footer-nav-link {
@@ -20,7 +21,7 @@
 }
 
 .footer-nav-link-active {
-  color: var(--warn-color);
+  color: var(--yellow-600);
 }
 
 @media screen and (max-width: 1050px) {

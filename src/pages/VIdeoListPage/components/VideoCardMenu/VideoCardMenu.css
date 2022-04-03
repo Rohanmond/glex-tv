@@ -19,10 +19,11 @@
   align-items: center;
   gap: 0.75rem;
   cursor: pointer;
+  font-weight: 520;
 }
 .video-card-menu-item:hover {
   background-color: var(--nav-background-hover-color);
 }
 .danger-color {
-  color: var(--red-400);
+  color: var(--red-600);
 }
