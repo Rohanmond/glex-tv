@@ -118,15 +118,6 @@ export const Nav = () => {
                   <i class='fas fa-moon'></i>
                 )}
               </div>
-              {/* )} */}
-              {/* {token && (
-                <span
-                  onClick={() => navigate('/profile')}
-                  class='material-icons-outlined nav-link-icon'
-                >
-                  person
-                </span>
-              )} */}
             </li>
           </ul>
         </div>
