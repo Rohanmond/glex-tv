@@ -1,6 +1,6 @@
 .video-card-menu-outer-container {
   position: absolute;
-  background-color: var(--background-color-secondary);
+  background-color: var(--nav-background-color);
   top: 1.75rem;
 
   right: 0;
@@ -21,7 +21,7 @@
   cursor: pointer;
 }
 .video-card-menu-item:hover {
-  background-color: var(--grey-600);
+  background-color: var(--nav-background-hover-color);
 }
 .danger-color {
   color: var(--red-400);

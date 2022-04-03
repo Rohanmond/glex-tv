@@ -10,6 +10,8 @@
   display: flex;
   flex-direction: column;
   position: relative;
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 @media only screen and (max-width: 1200px) {
   .aside-container {

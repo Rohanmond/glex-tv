@@ -5,6 +5,7 @@
   column-gap: 1.5rem;
   row-gap: 3rem;
   padding: 0.5rem 1.5rem;
+  background: var(--background-color);
 }
 .playlist-header-container {
   color: var(--text-secondary-color);

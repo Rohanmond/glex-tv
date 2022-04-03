@@ -4,7 +4,17 @@
   --text-color: #ffffff;
   --text-secondary-color: #aaaaaa;
   --nav-background-hover-color: #2d255c;
-  --background-color-secondary: #202020;
+  --background-color-secondary: #322e4d;
+  --background-transparent: rgba(0, 0, 0, 0.5);
+}
+
+[data-theme='light'] {
+  --nav-background-color: #ffffff;
+  --background-color: #f9f9f9;
+  --text-color: #000000;
+  --text-secondary-color: #181818;
+  --nav-background-hover-color: #edf1fe;
+  --background-color-secondary: #e5e5e5;
   --background-transparent: rgba(0, 0, 0, 0.5);
 }
 
