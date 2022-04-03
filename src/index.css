@@ -5,7 +5,7 @@
   --text-secondary-color: #aaaaaa;
   --nav-background-hover-color: #2d255c;
   --background-color-secondary: #322e4d;
-  --background-transparent: rgba(0, 0, 0, 0.5);
+  --background-transparent: rgba(0, 0, 0, 0.7);
 }
 
 [data-theme='light'] {
@@ -13,11 +13,12 @@
   --background-color: #f9f9f9;
   --text-color: #000000;
   --text-secondary-color: #181818;
-  --nav-background-hover-color: #edf1fe;
+  --nav-background-hover-color: var(--blue-200);
   --background-color-secondary: #e5e5e5;
-  --background-transparent: rgba(0, 0, 0, 0.5);
+  --background-transparent: rgba(0, 0, 0, 0.7);
 }
 
+/* #edf1fe */
 ::-webkit-scrollbar {
   width: 8px;
 }
