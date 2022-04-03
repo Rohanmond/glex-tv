@@ -47,6 +47,7 @@
   background-color: var(--background-transparent);
   flex-direction: column;
   font-size: 1.5rem;
+  color: var(--white-color);
 }
 
 @media only screen and (max-width: 750px) {

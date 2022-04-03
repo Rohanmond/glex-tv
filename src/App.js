@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import { Home, MockAPI, Nav, PrivateRoute } from './components';
-import { useAuth, useData } from './contexts';
+import { useAuth, useData, useTheme } from './contexts';
 import {
   HistoryPage,
   LandingPage,
@@ -20,8 +20,10 @@ import { PlayListModal } from './pages/Playlist_Page/components/PlayListModal/Pl
 function App() {
   const { playlistModalState } = useData();
   const { token } = useAuth();
+  const { theme } = useTheme();
+
   return (
-    <div className='app'>
+    <div className='app' data-theme={theme}>
       {token && playlistModalState && (
         <PlayListModal video={playlistModalState} />
       )}

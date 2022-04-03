@@ -13,11 +13,12 @@
 }
 
 .playlist-modal {
-  background-color: var(--background-color-secondary);
+  background-color: var(--nav-background-color);
   display: flex;
   flex-direction: column;
   padding: 0.25rem 0rem;
   gap: 0.25rem;
+  color: var(--text-color);
 }
 
 .playlist-header {

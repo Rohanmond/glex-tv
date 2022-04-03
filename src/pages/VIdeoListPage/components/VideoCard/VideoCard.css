@@ -5,6 +5,7 @@
   flex-direction: column;
   gap: 0.7rem;
   max-width: 20rem;
+  color: var(--text-color);
 }
 .video-card-header-container {
   display: flex;

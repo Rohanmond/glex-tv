@@ -5,4 +5,5 @@
   column-gap: 1.5rem;
   row-gap: 3rem;
   padding: 0.5rem 1.5rem;
+  background-color: var(--background-color);
 }

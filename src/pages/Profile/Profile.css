@@ -9,15 +9,16 @@
   align-items: center;
   height: 100vh;
   padding: 1rem;
-  background-color: var(--background-transparent);
+  background-color: var(--background-color);
 }
 
 .profile-container {
-  background-color: var(--background-color);
+  background-color: var(--nav-background-color);
   border-radius: 0.5rem;
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 .profile-header {
   text-align: center;
@@ -40,9 +41,10 @@
 .profile-details-item {
   font-size: 1.5rem;
   font-weight: 700;
+  color: var(--text-color);
 }
 .profile-details-label {
-  color: var(--yellow-200);
+  /* color: var(--); */
 }
 
 .profile-footer {

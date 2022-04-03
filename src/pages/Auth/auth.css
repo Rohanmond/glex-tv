@@ -5,6 +5,7 @@
   justify-content: center;
   align-items: center;
   padding: 1rem;
+  background-color: var(--background-color);
 }
 
 .auth-box {
@@ -15,8 +16,9 @@
   justify-content: center;
   gap: 1.5rem;
   border-radius: 0.5rem;
-  color: var(--blue-200);
+  color: var(--text-color);
   background-color: var(--nav-background-color);
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
 }
 .auth-form {
   display: flex;
@@ -24,7 +26,7 @@
   gap: 1rem;
 }
 .auth-link-container {
-  color: var(--yellow-200);
+  color: var(--yellow-600);
   cursor: pointer;
 }
 
@@ -33,19 +35,19 @@
   font-size: 1rem;
   padding: 0.5rem 0.75rem;
   background-color: var(--nav-background-color);
-  border: 0.125rem solid var(--grey-400);
+  border: 1px solid var(--text-secondary-color);
   border-radius: 0.25rem;
   transition: 0.2s all ease;
   color: var(--text-color);
 }
 .auth-input:hover {
-  border: 0.125rem solid var(--white-color);
+  border: 1px solid var(--text-secondary-color);
   border-radius: 0.25rem;
 }
 .auth-input:focus {
   background-color: var(--nav-background-color);
   outline: none;
-  border: 0.125rem solid var(--white-color);
+  border: 2px solid var(--text-secondary-color);
   border-radius: 0.25rem;
 }
 

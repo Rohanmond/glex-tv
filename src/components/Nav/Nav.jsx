@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { ACTION_TYPE, FILTER } from '../../constants/constant';
-import { useAuth, useData } from '../../contexts';
+import { useAuth, useData, useTheme } from '../../contexts';
 import './Nav.css';
 import { useRef } from 'react';
 
@@ -9,6 +9,7 @@ export const Nav = () => {
   const { dispatch } = useData();
   const { token } = useAuth();
   const searchRef = useRef();
+  const { theme, changeTheme } = useTheme();
   const smallSearchRef = useRef();
   const searchHandler = (e) => {
     if (e.key === 'Enter') navigate('/videos');
@@ -64,7 +65,11 @@ export const Nav = () => {
                   smallSearchRef.current.value = '';
                   dispatch({ type: ACTION_TYPE.FILTER_CLEAR });
                 }}
-                src='https://res.cloudinary.com/donqbxlnc/image/upload/v1647974532/Glex_TV_1_1_mqmdec.png'
+                src={
+                  theme === 'dark'
+                    ? 'https://res.cloudinary.com/donqbxlnc/image/upload/v1647974532/Glex_TV_1_1_mqmdec.png'
+                    : 'https://res.cloudinary.com/donqbxlnc/image/upload/v1648991310/glex-tv-dark_1_dsgxw3.png'
+                }
                 alt='hero logo'
               />
             </div>
@@ -96,13 +101,32 @@ export const Nav = () => {
                 </button>
               )}
               {token && (
+                <i
+                  onClick={() => navigate('/profile')}
+                  className='fas fa-user-circle theme-btn'
+                ></i>
+              )}
+            </li>
+            <li className='nav-link-item'>
+              <div
+                className='nav-link-item-btn theme-btn'
+                onClick={() => changeTheme()}
+              >
+                {theme === 'dark' ? (
+                  <i class='fas fa-sun'></i>
+                ) : (
+                  <i class='fas fa-moon'></i>
+                )}
+              </div>
+              {/* )} */}
+              {/* {token && (
                 <span
                   onClick={() => navigate('/profile')}
                   class='material-icons-outlined nav-link-icon'
                 >
                   person
                 </span>
-              )}
+              )} */}
             </li>
           </ul>
         </div>

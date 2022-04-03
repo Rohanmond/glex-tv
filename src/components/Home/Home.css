@@ -10,6 +10,8 @@
   display: flex;
   flex-direction: column;
   position: relative;
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 @media only screen and (max-width: 1200px) {
   .aside-container {
@@ -19,5 +21,11 @@
 @media only screen and (max-width: 1050px) {
   .aside-container {
     display: none;
+  }
+}
+@media only screen and (max-width: 750px) {
+  .main-container {
+    min-height: calc(100vh - 159px);
+    margin-bottom: 60px;
   }
 }
