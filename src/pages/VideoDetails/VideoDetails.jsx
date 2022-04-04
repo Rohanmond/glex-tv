@@ -23,7 +23,14 @@ export const VideoDetails = () => {
   } = useData();
   const video = state.videos.find((ele) => ele._id === videoId) || {};
   const { title, creator } = video;
-  const otherVideos = state.videos.filter((ele) => ele._id !== videoId);
+
+  const otherVideos = state.videos.filter(
+    (ele) =>
+      ele._id !== videoId &&
+      !video.categories.some((item) =>
+        ele.categories.some((eleItem) => eleItem === item)
+      )
+  );
   useEffect(() => {
     window.scrollTo(0, 0);
     PostHistory({ video });
@@ -101,7 +108,6 @@ export const VideoDetails = () => {
                 src={`https://www.youtube.com/embed/${videoId}`}
                 title='YouTube video player'
                 frameBorder='0'
-                style={{ borderRadius: '0.5rem' }}
                 allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture'
                 allowFullScreen={true}
               ></iframe>
@@ -162,8 +168,52 @@ export const VideoDetails = () => {
               </div>
             </div>
             <hr className='hr' />
+            <div className='video-details-comment-outer-component'>
+              <p className='font-wt-semibold'>9 Comments</p>
+              <div className='video-details-comment-input-container'>
+                <div className='comment-section-avatar'>R</div>
+                <input
+                  id='comment-section'
+                  placeholder='add your comment here'
+                />
+              </div>
+              <div className='comment-section-footer'>
+                <button className='btn btn-primary background-danger brd-rd-semi-sq cancel-btn'>
+                  Cancel
+                </button>
+                <button className='btn btn-primary background-success brd-rd-semi-sq'>
+                  Submit
+                </button>
+              </div>
+              <div className='video-details-comment-container'>
+                <div className='video-details-comment'>
+                  <div className='comment-section-avatar'>R</div>
+                  <div className='video-details-each-comment-container'>
+                    <p className='font-wt-semibold'>Rohan Mondal</p>
+                    <p>
+                      Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                      Atque quidem ipsum mollitia id itaque sit? Quae libero
+                      corrupti a facilis eaque reprehenderit pariatur doloribus
+                      itaque iure? Quisquam vero iusto obcaecati!
+                    </p>
+                  </div>
+                </div>
+                <div className='video-details-comment'>
+                  <div className='comment-section-avatar'>R</div>
+                  <div className='video-details-each-comment-container'>
+                    <p className='font-wt-bold'>Rohan Mondal</p>
+                    <p>
+                      Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                      Atque quidem ipsum mollitia id itaque sit? Quae libero
+                      corrupti a facilis eaque reprehenderit pariatur doloribus
+                      itaque iure? Quisquam vero iusto obcaecati!
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </section>
-          <div className='video-list-container'>
+          <div className='video-details-list-container'>
             {otherVideos.map((el) => {
               return (
                 <VideoCard
