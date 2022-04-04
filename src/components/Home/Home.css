@@ -3,6 +3,7 @@
   width: 100vw;
   flex-grow: 1;
 }
+
 .aside-container {
   flex: 0 1 250px;
 }
@@ -14,6 +15,9 @@
   position: relative;
   background-color: var(--background-color);
   color: var(--text-color);
+}
+.outlet-container {
+  padding-bottom: 15rem;
 }
 @media only screen and (max-width: 1200px) {
   .aside-container {
@@ -31,6 +35,5 @@
 @media only screen and (max-width: 750px) {
   .main-container {
     min-height: calc(100vh - 122px);
-    /* margin-bottom: 60px; */
   }
 }

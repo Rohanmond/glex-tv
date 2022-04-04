@@ -121,6 +121,7 @@
   .video-details-outer-container {
     flex-direction: column;
     padding: 0.1rem;
+    padding-bottom: 15rem;
   }
   .details-video-container {
     height: 30vh;

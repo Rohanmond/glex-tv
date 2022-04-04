@@ -133,8 +133,10 @@ export const PlayListModal = ({ video }) => {
                 className='playlist-create-section'
                 onClick={() => setShowCreate(true)}
               >
-                <span className='material-icons-outlined'>add</span>
-                <p>Create new playlist</p>
+                <div className='playlist-create-button-section'>
+                  <span className='material-icons-outlined'>add</span>
+                  <p>Create new playlist</p>
+                </div>
               </div>
             )}
           </div>

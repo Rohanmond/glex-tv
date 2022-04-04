@@ -9,7 +9,9 @@ export const Home = () => {
         <Aside />
       </div>
       <div className='main-container'>
-        <Outlet />
+        <div className='outlet-container'>
+          <Outlet />
+        </div>
         <Footer />
       </div>
     </div>
