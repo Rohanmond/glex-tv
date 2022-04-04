@@ -1,7 +1,6 @@
 .outer-container {
   display: flex;
   width: 100vw;
-
   flex-grow: 1;
 }
 .aside-container {
@@ -9,6 +8,7 @@
 }
 .main-container {
   flex: 1 1 auto;
+
   display: flex;
   flex-direction: column;
   position: relative;
@@ -24,10 +24,13 @@
   .aside-container {
     display: none;
   }
+  .main-container {
+    min-height: calc(100vh - 115px);
+  }
 }
 @media only screen and (max-width: 750px) {
   .main-container {
-    min-height: calc(100vh - 159px);
-    margin-bottom: 60px;
+    min-height: calc(100vh - 122px);
+    /* margin-bottom: 60px; */
   }
 }
