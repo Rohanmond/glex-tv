@@ -11,6 +11,18 @@ export const videos = [
     description:
       'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.',
     creator: 'Amazon Prime Video India',
+    comments: [
+      {
+        _id: 'jhhkjhwe',
+        user_name: 'Lorem Ipsum',
+        comment: 'Trailer is awesome',
+      },
+      {
+        _id: 'asfdfdfsa',
+        user_name: 'John Doe',
+        comment: 'Waiting for the movie',
+      },
+    ],
   },
   {
     _id: 'PLl99DlL6b4',
@@ -19,6 +31,18 @@ export const videos = [
     creator: 'Warner Bros. Entertainment',
     description:
       'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.',
+    comments: [
+      {
+        _id: 'jhhkjhwe',
+        user_name: 'Lorem Ipsum',
+        comment: 'Trailer is awesome',
+      },
+      {
+        _id: 'asfdfdfsa',
+        user_name: 'John Doe',
+        comment: 'Waiting for the movie',
+      },
+    ],
   },
   {
     _id: 'AZGcmvrTX9M',
@@ -27,6 +51,18 @@ export const videos = [
     creator: 'Warner Bros. Entertainment',
     description:
       'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.',
+    comments: [
+      {
+        _id: 'jhhkjhwe',
+        user_name: 'Lorem Ipsum',
+        comment: 'Trailer is awesome',
+      },
+      {
+        _id: 'asfdfdfsa',
+        user_name: 'John Doe',
+        comment: 'Waiting for the movie',
+      },
+    ],
   },
   {
     _id: 'GAjBzu8ggi0',
@@ -35,6 +71,18 @@ export const videos = [
     categories: ['action', 'crime', 'drama', 'mystery', 'superhero'],
     description:
       'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.',
+    comments: [
+      {
+        _id: 'jhhkjhwe',
+        user_name: 'Lorem Ipsum',
+        comment: 'Trailer is awesome',
+      },
+      {
+        _id: 'asfdfdfsa',
+        user_name: 'John Doe',
+        comment: 'Waiting for the movie',
+      },
+    ],
   },
   {
     _id: 'Qwe6qXFTdgc',
@@ -43,6 +91,19 @@ export const videos = [
     creator: 'Warner Bros. Entertainment',
     description:
       'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.',
+
+    comments: [
+      {
+        _id: 'jhhkjhwe',
+        user_name: 'Lorem Ipsum',
+        comment: 'Trailer is awesome',
+      },
+      {
+        _id: 'asfdfdfsa',
+        user_name: 'John Doe',
+        comment: 'Waiting for the movie',
+      },
+    ],
   },
   {
     _id: 'mSlgu8AQAd4',
@@ -51,6 +112,18 @@ export const videos = [
     creator: 'Red Chillies Entertainment',
     description:
       'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.',
+    comments: [
+      {
+        _id: 'jhhkjhwe',
+        user_name: 'Lorem Ipsum',
+        comment: 'Trailer is awesome',
+      },
+      {
+        _id: 'asfdfdfsa',
+        user_name: 'John Doe',
+        comment: 'Waiting for the movie',
+      },
+    ],
   },
   {
     _id: '_InqQJRqGW4',
@@ -59,6 +132,18 @@ export const videos = [
     creator: 'Netflix',
     description:
       'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.',
+    comments: [
+      {
+        _id: 'jhhkjhwe',
+        user_name: 'Lorem Ipsum',
+        comment: 'Trailer is awesome',
+      },
+      {
+        _id: 'asfdfdfsa',
+        user_name: 'John Doe',
+        comment: 'Waiting for the movie',
+      },
+    ],
   },
   {
     _id: '6kw1UVovByw',
@@ -67,6 +152,18 @@ export const videos = [
     creator: 'Sony Pictures Entertainment',
     description:
       'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.',
+    comments: [
+      {
+        _id: 'jhhkjhwe',
+        user_name: 'Lorem Ipsum',
+        comment: 'Trailer is awesome',
+      },
+      {
+        _id: 'asfdfdfsa',
+        user_name: 'John Doe',
+        comment: 'Waiting for the movie',
+      },
+    ],
   },
   {
     _id: 'qtRKdVHc-cE',
@@ -75,6 +172,18 @@ export const videos = [
     creator: 'Movieclips Classic Trailers',
     description:
       'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.',
+    comments: [
+      {
+        _id: 'jhhkjhwe',
+        user_name: 'Lorem Ipsum',
+        comment: 'Trailer is awesome',
+      },
+      {
+        _id: 'asfdfdfsa',
+        user_name: 'John Doe',
+        comment: 'Waiting for the movie',
+      },
+    ],
   },
   {
     _id: '2LqzF5WauAw',
@@ -83,6 +192,18 @@ export const videos = [
     creator: 'Warner Bros UK & Ireland',
     description:
       'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.',
+    comments: [
+      {
+        _id: 'jhhkjhwe',
+        user_name: 'Lorem Ipsum',
+        comment: 'Trailer is awesome',
+      },
+      {
+        _id: 'asfdfdfsa',
+        user_name: 'John Doe',
+        comment: 'Waiting for the movie',
+      },
+    ],
   },
   {
     _id: '5xH0HfJHsaY',
@@ -91,6 +212,18 @@ export const videos = [
     creator: 'IGN',
     description:
       'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.',
+    comments: [
+      {
+        _id: 'jhhkjhwe',
+        user_name: 'Lorem Ipsum',
+        comment: 'Trailer is awesome',
+      },
+      {
+        _id: 'asfdfdfsa',
+        user_name: 'John Doe',
+        comment: 'Waiting for the movie',
+      },
+    ],
   },
   {
     _id: 'Pj0wz7zu3Ms',
@@ -99,6 +232,18 @@ export const videos = [
     creator: 'moviemaniacsDE',
     description:
       'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.',
+    comments: [
+      {
+        _id: 'jhhkjhwe',
+        user_name: 'Lorem Ipsum',
+        comment: 'Trailer is awesome',
+      },
+      {
+        _id: 'asfdfdfsa',
+        user_name: 'John Doe',
+        comment: 'Waiting for the movie',
+      },
+    ],
   },
   {
     _id: 'JfVOs4VSpmA',
@@ -107,6 +252,18 @@ export const videos = [
     creator: 'Sony Pictures Entertainment',
     description:
       'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.',
+    comments: [
+      {
+        _id: 'jhhkjhwe',
+        user_name: 'Lorem Ipsum',
+        comment: 'Trailer is awesome',
+      },
+      {
+        _id: 'asfdfdfsa',
+        user_name: 'John Doe',
+        comment: 'Waiting for the movie',
+      },
+    ],
   },
   {
     _id: 'oqxAJKy0ii4',
@@ -115,6 +272,18 @@ export const videos = [
     creator: 'Netflix',
     description:
       'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.',
+    comments: [
+      {
+        _id: 'jhhkjhwe',
+        user_name: 'Lorem Ipsum',
+        comment: 'Trailer is awesome',
+      },
+      {
+        _id: 'asfdfdfsa',
+        user_name: 'John Doe',
+        comment: 'Waiting for the movie',
+      },
+    ],
   },
   {
     _id: 'x_7YlGv9u1g',
@@ -123,6 +292,18 @@ export const videos = [
     creator: 'UTV Motion Pictures',
     description:
       'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.',
+    comments: [
+      {
+        _id: 'jhhkjhwe',
+        user_name: 'Lorem Ipsum',
+        comment: 'Trailer is awesome',
+      },
+      {
+        _id: 'asfdfdfsa',
+        user_name: 'John Doe',
+        comment: 'Waiting for the movie',
+      },
+    ],
   },
   {
     _id: 'ESEUoa-mz2c',
@@ -131,6 +312,18 @@ export const videos = [
     creator: 'Netflix',
     description:
       'At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.',
+    comments: [
+      {
+        _id: 'jhhkjhwe',
+        user_name: 'Lorem Ipsum',
+        comment: 'Trailer is awesome',
+      },
+      {
+        _id: 'asfdfdfsa',
+        user_name: 'John Doe',
+        comment: 'Waiting for the movie',
+      },
+    ],
   },
   {
     _id: '-Qv6p6pTz5I',
@@ -138,6 +331,18 @@ export const videos = [
     categories: ['adventure', 'comedy'],
     creator: 'universal pictures',
     description: '',
+    comments: [
+      {
+        _id: 'jhhkjhwe',
+        user_name: 'Lorem Ipsum',
+        comment: 'Trailer is awesome',
+      },
+      {
+        _id: 'asfdfdfsa',
+        user_name: 'John Doe',
+        comment: 'Waiting for the movie',
+      },
+    ],
   },
   {
     _id: 'aEr6K1bwIVs',
@@ -145,6 +350,18 @@ export const videos = [
     categories: ['biography', 'drama'],
     creator: 'universal pictures',
     description: '',
+    comments: [
+      {
+        _id: 'jhhkjhwe',
+        user_name: 'Lorem Ipsum',
+        comment: 'Trailer is awesome',
+      },
+      {
+        _id: 'asfdfdfsa',
+        user_name: 'John Doe',
+        comment: 'Waiting for the movie',
+      },
+    ],
   },
   {
     _id: 'fb5ELWi-ekk',
@@ -152,6 +369,18 @@ export const videos = [
     categories: ['adventure', 'thriller'],
     creator: 'universal pictures',
     description: '',
+    comments: [
+      {
+        _id: 'jhhkjhwe',
+        user_name: 'Lorem Ipsum',
+        comment: 'Trailer is awesome',
+      },
+      {
+        _id: 'asfdfdfsa',
+        user_name: 'John Doe',
+        comment: 'Waiting for the movie',
+      },
+    ],
   },
   {
     _id: 'DqQe3OrsMKI',
@@ -159,6 +388,18 @@ export const videos = [
     categories: ['adventure', 'thriller', 'action'],
     creator: 'Sony Pictures Entertainment',
     description: '',
+    comments: [
+      {
+        _id: 'jhhkjhwe',
+        user_name: 'Lorem Ipsum',
+        comment: 'Trailer is awesome',
+      },
+      {
+        _id: 'asfdfdfsa',
+        user_name: 'John Doe',
+        comment: 'Waiting for the movie',
+      },
+    ],
   },
   {
     _id: 'nuPZUUED5uk',
@@ -166,6 +407,18 @@ export const videos = [
     categories: ['biography', 'drama'],
     creator: 'Movieclips Trailer',
     description: '',
+    comments: [
+      {
+        _id: 'jhhkjhwe',
+        user_name: 'Lorem Ipsum',
+        comment: 'Trailer is awesome',
+      },
+      {
+        _id: 'asfdfdfsa',
+        user_name: 'John Doe',
+        comment: 'Waiting for the movie',
+      },
+    ],
   },
   {
     _id: 'DMOBlEcRuw8',
@@ -173,5 +426,17 @@ export const videos = [
     categories: ['family', 'adventure'],
     creator: 'Movieclips Classic Trailers',
     description: '',
+    comments: [
+      {
+        _id: 'jhhkjhwe',
+        user_name: 'Lorem Ipsum',
+        comment: 'Trailer is awesome',
+      },
+      {
+        _id: 'asfdfdfsa',
+        user_name: 'John Doe',
+        comment: 'Waiting for the movie',
+      },
+    ],
   },
 ];

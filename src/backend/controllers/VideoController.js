@@ -1,4 +1,4 @@
-import { Response } from "miragejs";
+import { Response } from 'miragejs';
 
 /**
  * All the routes related to Videos are present here.
@@ -49,5 +49,17 @@ export const getVideoHandler = function (schema, request) {
         error,
       }
     );
+  }
+};
+
+export const updateVideoHandler = function (schema, request) {
+  try {
+    const videoId = request.params.videoId;
+    const { comments } = JSON.parse(request.requestBody);
+
+    this.db.videos.update({ _id: videoId }, { comments: comments });
+    return new Response(200, {}, { videos: this.db.videos });
+  } catch (error) {
+    return new Response(500, {}, { error });
   }
 };
