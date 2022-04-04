@@ -43,7 +43,6 @@
 .playlist-checkbox-container {
   display: flex;
   align-items: center;
-  padding: 0.5rem;
   gap: 1rem;
 }
 .playlist-create-section {
@@ -52,7 +51,7 @@
   align-items: center;
   gap: 1rem;
   justify-content: flex-start;
-  padding: 1rem 1rem;
+  padding: 1rem;
   cursor: pointer;
 }
 
