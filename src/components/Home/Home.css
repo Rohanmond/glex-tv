@@ -1,6 +1,8 @@
 .outer-container {
   display: flex;
   width: 100vw;
+
+  flex-grow: 1;
 }
 .aside-container {
   flex: 0 1 250px;

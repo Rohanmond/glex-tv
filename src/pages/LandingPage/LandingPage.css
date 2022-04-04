@@ -1,5 +1,5 @@
 .hero-video-thumbnail-container {
-  height: 100vh;
+  height: calc(100vh - 64px);
 }
 
 .home-hero-img-container {
@@ -11,14 +11,14 @@
   position: absolute;
   background-color: var(--black-color);
   width: 100vw;
-  height: 100vh;
+  height: calc(100vh - 64px);
   opacity: 0.8;
   z-index: 1;
   left: 0;
 }
 .home-hero-image {
   grid-area: 1/1/5/5;
-  height: 100vh;
+  height: calc(100vh - 64px);
 }
 
 .home-hero-image-text {
@@ -37,4 +37,16 @@
 }
 .home-hero-subheading {
   font-size: 1.3rem;
+}
+
+@media screen and (max-width: 750px) {
+  .hero-video-thumbnail-container {
+    height: calc(100vh - 96px);
+  }
+  .home-hero-img-container::before {
+    height: calc(100vh - 96px);
+  }
+  .home-hero-image {
+    height: calc(100vh - 96px);
+  }
 }
