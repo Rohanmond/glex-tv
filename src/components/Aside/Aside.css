@@ -1,15 +1,12 @@
 .video-list-aside-container {
-  height: 100vh;
-  position: sticky;
-  top: 4rem;
-  overflow-y: scroll;
-  left: 0;
   background-color: var(--nav-background-color);
   display: flex;
-  width: 250px;
+  position: sticky;
+  top: 54.49px;
+  height: calc(100vh - 54.49px);
+
   flex-direction: column;
   gap: 1rem;
-  overflow: hidden;
 }
 .video-list-aside-item {
   display: flex;
