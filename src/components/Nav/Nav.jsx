@@ -67,7 +67,7 @@ export const Nav = () => {
                 }}
                 src={
                   theme === 'dark'
-                    ? 'https://res.cloudinary.com/donqbxlnc/image/upload/v1647974532/Glex_TV_1_1_mqmdec.png'
+                    ? 'https://res.cloudinary.com/donqbxlnc/image/upload/v1649084445/Glex_TV_2_b5vw64.png'
                     : 'https://res.cloudinary.com/donqbxlnc/image/upload/v1648991310/glex-tv-dark_1_dsgxw3.png'
                 }
                 alt='hero logo'
