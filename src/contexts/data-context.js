@@ -26,6 +26,7 @@ import {
   PostPlaylistService,
   PostVideoPlaylistService,
   PostWatchLaterService,
+  updateAllVideosService,
 } from '../Services/services';
 import { useAuth } from './auth-context';
 
@@ -72,7 +73,19 @@ export const DataProvider = ({ children }) => {
       });
     }
   }, [token]);
-
+  const updateAllVideos = async ({ videoId, comments }) => {
+    try {
+      const res = await updateAllVideosService({ videoId, comments });
+      if (res.status === 200) {
+        dispatch({
+          type: ACTION_TYPE.INITIAL_DATA_FETCH,
+          payload: { videos: res.data.videos },
+        });
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
   const GetAllHistory = async () => {
     if (!token) {
       navigate('/login');
@@ -400,6 +413,7 @@ export const DataProvider = ({ children }) => {
         GetLikedVideos,
         AddToLikeVideos,
         DeleteLikedVideos,
+        updateAllVideos,
       }}
     >
       {children}

@@ -1,5 +1,6 @@
 import { useNavigate, useParams } from 'react-router-dom';
-import { useEffect } from 'react';
+import { v4 as uuid } from 'uuid';
+import { useEffect, useState } from 'react';
 import './VideoDetails.css';
 import { useAuth, useData } from '../../contexts';
 import VideoCard from '../VIdeoListPage/components/VideoCard/VideoCard';
@@ -8,7 +9,9 @@ import { PlayListModal } from '../Playlist_Page/components/PlayListModal/PlayLis
 
 export const VideoDetails = () => {
   const { videoId } = useParams();
-  const { token } = useAuth();
+  const { token, user } = useAuth();
+  const [commentInput, setCommentInput] = useState('');
+  const [openCommentSection, setOpenCommentSection] = useState(false);
   const navigate = useNavigate();
   const {
     state,
@@ -20,9 +23,10 @@ export const VideoDetails = () => {
     DeleteVideoFromWatchLater,
     AddToLikeVideos,
     DeleteLikedVideos,
+    updateAllVideos,
   } = useData();
   const video = state.videos.find((ele) => ele._id === videoId) || {};
-  const { title, creator } = video;
+  const { title, creator, _id, comments } = video || {};
 
   const otherVideos = state.videos.filter(
     (ele) =>
@@ -43,6 +47,17 @@ export const VideoDetails = () => {
   };
   const savePlaylistHandler = () => {
     setPlaylistModalState(video);
+  };
+  const updateCommentHandler = () => {
+    const comment = {
+      _id: uuid(),
+      user_name: user.name,
+      comment: commentInput,
+    };
+    const newComments = comments.concat(comment);
+    updateAllVideos({ videoId, comments: newComments });
+    setCommentInput('');
+    setOpenCommentSection(false);
   };
   const likeHandler = () => {
     state.likes.some((el) => el._id === videoId)
@@ -98,7 +113,7 @@ export const VideoDetails = () => {
   return (
     <>
       {showPlaylistModal && <PlayListModal video={video} />}
-      {video && (
+      {_id && (
         <div className='video-details-outer-container'>
           <section className='details-video-section'>
             <div className='details-video-container'>
@@ -126,7 +141,7 @@ export const VideoDetails = () => {
                   onClick={likeHandler}
                 >
                   <i
-                    class={`fa-thumbs-up ${
+                    className={`fa-thumbs-up ${
                       state.likes.some((el) => el._id === videoId)
                         ? 'fas'
                         : 'far'
@@ -158,7 +173,7 @@ export const VideoDetails = () => {
                   className='details-video-footer-button'
                   onClick={savePlaylistHandler}
                 >
-                  <span class='material-icons-outlined'>playlist_play</span>
+                  <span className='material-icons-outlined'>playlist_play</span>
                   <p className='font-wt-semibold'>Save</p>
                 </div>
                 <div className='details-video-footer-button'>
@@ -169,47 +184,47 @@ export const VideoDetails = () => {
             </div>
             <hr className='hr' />
             <div className='video-details-comment-outer-component'>
-              <p className='font-wt-semibold'>9 Comments</p>
+              <p className='font-wt-semibold'>{comments.length} Comments</p>
               <div className='video-details-comment-input-container'>
-                <div className='comment-section-avatar'>R</div>
+                <div className='comment-section-avatar'>{user.name[0]}</div>
                 <input
                   id='comment-section'
+                  value={commentInput}
+                  onFocus={() => setOpenCommentSection(true)}
+                  onChange={(e) => setCommentInput(e.target.value)}
                   placeholder='add your comment here'
                 />
               </div>
-              <div className='comment-section-footer'>
-                <button className='btn btn-primary background-danger brd-rd-semi-sq cancel-btn'>
-                  Cancel
-                </button>
-                <button className='btn btn-primary background-success brd-rd-semi-sq'>
-                  Submit
-                </button>
-              </div>
+              {openCommentSection && (
+                <div className='comment-section-footer'>
+                  <button
+                    className='btn btn-primary background-danger brd-rd-semi-sq cancel-btn'
+                    onClick={() => setOpenCommentSection(false)}
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    className='btn btn-primary background-success brd-rd-semi-sq'
+                    onClick={updateCommentHandler}
+                  >
+                    Submit
+                  </button>
+                </div>
+              )}
               <div className='video-details-comment-container'>
-                <div className='video-details-comment'>
-                  <div className='comment-section-avatar'>R</div>
-                  <div className='video-details-each-comment-container'>
-                    <p className='font-wt-semibold'>Rohan Mondal</p>
-                    <p>
-                      Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                      Atque quidem ipsum mollitia id itaque sit? Quae libero
-                      corrupti a facilis eaque reprehenderit pariatur doloribus
-                      itaque iure? Quisquam vero iusto obcaecati!
-                    </p>
-                  </div>
-                </div>
-                <div className='video-details-comment'>
-                  <div className='comment-section-avatar'>R</div>
-                  <div className='video-details-each-comment-container'>
-                    <p className='font-wt-bold'>Rohan Mondal</p>
-                    <p>
-                      Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                      Atque quidem ipsum mollitia id itaque sit? Quae libero
-                      corrupti a facilis eaque reprehenderit pariatur doloribus
-                      itaque iure? Quisquam vero iusto obcaecati!
-                    </p>
-                  </div>
-                </div>
+                {comments.map((comment) => {
+                  return (
+                    <div key={comment._id} className='video-details-comment'>
+                      <div className='comment-section-avatar'>
+                        {comment.user_name[0]}
+                      </div>
+                      <div className='video-details-each-comment-container'>
+                        <p className='font-wt-bold'>{comment.user_name}</p>
+                        <p>{comment.comment}</p>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </section>

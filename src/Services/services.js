@@ -4,6 +4,10 @@ export const GetAllVideos = async () => {
   return axios.get('/api/videos');
 };
 
+export const updateAllVideosService = async ({ videoId, comments }) => {
+  return axios.post(`/api/video/${videoId}`, { comments });
+};
+
 export const GetAllCategories = async () => {
   return axios.get('/api/categories');
 };

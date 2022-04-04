@@ -113,9 +113,9 @@ export const Nav = () => {
                 onClick={() => changeTheme()}
               >
                 {theme === 'dark' ? (
-                  <i class='fas fa-sun'></i>
+                  <i className='fas fa-sun'></i>
                 ) : (
-                  <i class='fas fa-moon'></i>
+                  <i className='fas fa-moon'></i>
                 )}
               </div>
             </li>
