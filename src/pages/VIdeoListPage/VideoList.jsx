@@ -64,7 +64,9 @@ export const VideoList = () => {
 
   return (
     <>
-      <ChipsContainer />
+      <div>
+        <ChipsContainer />
+      </div>
       <div className='video-list-container'>
         {filteredData.length > 0 &&
           filteredData.map((el) => {

@@ -13,7 +13,8 @@
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   background: var(--nav-background-color);
   padding: 0.25rem 0.25rem;
-
+  position: sticky;
+  top: 0;
   z-index: 2;
   width: 100vw;
 }
