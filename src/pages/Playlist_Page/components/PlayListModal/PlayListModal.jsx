@@ -7,13 +7,13 @@ import { useOutsideClickHandler } from '../../../../custom-hooks/OutSideClickHan
 export const PlayListModal = ({ video }) => {
   const {
     setPlaylistModalState,
-    PostPlaylist,
+    postPlaylist,
     state,
     dispatch,
-    PostSingleVideoPlaylist,
-    DeleteSingleVideoFromPlaylist,
-    PostWatchLater,
-    DeleteVideoFromWatchLater,
+    postSingleVideoPlaylist,
+    deleteSingleVideoFromPlaylist,
+    postWatchLater,
+    deleteVideoFromWatchLater,
   } = useData();
   const [input, setInput] = useState('');
   const [showCreate, setShowCreate] = useState(false);
@@ -27,23 +27,23 @@ export const PlayListModal = ({ video }) => {
     e.preventDefault();
     setShowCreate(false);
     setInput('');
-    PostPlaylist({ title: input });
+    postPlaylist({ title: input });
   };
   const checkboxChangeHandler = (e, list) => {
     if (!e.target.checked) {
-      DeleteSingleVideoFromPlaylist({
+      deleteSingleVideoFromPlaylist({
         playlistId: list._id,
         videoId: video._id,
       });
     } else {
-      PostSingleVideoPlaylist({ playlistId: list._id, video });
+      postSingleVideoPlaylist({ playlistId: list._id, video });
     }
   };
   const watchLaterCheckboxHandler = (e) => {
     if (!e.target.checked) {
-      DeleteVideoFromWatchLater({ videoId: video._id });
+      deleteVideoFromWatchLater({ videoId: video._id });
     } else {
-      PostWatchLater({ video });
+      postWatchLater({ video });
     }
   };
   return (

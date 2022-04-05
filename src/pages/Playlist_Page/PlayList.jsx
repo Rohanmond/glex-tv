@@ -2,11 +2,11 @@ import { useData } from '../../contexts';
 import { PlayListCard } from './components/PlayListCard/PlayListCard';
 import './PlayList.css';
 export const PlayList = () => {
-  const { state, DeletePlaylist } = useData();
+  const { state, deletePlaylist } = useData();
   const clickHandler = (e, playlist, id) => {
     switch (id) {
       case 1: {
-        DeletePlaylist({ playlistId: playlist._id });
+        deletePlaylist({ playlistId: playlist._id });
         break;
       }
       default:

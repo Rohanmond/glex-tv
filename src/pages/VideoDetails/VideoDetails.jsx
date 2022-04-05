@@ -15,14 +15,14 @@ export const VideoDetails = () => {
   const navigate = useNavigate();
   const {
     state,
-    PostHistory,
-    PostWatchLater,
+    postHistory,
+    postWatchLater,
     dispatch,
     showPlaylistModal,
     setPlaylistModalState,
-    DeleteVideoFromWatchLater,
-    AddToLikeVideos,
-    DeleteLikedVideos,
+    deleteVideoFromWatchLater,
+    addToLikeVideos,
+    deleteLikedVideos,
     updateAllVideos,
   } = useData();
   const video = state.videos.find((ele) => ele._id === videoId) || {};
@@ -37,13 +37,13 @@ export const VideoDetails = () => {
   );
   useEffect(() => {
     window.scrollTo(0, 0);
-    PostHistory({ video });
+    postHistory({ video });
   }, [videoId]);
 
   const watchlaterHandler = () => {
     state.laters.some((el) => el._id === videoId)
-      ? DeleteVideoFromWatchLater({ videoId })
-      : PostWatchLater({ video });
+      ? deleteVideoFromWatchLater({ videoId })
+      : postWatchLater({ video });
   };
   const savePlaylistHandler = () => {
     setPlaylistModalState(video);
@@ -61,8 +61,8 @@ export const VideoDetails = () => {
   };
   const likeHandler = () => {
     state.likes.some((el) => el._id === videoId)
-      ? DeleteLikedVideos({ videoId })
-      : AddToLikeVideos({ video });
+      ? deleteLikedVideos({ videoId })
+      : addToLikeVideos({ video });
   };
   const clickHandler = (e, video, id) => {
     switch (id) {
@@ -70,7 +70,7 @@ export const VideoDetails = () => {
         if (!token) {
           navigate('/login', { replace: true });
         }
-        PostWatchLater({ video });
+        postWatchLater({ video });
         dispatch({
           type: ACTION_TYPE.RESET_MENU,
         });

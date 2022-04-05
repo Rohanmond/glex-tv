@@ -2,13 +2,13 @@ import { useData } from '../../contexts';
 import VideoCard from '../VIdeoListPage/components/VideoCard/VideoCard';
 import './WatchLater.css';
 export const WatchLater = () => {
-  const { state, DeleteVideoFromWatchLater, setPlaylistModalState } = useData();
+  const { state, deleteVideoFromWatchLater, setPlaylistModalState } = useData();
   const reversedWatchLater = [...state.laters].reverse();
 
   const clickHandler = (e, video, menuId) => {
     switch (menuId) {
       case 0: {
-        DeleteVideoFromWatchLater({ videoId: video._id });
+        deleteVideoFromWatchLater({ videoId: video._id });
         break;
       }
       case 1: {
