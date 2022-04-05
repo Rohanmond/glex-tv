@@ -17,17 +17,30 @@ export const PlayListModal = ({ video }) => {
   } = useData();
   const [input, setInput] = useState('');
   const [showCreate, setShowCreate] = useState(false);
+  const [samePlaylistError, setSamePlaylistError] = useState(false);
   const ref = useRef(null);
   const { resetMenu } = useOutsideClickHandler(ref);
 
   useEffect(() => {
     if (resetMenu) setPlaylistModalState(null);
-  });
+  }, [resetMenu]);
   const createSubmitHandler = (e) => {
     e.preventDefault();
-    setShowCreate(false);
-    setInput('');
-    postPlaylist({ title: input });
+    let errorFlag = false;
+    state.playlists.forEach((list) => {
+      if (list.title === input) {
+        setSamePlaylistError(true);
+        errorFlag = true;
+        return;
+      }
+    });
+
+    if (!errorFlag) {
+      console.log('post playlist');
+      postPlaylist({ title: input });
+      setShowCreate(false);
+      setInput('');
+    }
   };
   const checkboxChangeHandler = (e, list) => {
     if (!e.target.checked) {
@@ -117,6 +130,7 @@ export const PlayListModal = ({ video }) => {
                     className=' playlist-create-text-input'
                     type='text'
                     value={input}
+                    onFocus={() => setSamePlaylistError(false)}
                     onChange={(e) => setInput(e.target.value)}
                     placeholder='playlist title'
                     required
@@ -126,6 +140,9 @@ export const PlayListModal = ({ video }) => {
                     type='submit'
                     value={'Create'}
                   />
+                  {samePlaylistError && (
+                    <div className='err-msg'>Already having same playlist</div>
+                  )}
                 </form>
               </div>
             ) : (
