@@ -2,6 +2,11 @@ import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useAuth } from '../../../contexts';
 import '../auth.css';
+import {
+  validateEmail,
+  validateOnlyString,
+  validatePassword,
+} from '../../../utils/utils';
 
 export const Signup = () => {
   const navigate = useNavigate();
@@ -12,6 +17,13 @@ export const Signup = () => {
     password: '',
     confirm_password: '',
   });
+  const resetFormError = {
+    name: '',
+    email: '',
+    password: '',
+    confirm_password: '',
+  };
+  const [formError, setFormError] = useState(resetFormError);
 
   useEffect(() => {
     let id;
@@ -25,7 +37,26 @@ export const Signup = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    // console.log(typeof signupHanlder);
+    let flagErr = false;
+    let newFormError = {};
+    Object.keys(formError).forEach((key) => {
+      newFormError[key] = '';
+      if (signupForm[key] === '') {
+        console.log('hello');
+        newFormError[key] = `${key} shouldn't be empty`;
+        flagErr = true;
+      }
+    });
+    if (signupForm.password !== signupForm.confirm_password) {
+      flagErr = true;
+      newFormError.confirm_password =
+        "Password and confirm password didn't matched";
+    }
+    if (flagErr) {
+      setFormError(newFormError);
+      return;
+    }
+
     signupHandler(signupForm.email, signupForm.password, signupForm.name);
   };
   return (
@@ -40,11 +71,21 @@ export const Signup = () => {
               value={signupForm.name}
               id='name'
               type='text'
-              onChange={(e) =>
-                setSignupForm({ ...signupForm, name: e.target.value })
-              }
-              required
+              onChange={(e) => {
+                setSignupForm({ ...signupForm, name: e.target.value });
+                if (!validateOnlyString(e.target.value)) {
+                  setFormError({
+                    ...formError,
+                    name: 'Name should be in strings',
+                  });
+                } else {
+                  setFormError({ ...formError, name: '' });
+                }
+              }}
             />
+            {formError.name && (
+              <div className='err-msg font-wt-semibold'>{formError.name}</div>
+            )}
           </div>
           <div className='auth-input-container'>
             <label htmlFor='email'>Email</label>
@@ -53,11 +94,21 @@ export const Signup = () => {
               id='email'
               value={signupForm.email}
               type='email'
-              onChange={(e) =>
-                setSignupForm({ ...signupForm, email: e.target.value })
-              }
-              required
+              onChange={(e) => {
+                setSignupForm({ ...signupForm, email: e.target.value });
+                if (!validateEmail(e.target.value)) {
+                  setFormError({
+                    ...formError,
+                    email: 'Email should be in correct format',
+                  });
+                } else {
+                  setFormError({ ...formError, email: '' });
+                }
+              }}
             />
+            {formError.email && (
+              <div className='err-msg font-wt-semibold'>{formError.email}</div>
+            )}
           </div>
           <div className='auth-input-container'>
             <label htmlFor='password'>Password</label>
@@ -66,11 +117,27 @@ export const Signup = () => {
               id='password'
               type='password'
               value={signupForm.password}
-              onChange={(e) =>
-                setSignupForm({ ...signupForm, password: e.target.value })
+              onChange={(e) => {
+                setSignupForm({ ...signupForm, password: e.target.value });
+                if (!validatePassword(e.target.value)) {
+                  setFormError({
+                    ...formError,
+                    password:
+                      'Password should be in 8 to 20 chars and should have one digit',
+                  });
+                } else {
+                  setFormError({ ...formError, password: '' });
+                }
+              }}
+              onFocus={() =>
+                setFormError({ ...formError, confirm_password: '' })
               }
-              required
             />
+            {formError.password && (
+              <div className='err-msg font-wt-semibold'>
+                {formError.password}
+              </div>
+            )}
           </div>
           <div className='auth-input-container'>
             <label htmlFor='conf-password'>Confirm Password</label>
@@ -85,8 +152,15 @@ export const Signup = () => {
                   confirm_password: e.target.value,
                 })
               }
-              required
+              onFocus={() =>
+                setFormError({ ...formError, confirm_password: '' })
+              }
             />
+            {formError.confirm_password && (
+              <div className='err-msg font-wt-semibold'>
+                {formError.confirm_password}
+              </div>
+            )}
           </div>
 
           <div className='auth-input-btn-container'>
