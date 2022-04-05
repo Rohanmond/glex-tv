@@ -83,6 +83,7 @@
 }
 .nav-link-item {
   cursor: pointer;
+  padding-left: 0.375rem;
 }
 .nav-link-item-btn {
   padding: 0.25rem 0.375rem;

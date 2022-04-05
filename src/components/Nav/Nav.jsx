@@ -91,6 +91,9 @@ export const Nav = () => {
         </div>
         <div className='nav-right'>
           <ul className='nav-links'>
+            <li className='nav-link-item' onClick={() => navigate('/videos')}>
+              <p>Explore</p>
+            </li>
             <li className='nav-link-item'>
               {!token && (
                 <button
