@@ -36,8 +36,8 @@
   align-items: center;
   border: 1px solid var(--grey-400);
   border-left: none;
-  border-top-right-radius: 0.25rem;
-  border-bottom-right-radius: 0.25rem;
+  border-top-right-radius: 1rem;
+  border-bottom-right-radius: 1rem;
   background: var(--background-color);
   cursor: pointer;
   color: var(--text-color);
@@ -59,13 +59,13 @@
 
 .nav-text-input {
   font-size: 1rem;
-  padding: 0.5rem 0.75rem;
+  padding: 0.375rem 0.75rem;
   transition: 0.4s all ease;
   background-color: var(--nav-background-color);
   color: var(--text-color);
   border: 1px solid var(--grey-400);
-  border-top-left-radius: 0.25rem;
-  border-bottom-left-radius: 0.25rem;
+  border-top-left-radius: 1rem;
+  border-bottom-left-radius: 1rem;
 }
 .nav-text-input:focus {
   outline: none;
