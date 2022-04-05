@@ -60,7 +60,7 @@ export const Nav = () => {
               <img
                 className='hero-logo'
                 onClick={() => {
-                  navigate('/videos');
+                  navigate('/');
                   searchRef.current.value = '';
                   smallSearchRef.current.value = '';
                   dispatch({ type: ACTION_TYPE.FILTER_CLEAR });
@@ -104,10 +104,11 @@ export const Nav = () => {
                 <i
                   onClick={() => navigate('/profile')}
                   className='fas fa-user-circle theme-btn'
+                  title='user profile'
                 ></i>
               )}
             </li>
-            <li className='nav-link-item'>
+            <li className='nav-link-item' title='change theme'>
               <div
                 className='nav-link-item-btn theme-btn'
                 onClick={() => changeTheme()}
@@ -115,7 +116,7 @@ export const Nav = () => {
                 {theme === 'dark' ? (
                   <i className='fas fa-sun'></i>
                 ) : (
-                  <i className='fas fa-moon'></i>
+                  <i className='fas fa-moon moon'></i>
                 )}
               </div>
             </li>
