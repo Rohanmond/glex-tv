@@ -26,7 +26,7 @@ export const VideoDetails = () => {
     updateAllVideos,
   } = useData();
   const video = state.videos.find((ele) => ele._id === videoId) || {};
-  const { title, creator, _id, comments } = video || {};
+  const { title, creator, _id, comments, release_date } = video || {};
 
   const otherVideos = state.videos.filter(
     (ele) =>
@@ -131,6 +131,9 @@ export const VideoDetails = () => {
               <div className='details-video-footer-text'>
                 <h3>{title}</h3>
                 <p className='color-text-secondary'>{creator}</p>
+                <p className='color-text-secondary release_date'>
+                  {release_date}
+                </p>
               </div>
 
               <div className='details-video-footer-buttons'>
