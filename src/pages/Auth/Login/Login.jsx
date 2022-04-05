@@ -33,6 +33,7 @@ export const Login = () => {
               value={loginForm.email}
               id='email'
               type='email'
+              placeholder='rohan@gmail.com'
               onChange={(e) =>
                 setLoginForm({ ...loginForm, email: e.target.value })
               }
@@ -46,6 +47,7 @@ export const Login = () => {
               value={loginForm.password}
               id='password'
               type='password'
+              placeholder='1234abcd'
               onChange={(e) =>
                 setLoginForm({ ...loginForm, password: e.target.value })
               }
@@ -71,9 +73,13 @@ export const Login = () => {
             />
           </div>
           <div className='auth-link-container'>
-            <p className='font-wt-semibold' onClick={() => navigate('/signup')}>
-              Don't have an account? Signup
-            </p>
+            <span className='font-wt-semibold'>Don't have an account?</span>
+            <span
+              className='auth-link font-wt-semibold'
+              onClick={() => navigate('/signup')}
+            >
+              Signup
+            </span>
           </div>
         </form>
       </div>

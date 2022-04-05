@@ -28,7 +28,8 @@
 }
 .auth-link-container {
   color: var(--yellow-600);
-  cursor: pointer;
+  display: flex;
+  gap: 0.2rem;
 }
 
 .auth-input {
@@ -40,6 +41,10 @@
   border-radius: 0.25rem;
   transition: 0.2s all ease;
   color: var(--text-color);
+}
+.auth-link {
+  cursor: pointer;
+  color: var(--secondary-color);
 }
 .auth-input:hover {
   border: 1px solid var(--text-secondary-color);

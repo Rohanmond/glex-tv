@@ -21,7 +21,7 @@ export const Signup = () => {
     name: '',
     email: '',
     password: '',
-    confirm_password: '',
+    'confirm-password': '',
   };
   const [formError, setFormError] = useState(resetFormError);
 
@@ -41,15 +41,14 @@ export const Signup = () => {
     let newFormError = {};
     Object.keys(formError).forEach((key) => {
       newFormError[key] = '';
-      if (signupForm[key] === '') {
-        console.log('hello');
+      if (signupForm[key] === '' && key !== 'confirm-password') {
         newFormError[key] = `${key} shouldn't be empty`;
         flagErr = true;
       }
     });
     if (signupForm.password !== signupForm.confirm_password) {
       flagErr = true;
-      newFormError.confirm_password =
+      newFormError['confirm-password'] =
         "Password and confirm password didn't matched";
     }
     if (flagErr) {
@@ -71,6 +70,7 @@ export const Signup = () => {
               value={signupForm.name}
               id='name'
               type='text'
+              placeholder='Rohan Mondal'
               onChange={(e) => {
                 setSignupForm({ ...signupForm, name: e.target.value });
                 if (!validateOnlyString(e.target.value)) {
@@ -94,6 +94,7 @@ export const Signup = () => {
               id='email'
               value={signupForm.email}
               type='email'
+              placeholder='rohan@gmail.com'
               onChange={(e) => {
                 setSignupForm({ ...signupForm, email: e.target.value });
                 if (!validateEmail(e.target.value)) {
@@ -116,6 +117,7 @@ export const Signup = () => {
               className='auth-input'
               id='password'
               type='password'
+              placeholder='password'
               value={signupForm.password}
               onChange={(e) => {
                 setSignupForm({ ...signupForm, password: e.target.value });
@@ -145,6 +147,7 @@ export const Signup = () => {
               className='auth-input'
               id='conf-password'
               type='password'
+              placeholder='confirm password'
               value={signupForm.confirm_password}
               onChange={(e) =>
                 setSignupForm({
@@ -153,12 +156,12 @@ export const Signup = () => {
                 })
               }
               onFocus={() =>
-                setFormError({ ...formError, confirm_password: '' })
+                setFormError({ ...formError, 'confirm-password': '' })
               }
             />
-            {formError.confirm_password && (
+            {formError['confirm-password'] && (
               <div className='err-msg font-wt-semibold'>
-                {formError.confirm_password}
+                {formError['confirm-password']}
               </div>
             )}
           </div>
