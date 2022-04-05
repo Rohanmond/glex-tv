@@ -9,23 +9,23 @@ import { useNavigate } from 'react-router-dom';
 import { ACTION_TYPE } from '../constants/constant';
 import { DataReducer, InitialState } from '../reducers/reducer';
 import {
-  AddToLikedVideosService,
-  DeleteAllHistoriesService,
-  DeleteHistoryService,
-  DeleteLikedVideosService,
-  DeletePlayListService,
-  DeleteVideoFromWatchLaterService,
-  DeleteVideoPlaylistService,
-  GetAllCategories,
-  GetAllHistoryService,
-  GetAllPlaylistsService,
-  GetAllVideos,
-  GetLikedVideosService,
-  GetWatchLaterService,
-  PostHistoryService,
-  PostPlaylistService,
-  PostVideoPlaylistService,
-  PostWatchLaterService,
+  addToLikedVideosService,
+  deleteAllHistoriesService,
+  deleteHistoryService,
+  deleteLikedVideosService,
+  deletePlayListService,
+  deleteVideoFromWatchLaterService,
+  deleteVideoPlaylistService,
+  getAllCategoriesService,
+  getAllHistoryService,
+  getAllPlaylistsService,
+  getAllVideosService,
+  getLikedVideosService,
+  getWatchLaterService,
+  postHistoryService,
+  postPlaylistService,
+  postVideoPlaylistService,
+  postWatchLaterService,
   updateAllVideosService,
 } from '../Services/services';
 import { useAuth } from './auth-context';
@@ -41,7 +41,7 @@ export const DataProvider = ({ children }) => {
   useEffect(() => {
     (async () => {
       try {
-        const videosRes = await GetAllVideos();
+        const videosRes = await getAllVideosService();
         if (videosRes.status === 200) {
           dispatch({
             type: ACTION_TYPE.INITIAL_DATA_FETCH,
@@ -49,7 +49,7 @@ export const DataProvider = ({ children }) => {
           });
         }
 
-        const categoriesRes = await GetAllCategories();
+        const categoriesRes = await getAllCategoriesService();
         if (categoriesRes.status === 200) {
           dispatch({
             type: ACTION_TYPE.INITIAL_DATA_FETCH,
@@ -63,10 +63,10 @@ export const DataProvider = ({ children }) => {
   }, []);
   useEffect(() => {
     if (token) {
-      GetAllHistory();
-      GetAllPlaylist();
-      GetWatchLater();
-      GetLikedVideos();
+      getAllHistory();
+      getAllPlaylist();
+      getWatchLater();
+      getLikedVideos();
     } else {
       dispatch({
         type: ACTION_TYPE.RESET,
@@ -86,13 +86,13 @@ export const DataProvider = ({ children }) => {
       console.log(err);
     }
   };
-  const GetAllHistory = async () => {
+  const getAllHistory = async () => {
     if (!token) {
       navigate('/login');
       return;
     }
     try {
-      const historyRes = await GetAllHistoryService({ encodedToken: token });
+      const historyRes = await getAllHistoryService({ encodedToken: token });
       if (historyRes.status === 200 || historyRes.status === 201) {
         dispatch({
           type: ACTION_TYPE.SET_HISTORY,
@@ -103,13 +103,13 @@ export const DataProvider = ({ children }) => {
       console.log(err);
     }
   };
-  const PostHistory = async ({ video }) => {
+  const postHistory = async ({ video }) => {
     if (!token) {
       navigate('/login');
       return;
     }
     try {
-      const historyRes = await PostHistoryService({
+      const historyRes = await postHistoryService({
         video,
         encodedToken: token,
       });
@@ -124,13 +124,13 @@ export const DataProvider = ({ children }) => {
     }
   };
 
-  const DeleteHistory = async ({ videoId }) => {
+  const deleteHistory = async ({ videoId }) => {
     if (!token) {
       navigate('/login');
       return;
     }
     try {
-      const historyRes = await DeleteHistoryService({
+      const historyRes = await deleteHistoryService({
         videoId,
         encodedToken: token,
       });
@@ -145,13 +145,13 @@ export const DataProvider = ({ children }) => {
     }
   };
 
-  const DeleteAllHistory = async () => {
+  const deleteAllHistory = async () => {
     if (!token) {
       navigate('/login');
       return;
     }
     try {
-      const historyRes = await DeleteAllHistoriesService({
+      const historyRes = await deleteAllHistoriesService({
         encodedToken: token,
       });
       if (historyRes.status === 200 || historyRes.status === 201) {
@@ -165,13 +165,13 @@ export const DataProvider = ({ children }) => {
     }
   };
 
-  const GetAllPlaylist = async () => {
+  const getAllPlaylist = async () => {
     if (!token) {
       navigate('/login');
       return;
     }
     try {
-      const playlistRes = await GetAllPlaylistsService({ encodedToken: token });
+      const playlistRes = await getAllPlaylistsService({ encodedToken: token });
       if (playlistRes.status === 200 || playlistRes.status === 201) {
         dispatch({
           type: ACTION_TYPE.SET_PLAYLIST,
@@ -182,14 +182,14 @@ export const DataProvider = ({ children }) => {
       console.log(err);
     }
   };
-  const PostPlaylist = async ({ title }) => {
+  const postPlaylist = async ({ title }) => {
     if (!token) {
       navigate('/login');
       return;
     }
     const playlist = { title };
     try {
-      const playlistRes = await PostPlaylistService({
+      const playlistRes = await postPlaylistService({
         playlist,
         encodedToken: token,
       });
@@ -204,13 +204,13 @@ export const DataProvider = ({ children }) => {
     }
   };
 
-  const DeletePlaylist = async ({ playlistId }) => {
+  const deletePlaylist = async ({ playlistId }) => {
     if (!token) {
       navigate('/login');
       return;
     }
     try {
-      const playlistRes = await DeletePlayListService({
+      const playlistRes = await deletePlayListService({
         playlistId,
         encodedToken: token,
       });
@@ -225,13 +225,13 @@ export const DataProvider = ({ children }) => {
     }
   };
 
-  const PostSingleVideoPlaylist = async ({ playlistId, video }) => {
+  const postSingleVideoPlaylist = async ({ playlistId, video }) => {
     if (!token) {
       navigate('/login');
       return;
     }
     try {
-      const playlistRes = await PostVideoPlaylistService({
+      const playlistRes = await postVideoPlaylistService({
         playlistId,
         video,
         encodedToken: token,
@@ -246,13 +246,13 @@ export const DataProvider = ({ children }) => {
     }
   };
 
-  const DeleteSingleVideoFromPlaylist = async ({ playlistId, videoId }) => {
+  const deleteSingleVideoFromPlaylist = async ({ playlistId, videoId }) => {
     if (!token) {
       navigate('/login');
       return;
     }
     try {
-      const response = await DeleteVideoPlaylistService({
+      const response = await deleteVideoPlaylistService({
         playlistId,
         videoId,
         encodedToken: token,
@@ -268,13 +268,13 @@ export const DataProvider = ({ children }) => {
     }
   };
 
-  const GetWatchLater = async () => {
+  const getWatchLater = async () => {
     if (!token) {
       navigate('/login');
       return;
     }
     try {
-      const watchlaterRes = await GetWatchLaterService({ encodedToken: token });
+      const watchlaterRes = await getWatchLaterService({ encodedToken: token });
       if (watchlaterRes.status === 200 || watchlaterRes.status === 201) {
         dispatch({
           type: ACTION_TYPE.SET_WATCH_LATER,
@@ -286,7 +286,7 @@ export const DataProvider = ({ children }) => {
     }
   };
 
-  const PostWatchLater = async ({ video }) => {
+  const postWatchLater = async ({ video }) => {
     if (!token) {
       navigate('/login');
       return;
@@ -296,7 +296,7 @@ export const DataProvider = ({ children }) => {
         console.log('already added in your watch later');
         return;
       }
-      const watchlaterRes = await PostWatchLaterService({
+      const watchlaterRes = await postWatchLaterService({
         video,
         encodedToken: token,
       });
@@ -311,13 +311,13 @@ export const DataProvider = ({ children }) => {
     }
   };
 
-  const DeleteVideoFromWatchLater = async ({ videoId }) => {
+  const deleteVideoFromWatchLater = async ({ videoId }) => {
     if (!token) {
       navigate('/login');
       return;
     }
     try {
-      const watchlaterRes = await DeleteVideoFromWatchLaterService({
+      const watchlaterRes = await deleteVideoFromWatchLaterService({
         videoId,
         encodedToken: token,
       });
@@ -332,13 +332,13 @@ export const DataProvider = ({ children }) => {
     }
   };
 
-  const GetLikedVideos = async () => {
+  const getLikedVideos = async () => {
     if (!token) {
       navigate('/login');
       return;
     }
     try {
-      const likedRes = await GetLikedVideosService({ encodedToken: token });
+      const likedRes = await getLikedVideosService({ encodedToken: token });
       if (likedRes.status === 201 || likedRes.status === 200) {
         dispatch({
           type: ACTION_TYPE.SET_LIKED,
@@ -350,13 +350,13 @@ export const DataProvider = ({ children }) => {
     }
   };
 
-  const AddToLikeVideos = async ({ video }) => {
+  const addToLikeVideos = async ({ video }) => {
     if (!token) {
       navigate('/login');
       return;
     }
     try {
-      const likedRes = await AddToLikedVideosService({
+      const likedRes = await addToLikedVideosService({
         encodedToken: token,
         video,
       });
@@ -371,13 +371,13 @@ export const DataProvider = ({ children }) => {
     }
   };
 
-  const DeleteLikedVideos = async ({ videoId }) => {
+  const deleteLikedVideos = async ({ videoId }) => {
     if (!token) {
       navigate('/login');
       return;
     }
     try {
-      const likedRes = await DeleteLikedVideosService({
+      const likedRes = await deleteLikedVideosService({
         encodedToken: token,
         videoId,
       });
@@ -396,23 +396,23 @@ export const DataProvider = ({ children }) => {
       value={{
         state,
         dispatch,
-        GetAllHistory,
-        PostHistory,
-        DeleteAllHistory,
-        DeleteHistory,
+        getAllHistory,
+        postHistory,
+        deleteAllHistory,
+        deleteHistory,
         playlistModalState,
         setPlaylistModalState,
-        PostPlaylist,
-        GetAllPlaylist,
-        DeletePlaylist,
-        PostSingleVideoPlaylist,
-        DeleteSingleVideoFromPlaylist,
-        PostWatchLater,
-        GetWatchLater,
-        DeleteVideoFromWatchLater,
-        GetLikedVideos,
-        AddToLikeVideos,
-        DeleteLikedVideos,
+        postPlaylist,
+        getAllPlaylist,
+        deletePlaylist,
+        postSingleVideoPlaylist,
+        deleteSingleVideoFromPlaylist,
+        postWatchLater,
+        getWatchLater,
+        deleteVideoFromWatchLater,
+        getLikedVideos,
+        addToLikeVideos,
+        deleteLikedVideos,
         updateAllVideos,
       }}
     >

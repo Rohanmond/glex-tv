@@ -2,16 +2,16 @@ import { useData } from '../../contexts';
 import VideoCard from '../VIdeoListPage/components/VideoCard/VideoCard';
 import './LikedPage.css';
 export const LikedPage = () => {
-  const { DeleteLikedVideos, PostWatchLater, setPlaylistModalState, state } =
+  const { deleteLikedVideos, postWatchLater, setPlaylistModalState, state } =
     useData();
   const clickHandler = (e, video, menuId) => {
     switch (menuId) {
       case 0: {
-        DeleteLikedVideos({ videoId: video._id });
+        deleteLikedVideos({ videoId: video._id });
         break;
       }
       case 1: {
-        PostWatchLater({ video });
+        postWatchLater({ video });
         break;
       }
       case 2: {

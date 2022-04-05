@@ -1,6 +1,6 @@
 import { createContext, useState } from 'react';
 import { useContext } from 'react';
-import { LoginService, SignUpService } from '../Services/services';
+import { loginService, signUpService } from '../Services/services';
 
 const AuthContext = createContext();
 
@@ -14,7 +14,7 @@ export const AuthProvider = ({ children }) => {
       const {
         data: { foundUser, encodedToken },
         status,
-      } = await LoginService({ email, password });
+      } = await loginService({ email, password });
       if (status === 200 || status === 201) {
         localStorage.setItem(
           'loginItems',
@@ -37,7 +37,7 @@ export const AuthProvider = ({ children }) => {
       const {
         data: { createdUser, encodedToken },
         status,
-      } = await SignUpService({ email, password, name });
+      } = await signUpService({ email, password, name });
       if (status === 200 || status === 201) {
         localStorage.setItem(
           'loginItems',

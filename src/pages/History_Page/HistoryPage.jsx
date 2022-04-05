@@ -5,9 +5,9 @@ import './HistoryPage.css';
 export const HistoryPage = () => {
   const {
     state,
-    DeleteAllHistory,
-    DeleteHistory,
-    PostWatchLater,
+    deleteAllHistory,
+    deleteHistory,
+    postWatchLater,
     dispatch,
     setPlaylistModalState,
   } = useData();
@@ -17,12 +17,12 @@ export const HistoryPage = () => {
   const clickHandler = (e, video, menuId) => {
     switch (menuId) {
       case 0: {
-        DeleteHistory({ videoId: video._id });
+        deleteHistory({ videoId: video._id });
         dispatch({ type: ACTION_TYPE.RESET_MENU });
         break;
       }
       case 1: {
-        PostWatchLater({ video });
+        postWatchLater({ video });
         dispatch({ type: ACTION_TYPE.RESET_MENU });
         break;
       }
@@ -93,7 +93,7 @@ export const HistoryPage = () => {
           <div className='history-clear-all-button-container'>
             <button
               className='btn btn-primary background-danger brd-rd-semi-sq history-clear-all-button'
-              onClick={DeleteAllHistory}
+              onClick={deleteAllHistory}
             >
               Clear All
             </button>

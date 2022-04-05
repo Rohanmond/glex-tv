@@ -4,14 +4,14 @@ import VideoCard from '../VIdeoListPage/components/VideoCard/VideoCard';
 import './PlaylistDetails.css';
 export const PlaylistDetials = () => {
   const { playlistId } = useParams();
-  const { state, DeleteSingleVideoFromPlaylist } = useData();
+  const { state, deleteSingleVideoFromPlaylist } = useData();
   const playlist = state.playlists.find(
     (playlist) => playlist._id === playlistId
   );
   const clickHandler = (e, video, menuId) => {
     switch (menuId) {
       case 0: {
-        DeleteSingleVideoFromPlaylist({ playlistId, videoId: video._id });
+        deleteSingleVideoFromPlaylist({ playlistId, videoId: video._id });
         break;
       }
 
