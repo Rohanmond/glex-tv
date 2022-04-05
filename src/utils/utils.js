@@ -17,7 +17,7 @@ const sortByDate = (data) => {
 export const categoryFilter = (data, category) => {
   let newData = [...data];
   if (!category || category === 'all') return newData;
-  if (category === 'sort_by_latest') return sortByDate(data);
+  if (category === 'sort by latest') return sortByDate(data);
   return newData.filter((el) => el.categories.find((cat) => cat === category));
 };
 

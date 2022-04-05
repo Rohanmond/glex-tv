@@ -9,3 +9,6 @@
   background-color: var(--text-color);
   color: var(--nav-background-color);
 }
+.chip-text {
+  width: max-content;
+}

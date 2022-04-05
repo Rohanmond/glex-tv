@@ -14,14 +14,22 @@ const Chip = ({ element }) => {
   return (
     <div
       className={`chip ${active && 'chip-active'}`}
-      onClick={() =>
-        dispatch({
-          type: ACTION_TYPE.FILTER_CHANGE,
-          payload: { FILTER_TYPE: FILTER.CATEGORY, FILTER_VALUE: categoryName },
-        })
-      }
+      onClick={() => {
+        if (!active)
+          dispatch({
+            type: ACTION_TYPE.FILTER_CHANGE,
+            payload: {
+              FILTER_TYPE: FILTER.CATEGORY,
+              FILTER_VALUE: categoryName,
+            },
+          });
+        else
+          dispatch({
+            type: ACTION_TYPE.FILTER_CLEAR,
+          });
+      }}
     >
-      <p className='font-wt-semibold'>{categoryName}</p>
+      <p className='font-wt-semibold chip-text'>{categoryName}</p>
     </div>
   );
 };

@@ -42,7 +42,7 @@ export const ChipsContainer = () => {
         )}
         <div className='chips-container' ref={scrl} onScroll={scrollCheck}>
           <Chip element={{ categoryName: 'all' }} />
-          <Chip element={{ categoryName: 'sort_by_latest' }} />
+          <Chip element={{ categoryName: 'sort by latest' }} />
           {state.categories.map((el) => {
             return <Chip element={el} key={el._id} />;
           })}

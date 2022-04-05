@@ -12,13 +12,9 @@ export const Login = () => {
   });
 
   useEffect(() => {
-    let id;
     if (token) {
-      id = setTimeout(() => {
-        navigate('/videos');
-      }, 500);
+      navigate('/videos');
     }
-    return () => clearTimeout(id);
   }, [token, navigate]);
 
   const submitHandler = (e) => {
