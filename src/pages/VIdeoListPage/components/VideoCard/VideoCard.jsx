@@ -11,7 +11,7 @@ const VideoCard = ({ video, menuItems, type, playlist_id }) => {
   const { dispatch } = useData();
   const ref = useRef(null);
   const { resetMenu } = useOutsideClickHandler(ref);
-  const { _id, title, creator, menu } = video;
+  const { _id, title, creator, menu, release_date } = video;
 
   useEffect(() => {
     if (resetMenu)
@@ -50,6 +50,7 @@ const VideoCard = ({ video, menuItems, type, playlist_id }) => {
       </div>
       <div className='video-card-subheader-container'>
         <p className='video-card-subheader'>{creator}</p>
+        <p>{release_date}</p>
       </div>
     </div>
   );

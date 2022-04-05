@@ -9,9 +9,15 @@ export const searchFilter = (data, searchPattern) => {
   return newData;
 };
 
+const sortByDate = (data) => {
+  return [...data].sort((a, b) => {
+    return new Date(b.release_date) - new Date(a.release_date);
+  });
+};
 export const categoryFilter = (data, category) => {
   let newData = [...data];
   if (!category || category === 'all') return newData;
+  if (category === 'sort_by_latest') return sortByDate(data);
   return newData.filter((el) => el.categories.find((cat) => cat === category));
 };
 

@@ -118,6 +118,9 @@
   flex-direction: column;
   gap: 0.2rem;
 }
+.release_date {
+  font-size: 0.75rem;
+}
 @media only screen and (max-width: 750px) {
   .video-details-outer-container {
     flex-direction: column;
