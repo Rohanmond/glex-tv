@@ -2,8 +2,8 @@
   background-color: var(--nav-background-color);
   display: flex;
   position: sticky;
-  top: 54.49px;
-  height: calc(100vh - 54.49px);
+  top: 64px;
+  height: calc(100vh - 64px);
 
   flex-direction: column;
   gap: 1rem;

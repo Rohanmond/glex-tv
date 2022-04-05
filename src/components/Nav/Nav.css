@@ -17,6 +17,7 @@
   top: 0;
   z-index: 2;
   width: 100vw;
+  min-height: 4rem;
 }
 .nav-logo-container {
   height: max-content;
