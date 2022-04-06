@@ -9,3 +9,4 @@ export { PlayList } from './Playlist_Page/PlayList';
 export { WatchLater } from './Watch_Later/WatchLater';
 export { PlaylistDetials } from './PlayListDetailsPage/PlaylistDetails';
 export { Profile } from './Profile/Profile';
+export { ErrorPage } from './ErrorPage/ErrorPage';
