@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useData } from '../../contexts';
 import VideoCard from '../VIdeoListPage/components/VideoCard/VideoCard';
 import './PlaylistDetails.css';
@@ -8,6 +8,7 @@ export const PlaylistDetials = () => {
   const playlist = state.playlists.find(
     (playlist) => playlist._id === playlistId
   );
+  const navigate = useNavigate();
   const clickHandler = (e, video, menuId) => {
     switch (menuId) {
       case 0: {
@@ -24,7 +25,7 @@ export const PlaylistDetials = () => {
       id: 0,
       clickHandler,
       danger: true,
-      icon: <span className='material-icons-outlined'>close</span>,
+      icon: <span class='material-icons-outlined'>delete</span>,
       text: 'Remove video from playlist',
     },
   ];
@@ -32,7 +33,17 @@ export const PlaylistDetials = () => {
   return (
     <>
       {(!playlist || playlist.videos.length === 0) && (
-        <h2>There is no video to show</h2>
+        <div className='history-empty-space-filler'>
+          <p className='text-lg font-wt-semibold text-align-center'>
+            There is no video in your playlist
+          </p>
+          <button
+            onClick={() => navigate('/videos')}
+            className='btn btn-primary background-secondary brd-rd-semi-sq'
+          >
+            Explore
+          </button>
+        </div>
       )}
       {playlist && playlist.videos.length > 0 && (
         <div className='playlist-details-header-container'>

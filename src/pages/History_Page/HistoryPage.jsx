@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import { ACTION_TYPE } from '../../constants/constant';
 import { useData } from '../../contexts';
 import VideoCard from '../VIdeoListPage/components/VideoCard/VideoCard';
@@ -11,7 +12,7 @@ export const HistoryPage = () => {
     dispatch,
     setPlaylistModalState,
   } = useData();
-
+  const navigate = useNavigate();
   const reversedHistoryArray = [...state.history].reverse();
 
   const clickHandler = (e, video, menuId) => {
@@ -43,7 +44,7 @@ export const HistoryPage = () => {
       id: 0,
       clickHandler: clickHandler,
       danger: true,
-      icon: <span className='material-icons-outlined'>close</span>,
+      icon: <span class='material-icons-outlined'>delete</span>,
       text: 'Remove from Watch History',
     },
     {
@@ -68,6 +69,19 @@ export const HistoryPage = () => {
 
   return (
     <>
+      {reversedHistoryArray.length === 0 && (
+        <div className='history-empty-space-filler'>
+          <p className='text-lg font-wt-semibold text-align-center'>
+            Looks like you havn't seen any video yet
+          </p>
+          <button
+            onClick={() => navigate('/videos')}
+            className='btn btn-primary background-secondary brd-rd-semi-sq'
+          >
+            Explore
+          </button>
+        </div>
+      )}
       {reversedHistoryArray.length > 0 && (
         <div className='history-page-header-container'>
           <h3>History</h3>
@@ -75,9 +89,6 @@ export const HistoryPage = () => {
         </div>
       )}
       <div className='history-list-container'>
-        {reversedHistoryArray.length === 0 && (
-          <h2>Looks like you havn't watched anything yet</h2>
-        )}
         {reversedHistoryArray.length > 0 &&
           reversedHistoryArray.map((video) => {
             return (

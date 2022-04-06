@@ -1,9 +1,11 @@
+import { useNavigate } from 'react-router-dom';
 import { useData } from '../../contexts';
 import VideoCard from '../VIdeoListPage/components/VideoCard/VideoCard';
 import './LikedPage.css';
 export const LikedPage = () => {
   const { deleteLikedVideos, postWatchLater, setPlaylistModalState, state } =
     useData();
+  const navigate = useNavigate();
   const clickHandler = (e, video, menuId) => {
     switch (menuId) {
       case 0: {
@@ -28,7 +30,7 @@ export const LikedPage = () => {
       id: 0,
       clickHandler,
       danger: true,
-      icon: <span className='material-icons-outlined'>close</span>,
+      icon: <span class='material-icons-outlined'>delete</span>,
       text: 'Remove from likes',
     },
     {
@@ -46,10 +48,20 @@ export const LikedPage = () => {
   ];
   return (
     <>
-      <div className='watch-later-header-container'>
-        <h3>Likes</h3>
-        <p>{state.likes.length} videos</p>
-      </div>
+      {state.likes.length === 0 && (
+        <div className='history-empty-space-filler'>
+          <p className='text-lg font-wt-semibold text-align-center'>
+            Looks like you havn't liked any video yet
+          </p>
+          <button
+            onClick={() => navigate('/videos')}
+            className='btn btn-primary background-secondary brd-rd-semi-sq'
+          >
+            Explore
+          </button>
+        </div>
+      )}
+
       <div className='watch-later-container'>
         {state.likes.length > 0 &&
           state.likes.map((video) => {

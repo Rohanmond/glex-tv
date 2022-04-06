@@ -1,10 +1,11 @@
+import { useNavigate } from 'react-router-dom';
 import { useData } from '../../contexts';
 import VideoCard from '../VIdeoListPage/components/VideoCard/VideoCard';
 import './WatchLater.css';
 export const WatchLater = () => {
   const { state, deleteVideoFromWatchLater, setPlaylistModalState } = useData();
   const reversedWatchLater = [...state.laters].reverse();
-
+  const navigate = useNavigate();
   const clickHandler = (e, video, menuId) => {
     switch (menuId) {
       case 0: {
@@ -25,7 +26,7 @@ export const WatchLater = () => {
       id: 0,
       clickHandler,
       danger: true,
-      icon: <span className='material-icons-outlined'>close</span>,
+      icon: <span class='material-icons-outlined'>delete</span>,
       text: 'Remove from watch later',
     },
     {
@@ -37,10 +38,19 @@ export const WatchLater = () => {
   ];
   return (
     <>
-      <div className='watch-later-header-container'>
-        <h3>Watch Later</h3>
-        <p>{reversedWatchLater.length} videos</p>
-      </div>
+      {reversedWatchLater.length === 0 && (
+        <div className='history-empty-space-filler'>
+          <p className='text-lg font-wt-semibold text-align-center'>
+            There is no watch later video currently
+          </p>
+          <button
+            className='btn btn-primary background-secondary brd-rd-semi-sq'
+            onClick={() => navigate('/videos')}
+          >
+            Explore
+          </button>
+        </div>
+      )}
       <div className='watch-later-container'>
         {reversedWatchLater.length > 0 &&
           reversedWatchLater.map((video) => {

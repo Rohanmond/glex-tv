@@ -116,6 +116,9 @@
     height: max-content;
     padding-bottom: 1rem;
   }
+  .nav-text-input {
+    border-radius: 1rem;
+  }
   .home-nav {
     display: flex;
     flex-direction: column;
