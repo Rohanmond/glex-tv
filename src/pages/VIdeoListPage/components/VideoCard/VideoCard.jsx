@@ -33,7 +33,12 @@ const VideoCard = ({ video, menuItems, type, playlist_id }) => {
         />
       </div>
       <div className='video-card-header-container font-wt-bold'>
-        <p className='video-card-header'>{title}</p>
+        <p
+          className='video-card-header'
+          onClick={() => navigate(`/video/${_id}`)}
+        >
+          {title}
+        </p>
         <div
           className='video-card-header-menu'
           ref={ref}

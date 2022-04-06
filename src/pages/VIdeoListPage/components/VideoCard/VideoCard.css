@@ -13,6 +13,7 @@
   gap: 1rem;
   padding-left: 0.375rem;
   position: relative;
+  cursor: pointer;
 }
 .video-card-header-menu {
   margin-left: auto;
