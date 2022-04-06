@@ -1,10 +1,13 @@
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import '../auth.css';
-import { useAuth } from '../../../contexts';
+import { useAuth, useData } from '../../../contexts';
+import { ACTION_TYPE } from '../../../constants/constant';
 
 export const Login = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const { dispatch } = useData();
   const { loginHandler, token } = useAuth();
   const [loginForm, setLoginForm] = useState({
     email: '',
@@ -13,7 +16,10 @@ export const Login = () => {
 
   useEffect(() => {
     if (token) {
-      navigate('/videos');
+      dispatch({
+        type: ACTION_TYPE.RESET_MENU,
+      });
+      navigate(location.state?.from?.pathname || '/', { replace: true });
     }
   }, [token, navigate]);
 
@@ -76,7 +82,9 @@ export const Login = () => {
             <span className='font-wt-semibold'>Don't have an account?</span>
             <span
               className='auth-link font-wt-semibold'
-              onClick={() => navigate('/signup')}
+              onClick={() =>
+                navigate('/signup', { state: { from: location.state?.from } })
+              }
             >
               Signup
             </span>

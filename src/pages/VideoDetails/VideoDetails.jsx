@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { v4 as uuid } from 'uuid';
 import { useEffect, useState } from 'react';
 import './VideoDetails.css';
@@ -10,6 +10,7 @@ import { PlayListModal } from '../Playlist_Page/components/PlayListModal/PlayLis
 export const VideoDetails = () => {
   const { videoId } = useParams();
   const { token, user } = useAuth();
+  const location = useLocation();
   const [commentInput, setCommentInput] = useState('');
   const [openCommentSection, setOpenCommentSection] = useState(false);
   const navigate = useNavigate();
@@ -49,13 +50,19 @@ export const VideoDetails = () => {
   }, [video]);
 
   const watchlaterHandler = () => {
-    if (!token) navigate('/login');
+    if (!token) {
+      navigate('/login', { state: { from: location } });
+      return;
+    }
     state.laters.some((el) => el._id === videoId)
       ? deleteVideoFromWatchLater({ videoId })
       : postWatchLater({ video });
   };
   const savePlaylistHandler = () => {
-    if (!token) navigate('/login');
+    if (!token) {
+      navigate('/login', { state: { from: location } });
+      return;
+    }
     setPlaylistModalState(video);
   };
   const updateCommentHandler = () => {
@@ -70,7 +77,10 @@ export const VideoDetails = () => {
     setOpenCommentSection(false);
   };
   const likeHandler = () => {
-    if (!token) navigate('/login');
+    if (!token) {
+      navigate('/login', { state: { from: location } });
+      return;
+    }
     state.likes.some((el) => el._id === videoId)
       ? deleteLikedVideos({ videoId })
       : addToLikeVideos({ video });
@@ -79,7 +89,8 @@ export const VideoDetails = () => {
     switch (id) {
       case 1: {
         if (!token) {
-          navigate('/login', { replace: true });
+          navigate('/login', { state: { from: location } });
+          return;
         }
         postWatchLater({ video });
         dispatch({
@@ -89,7 +100,8 @@ export const VideoDetails = () => {
       }
       case 2: {
         if (!token) {
-          navigate('/login', { replace: true });
+          navigate('/login', { state: { from: location } });
+          return;
         }
         setPlaylistModalState(video);
         break;

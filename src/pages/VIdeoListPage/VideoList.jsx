@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { ChipsContainer } from '../../components';
 import { ACTION_TYPE } from '../../constants/constant';
 import { useAuth, useData } from '../../contexts';
@@ -9,6 +9,7 @@ import './VideoList.css';
 export const VideoList = () => {
   const { filteredData } = useFilter();
   const { token } = useAuth();
+  const location = useLocation();
   const navigate = useNavigate();
   const { setPlaylistModalState, postWatchLater, dispatch } = useData();
 
@@ -16,7 +17,8 @@ export const VideoList = () => {
     switch (id) {
       case 1: {
         if (!token) {
-          navigate('/login', { replace: true });
+          navigate('/login', { state: { from: location } });
+          return;
         }
         postWatchLater({ video });
         dispatch({
@@ -26,7 +28,8 @@ export const VideoList = () => {
       }
       case 2: {
         if (!token) {
-          navigate('/login', { replace: true });
+          navigate('/login', { state: { from: location } });
+          return;
         }
         setPlaylistModalState(video);
         dispatch({

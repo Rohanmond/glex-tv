@@ -1,15 +1,17 @@
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { useAuth } from '../../../contexts';
+import { useAuth, useData } from '../../../contexts';
 import '../auth.css';
 import {
   validateEmail,
   validateOnlyString,
   validatePassword,
 } from '../../../utils/utils';
+import { ACTION_TYPE } from '../../../constants/constant';
 
 export const Signup = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const { signupHandler, token } = useAuth();
   const [signupForm, setSignupForm] = useState({
     name: '',
@@ -24,15 +26,15 @@ export const Signup = () => {
     'confirm-password': '',
   };
   const [formError, setFormError] = useState(resetFormError);
+  const { dispatch } = useData();
 
   useEffect(() => {
-    let id;
     if (token) {
-      id = setTimeout(() => {
-        navigate('/videos');
-      }, 500);
+      dispatch({
+        type: ACTION_TYPE.RESET_MENU,
+      });
+      navigate(location.state?.from?.pathname || '/');
     }
-    return () => clearTimeout(id);
   }, [token, navigate]);
 
   const submitHandler = (e) => {
