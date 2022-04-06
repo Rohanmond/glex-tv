@@ -1,10 +1,12 @@
 import { useNavigate } from 'react-router-dom';
 import { useData } from '../../contexts';
+
 import { PlayListCard } from './components/PlayListCard/PlayListCard';
 import './PlayList.css';
 export const PlayList = () => {
   const { state, deletePlaylist } = useData();
   const navigate = useNavigate();
+
   const clickHandler = (e, playlist, id) => {
     switch (id) {
       case 1: {

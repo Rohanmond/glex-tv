@@ -3,6 +3,7 @@ import { ChipsContainer } from '../../components';
 import { ACTION_TYPE } from '../../constants/constant';
 import { useAuth, useData } from '../../contexts';
 import { useFilter } from '../../custom-hooks/FilterHook';
+import { toastHandler, ToastType } from '../../utils/utils';
 import VideoCard from './components/VideoCard/VideoCard';
 import './VideoList.css';
 
@@ -20,10 +21,12 @@ export const VideoList = () => {
           navigate('/login', { state: { from: location } });
           return;
         }
-        postWatchLater({ video });
+        const error = postWatchLater({ video });
+        if (error) toastHandler(ToastType.Info, 'Already inside watch later');
         dispatch({
           type: ACTION_TYPE.RESET_MENU,
         });
+
         break;
       }
       case 2: {

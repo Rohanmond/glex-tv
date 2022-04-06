@@ -6,6 +6,7 @@ import { useAuth, useData } from '../../contexts';
 import VideoCard from '../VIdeoListPage/components/VideoCard/VideoCard';
 import { ACTION_TYPE } from '../../constants/constant';
 import { PlayListModal } from '../Playlist_Page/components/PlayListModal/PlayListModal';
+import { toastHandler, ToastType } from '../../utils/utils';
 
 export const VideoDetails = () => {
   const { videoId } = useParams();
@@ -92,7 +93,8 @@ export const VideoDetails = () => {
           navigate('/login', { state: { from: location } });
           return;
         }
-        postWatchLater({ video });
+        const error = postWatchLater({ video });
+        if (error) toastHandler(ToastType.Info, 'Already inside watch later');
         dispatch({
           type: ACTION_TYPE.RESET_MENU,
         });

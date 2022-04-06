@@ -28,6 +28,8 @@ import {
   postWatchLaterService,
   updateAllVideosService,
 } from '../Services/services';
+import { toastHandler, ToastType } from '../utils/utils';
+
 import { useAuth } from './auth-context';
 
 const DataContext = createContext();
@@ -35,6 +37,7 @@ const DataContext = createContext();
 export const DataProvider = ({ children }) => {
   const [state, dispatch] = useReducer(DataReducer, InitialState);
   const [loader, setLoader] = useState(true);
+  const [toast, setToast] = useState('');
   const [playlistModalState, setPlaylistModalState] = useState(null);
   const { token } = useAuth();
 
@@ -270,7 +273,6 @@ export const DataProvider = ({ children }) => {
   const postWatchLater = async ({ video }) => {
     try {
       if (state.laters.some((el) => el._id === video._id)) {
-        console.log('already added in your watch later');
         return;
       }
       const watchlaterRes = await postWatchLaterService({
@@ -284,7 +286,7 @@ export const DataProvider = ({ children }) => {
         });
       }
     } catch (err) {
-      console.log(err);
+      return err;
     }
   };
 
