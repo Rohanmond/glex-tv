@@ -3,6 +3,8 @@
   align-items: center;
   height: 100vh;
   justify-content: center;
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 
 .error-page-image-container {
