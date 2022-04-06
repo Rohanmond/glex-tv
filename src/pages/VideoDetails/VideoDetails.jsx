@@ -26,12 +26,13 @@ export const VideoDetails = () => {
     updateAllVideos,
   } = useData();
   const video = state.videos.find((ele) => ele._id === videoId) || {};
+
   const { title, creator, _id, comments, release_date } = video || {};
 
   const otherVideos = state.videos.filter(
     (ele) =>
       ele._id !== videoId &&
-      !video.categories.some((item) =>
+      !video?.categories?.some((item) =>
         ele.categories.some((eleItem) => eleItem === item)
       )
   );
@@ -39,6 +40,12 @@ export const VideoDetails = () => {
     window.scrollTo(0, 0);
     postHistory({ video });
   }, [videoId]);
+  useEffect(() => {
+    const id = setTimeout(() => {
+      if (Object.keys(video).length === 0) navigate('/404');
+    }, 3000);
+    return () => clearTimeout(id);
+  }, [video]);
 
   const watchlaterHandler = () => {
     state.laters.some((el) => el._id === videoId)
