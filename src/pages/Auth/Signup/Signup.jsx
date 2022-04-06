@@ -174,9 +174,13 @@ export const Signup = () => {
             />
           </div>
           <div className='auth-link-container'>
-            <p className='font-wt-semibold' onClick={() => navigate('/login')}>
-              Already have an account? Login
-            </p>
+            <span className='font-wt-semibold'>Already have an account?</span>
+            <span
+              className='auth-link font-wt-semibold'
+              onClick={() => navigate('/login')}
+            >
+              Login
+            </span>
           </div>
         </form>
       </div>
