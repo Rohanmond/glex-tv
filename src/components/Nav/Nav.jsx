@@ -99,7 +99,9 @@ export const Nav = () => {
               {!token && (
                 <button
                   className='btn btn-primary background-secondary brd-rd-semi-sq nav-link-item-btn'
-                  onClick={() => navigate('/login')}
+                  onClick={() =>
+                    navigate('/login', { state: { from: location } })
+                  }
                 >
                   Login
                 </button>

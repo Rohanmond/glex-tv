@@ -1,7 +1,8 @@
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../contexts';
 import './Profile.css';
 export const Profile = () => {
+  const location = useLocation();
   const { logoutHandler, user } = useAuth();
   const navigate = useNavigate();
   return (
@@ -25,7 +26,7 @@ export const Profile = () => {
           <button
             onClick={() => {
               logoutHandler();
-              navigate('/videos');
+              navigate('/');
             }}
             className='profile-footer-button btn btn-primary background-danger brd-rd-semi-sq'
           >

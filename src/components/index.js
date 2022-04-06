@@ -4,3 +4,4 @@ export { Aside } from './Aside/Aside';
 export { ChipsContainer } from './Chips/ChipsContainer';
 export { Home } from './Home/Home';
 export { PrivateRoute } from './PrivateRoute/PrivateRoute';
+export { Loader } from './Loader/Loader';

@@ -5,7 +5,7 @@ import {
   useEffect,
   useState,
 } from 'react';
-import { useNavigate } from 'react-router-dom';
+
 import { ACTION_TYPE } from '../constants/constant';
 import { DataReducer, InitialState } from '../reducers/reducer';
 import {
@@ -34,11 +34,12 @@ const DataContext = createContext();
 
 export const DataProvider = ({ children }) => {
   const [state, dispatch] = useReducer(DataReducer, InitialState);
+  const [loader, setLoader] = useState(true);
   const [playlistModalState, setPlaylistModalState] = useState(null);
   const { token } = useAuth();
-  const navigate = useNavigate();
 
   useEffect(() => {
+    setLoader(true);
     (async () => {
       try {
         const videosRes = await getAllVideosService();
@@ -58,6 +59,8 @@ export const DataProvider = ({ children }) => {
         }
       } catch (err) {
         console.log(err);
+      } finally {
+        setLoader(false);
       }
     })();
   }, []);
@@ -74,6 +77,7 @@ export const DataProvider = ({ children }) => {
     }
   }, [token]);
   const updateAllVideos = async ({ videoId, comments }) => {
+    setLoader(true);
     try {
       const res = await updateAllVideosService({ videoId, comments });
       if (res.status === 200) {
@@ -84,13 +88,12 @@ export const DataProvider = ({ children }) => {
       }
     } catch (err) {
       console.log(err);
+    } finally {
+      setLoader(false);
     }
   };
   const getAllHistory = async () => {
-    if (!token) {
-      navigate('/login');
-      return;
-    }
+    setLoader(true);
     try {
       const historyRes = await getAllHistoryService({ encodedToken: token });
       if (historyRes.status === 200 || historyRes.status === 201) {
@@ -101,13 +104,11 @@ export const DataProvider = ({ children }) => {
       }
     } catch (err) {
       console.log(err);
+    } finally {
+      setLoader(false);
     }
   };
   const postHistory = async ({ video }) => {
-    if (!token) {
-      navigate('/login');
-      return;
-    }
     try {
       const historyRes = await postHistoryService({
         video,
@@ -125,10 +126,7 @@ export const DataProvider = ({ children }) => {
   };
 
   const deleteHistory = async ({ videoId }) => {
-    if (!token) {
-      navigate('/login');
-      return;
-    }
+    setLoader(true);
     try {
       const historyRes = await deleteHistoryService({
         videoId,
@@ -142,14 +140,13 @@ export const DataProvider = ({ children }) => {
       }
     } catch (err) {
       console.log(err);
+    } finally {
+      setLoader(false);
     }
   };
 
   const deleteAllHistory = async () => {
-    if (!token) {
-      navigate('/login');
-      return;
-    }
+    setLoader(true);
     try {
       const historyRes = await deleteAllHistoriesService({
         encodedToken: token,
@@ -162,14 +159,12 @@ export const DataProvider = ({ children }) => {
       }
     } catch (err) {
       console.log(err);
+    } finally {
+      setLoader(false);
     }
   };
 
   const getAllPlaylist = async () => {
-    if (!token) {
-      navigate('/login');
-      return;
-    }
     try {
       const playlistRes = await getAllPlaylistsService({ encodedToken: token });
       if (playlistRes.status === 200 || playlistRes.status === 201) {
@@ -183,10 +178,6 @@ export const DataProvider = ({ children }) => {
     }
   };
   const postPlaylist = async ({ title }) => {
-    if (!token) {
-      navigate('/login');
-      return;
-    }
     const playlist = { title };
     try {
       const playlistRes = await postPlaylistService({
@@ -205,10 +196,7 @@ export const DataProvider = ({ children }) => {
   };
 
   const deletePlaylist = async ({ playlistId }) => {
-    if (!token) {
-      navigate('/login');
-      return;
-    }
+    setLoader(true);
     try {
       const playlistRes = await deletePlayListService({
         playlistId,
@@ -222,14 +210,12 @@ export const DataProvider = ({ children }) => {
       }
     } catch (err) {
       console.log(err);
+    } finally {
+      setLoader(false);
     }
   };
 
   const postSingleVideoPlaylist = async ({ playlistId, video }) => {
-    if (!token) {
-      navigate('/login');
-      return;
-    }
     try {
       const playlistRes = await postVideoPlaylistService({
         playlistId,
@@ -247,10 +233,7 @@ export const DataProvider = ({ children }) => {
   };
 
   const deleteSingleVideoFromPlaylist = async ({ playlistId, videoId }) => {
-    if (!token) {
-      navigate('/login');
-      return;
-    }
+    setLoader(true);
     try {
       const response = await deleteVideoPlaylistService({
         playlistId,
@@ -265,14 +248,12 @@ export const DataProvider = ({ children }) => {
       }
     } catch (err) {
       console.log(err);
+    } finally {
+      setLoader(false);
     }
   };
 
   const getWatchLater = async () => {
-    if (!token) {
-      navigate('/login');
-      return;
-    }
     try {
       const watchlaterRes = await getWatchLaterService({ encodedToken: token });
       if (watchlaterRes.status === 200 || watchlaterRes.status === 201) {
@@ -287,10 +268,6 @@ export const DataProvider = ({ children }) => {
   };
 
   const postWatchLater = async ({ video }) => {
-    if (!token) {
-      navigate('/login');
-      return;
-    }
     try {
       if (state.laters.some((el) => el._id === video._id)) {
         console.log('already added in your watch later');
@@ -312,10 +289,7 @@ export const DataProvider = ({ children }) => {
   };
 
   const deleteVideoFromWatchLater = async ({ videoId }) => {
-    if (!token) {
-      navigate('/login');
-      return;
-    }
+    setLoader(true);
     try {
       const watchlaterRes = await deleteVideoFromWatchLaterService({
         videoId,
@@ -329,14 +303,12 @@ export const DataProvider = ({ children }) => {
       }
     } catch (err) {
       console.log(err);
+    } finally {
+      setLoader(false);
     }
   };
 
   const getLikedVideos = async () => {
-    if (!token) {
-      navigate('/login');
-      return;
-    }
     try {
       const likedRes = await getLikedVideosService({ encodedToken: token });
       if (likedRes.status === 201 || likedRes.status === 200) {
@@ -351,10 +323,6 @@ export const DataProvider = ({ children }) => {
   };
 
   const addToLikeVideos = async ({ video }) => {
-    if (!token) {
-      navigate('/login');
-      return;
-    }
     try {
       const likedRes = await addToLikedVideosService({
         encodedToken: token,
@@ -372,10 +340,7 @@ export const DataProvider = ({ children }) => {
   };
 
   const deleteLikedVideos = async ({ videoId }) => {
-    if (!token) {
-      navigate('/login');
-      return;
-    }
+    setLoader(true);
     try {
       const likedRes = await deleteLikedVideosService({
         encodedToken: token,
@@ -389,6 +354,8 @@ export const DataProvider = ({ children }) => {
       }
     } catch (err) {
       console.log(err);
+    } finally {
+      setLoader(false);
     }
   };
   return (
@@ -414,6 +381,8 @@ export const DataProvider = ({ children }) => {
         addToLikeVideos,
         deleteLikedVideos,
         updateAllVideos,
+        loader,
+        setLoader,
       }}
     >
       {children}

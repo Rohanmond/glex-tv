@@ -36,7 +36,6 @@ export const PlayListModal = ({ video }) => {
     });
 
     if (!errorFlag) {
-      console.log('post playlist');
       postPlaylist({ title: input });
       setShowCreate(false);
       setInput('');

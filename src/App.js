@@ -1,6 +1,6 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import './App.css';
-import { Home, MockAPI, Nav, PrivateRoute } from './components';
+import { Home, Loader, MockAPI, Nav, PrivateRoute } from './components';
 import { useAuth, useData, useTheme } from './contexts';
 import {
   ErrorPage,
@@ -19,7 +19,7 @@ import {
 import { PlayListModal } from './pages/Playlist_Page/components/PlayListModal/PlayListModal';
 
 function App() {
-  const { playlistModalState } = useData();
+  const { playlistModalState, loader } = useData();
   const { token } = useAuth();
   const { theme } = useTheme();
 
@@ -28,6 +28,7 @@ function App() {
       {token && playlistModalState && (
         <PlayListModal video={playlistModalState} />
       )}
+      {loader && <Loader />}
       <Nav />
       <Routes>
         <Route path='/' element={<LandingPage />} exact />
