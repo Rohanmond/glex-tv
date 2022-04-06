@@ -37,15 +37,18 @@ export const VideoDetails = () => {
   );
   useEffect(() => {
     window.scrollTo(0, 0);
-    postHistory({ video });
+
+    if (token) postHistory({ video });
   }, [videoId]);
 
   const watchlaterHandler = () => {
+    if (!token) navigate('/login');
     state.laters.some((el) => el._id === videoId)
       ? deleteVideoFromWatchLater({ videoId })
       : postWatchLater({ video });
   };
   const savePlaylistHandler = () => {
+    if (!token) navigate('/login');
     setPlaylistModalState(video);
   };
   const updateCommentHandler = () => {
@@ -60,6 +63,7 @@ export const VideoDetails = () => {
     setOpenCommentSection(false);
   };
   const likeHandler = () => {
+    if (!token) navigate('/login');
     state.likes.some((el) => el._id === videoId)
       ? deleteLikedVideos({ videoId })
       : addToLikeVideos({ video });
@@ -186,50 +190,55 @@ export const VideoDetails = () => {
               </div>
             </div>
             <hr className='hr' />
-            <div className='video-details-comment-outer-component'>
-              <p className='font-wt-semibold'>{comments.length} Comments</p>
-              <div className='video-details-comment-input-container'>
-                <div className='comment-section-avatar'>{user.name[0]}</div>
-                <input
-                  id='comment-section'
-                  value={commentInput}
-                  onFocus={() => setOpenCommentSection(true)}
-                  onChange={(e) => setCommentInput(e.target.value)}
-                  placeholder='add your comment here'
-                />
-              </div>
-              {openCommentSection && (
-                <div className='comment-section-footer'>
-                  <button
-                    className='btn btn-primary background-danger brd-rd-semi-sq cancel-btn'
-                    onClick={() => setOpenCommentSection(false)}
-                  >
-                    Cancel
-                  </button>
-                  <button
-                    className='btn btn-primary background-success brd-rd-semi-sq'
-                    onClick={updateCommentHandler}
-                  >
-                    Submit
-                  </button>
+            {!user && <p>comments are turned off. Login to see comments</p>}
+            {user && (
+              <div className='video-details-comment-outer-component'>
+                <p className='font-wt-semibold'>{comments.length} Comments</p>
+
+                <div className='video-details-comment-input-container'>
+                  <div className='comment-section-avatar'>{user?.name[0]}</div>
+                  <input
+                    id='comment-section'
+                    value={commentInput}
+                    onFocus={() => setOpenCommentSection(true)}
+                    onChange={(e) => setCommentInput(e.target.value)}
+                    placeholder='add your comment here'
+                  />
                 </div>
-              )}
-              <div className='video-details-comment-container'>
-                {comments.map((comment) => {
-                  return (
-                    <div key={comment._id} className='video-details-comment'>
-                      <div className='comment-section-avatar'>
-                        {comment.user_name[0]}
+
+                {openCommentSection && (
+                  <div className='comment-section-footer'>
+                    <button
+                      className='btn btn-primary background-danger brd-rd-semi-sq cancel-btn'
+                      onClick={() => setOpenCommentSection(false)}
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      className='btn btn-primary background-success brd-rd-semi-sq'
+                      onClick={updateCommentHandler}
+                    >
+                      Submit
+                    </button>
+                  </div>
+                )}
+                <div className='video-details-comment-container'>
+                  {comments.map((comment) => {
+                    return (
+                      <div key={comment._id} className='video-details-comment'>
+                        <div className='comment-section-avatar'>
+                          {comment.user_name[0]}
+                        </div>
+                        <div className='video-details-each-comment-container'>
+                          <p className='font-wt-bold'>{comment.user_name}</p>
+                          <p>{comment.comment}</p>
+                        </div>
                       </div>
-                      <div className='video-details-each-comment-container'>
-                        <p className='font-wt-bold'>{comment.user_name}</p>
-                        <p>{comment.comment}</p>
-                      </div>
-                    </div>
-                  );
-                })}
+                    );
+                  })}
+                </div>
               </div>
-            </div>
+            )}
           </section>
           <div className='video-details-list-container'>
             {otherVideos.map((el) => {

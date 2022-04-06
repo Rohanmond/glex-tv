@@ -34,14 +34,7 @@ function App() {
 
         <Route path='' element={<Home />}>
           <Route path='videos' element={<VideoList />} />
-          <Route
-            path='video/:videoId'
-            element={
-              <PrivateRoute>
-                <VideoDetails />
-              </PrivateRoute>
-            }
-          />
+          <Route path='video/:videoId' element={<VideoDetails />} />
           <Route
             path='watchlater'
             element={
