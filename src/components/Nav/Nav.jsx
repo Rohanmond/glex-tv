@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { ACTION_TYPE, FILTER } from '../../constants/constant';
 import { useAuth, useData, useTheme } from '../../contexts';
 import './Nav.css';
@@ -6,6 +6,7 @@ import { useRef } from 'react';
 
 export const Nav = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const { dispatch } = useData();
   const { token } = useAuth();
   const searchRef = useRef();
@@ -51,6 +52,9 @@ export const Nav = () => {
       });
     }
   };
+  if (location.pathname === '/404') {
+    return null;
+  }
   return (
     <nav className='navigation home-nav'>
       <div className='nav-mobile-up'>

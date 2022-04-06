@@ -1,8 +1,9 @@
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import './App.css';
 import { Home, MockAPI, Nav, PrivateRoute } from './components';
 import { useAuth, useData, useTheme } from './contexts';
 import {
+  ErrorPage,
   HistoryPage,
   LandingPage,
   LikedPage,
@@ -93,6 +94,8 @@ function App() {
             </PrivateRoute>
           }
         />
+        <Route path='/404' element={<ErrorPage />} />
+        <Route path='*' element={<Navigate to={'/404'} />} />
       </Routes>
     </div>
   );
