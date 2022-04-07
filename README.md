@@ -16,7 +16,8 @@ $ npm start
 
 - Home page
 - Video listing page
-- Filter Videos
+- Filter Videos based on categories
+- Sort videos based on time
 - Search video
 - Individual video page
 - Like videos  
