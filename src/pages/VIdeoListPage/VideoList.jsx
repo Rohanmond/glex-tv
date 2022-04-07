@@ -43,7 +43,9 @@ export const VideoList = () => {
         break;
       }
       case 3: {
-        navigator.clipboard.writeText(`localhost:3001/video/${video._id}`);
+        navigator.clipboard.writeText(
+          `https://glex-tv.vercel.app/video/${video._id}`
+        );
         toastHandler(ToastType.Info, 'Link copied to clipboard');
         dispatch({
           type: ACTION_TYPE.RESET_MENU,
