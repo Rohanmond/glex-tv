@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { ACTION_TYPE } from '../../constants/constant';
 import { useData } from '../../contexts';
+import { toastHandler, ToastType } from '../../utils/utils';
 import VideoCard from '../VIdeoListPage/components/VideoCard/VideoCard';
 import './HistoryPage.css';
 export const HistoryPage = () => {
@@ -33,6 +34,11 @@ export const HistoryPage = () => {
         break;
       }
       case 3: {
+        navigator.clipboard.writeText(`localhost:3001/video/${video._id}`);
+        toastHandler(ToastType.Info, 'Link copied to clipboard');
+        dispatch({
+          type: ACTION_TYPE.RESET_MENU,
+        });
         break;
       }
       default:

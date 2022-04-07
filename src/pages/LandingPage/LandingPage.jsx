@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router-dom';
 import './LandingPage.css';
 export const LandingPage = () => {
   const navigate = useNavigate();
+
   return (
     <div className='hero-video-thumbnail-container'>
       <div className='home-hero-img-container'>
