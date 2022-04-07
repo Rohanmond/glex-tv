@@ -45,12 +45,7 @@ export const PlaylistDetials = () => {
           </button>
         </div>
       )}
-      {playlist && playlist.videos.length > 0 && (
-        <div className='playlist-details-header-container'>
-          <h3>{playlist.title}</h3>
-          <p>{playlist.videos.length} videos</p>
-        </div>
-      )}
+
       <div className='playlist-details-container'>
         {playlist &&
           playlist.videos.length > 0 &&

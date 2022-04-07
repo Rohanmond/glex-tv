@@ -28,7 +28,6 @@ import {
   postWatchLaterService,
   updateAllVideosService,
 } from '../Services/services';
-import { toastHandler, ToastType } from '../utils/utils';
 
 import { useAuth } from './auth-context';
 
@@ -37,7 +36,6 @@ const DataContext = createContext();
 export const DataProvider = ({ children }) => {
   const [state, dispatch] = useReducer(DataReducer, InitialState);
   const [loader, setLoader] = useState(true);
-  const [toast, setToast] = useState('');
   const [playlistModalState, setPlaylistModalState] = useState(null);
   const { token } = useAuth();
 

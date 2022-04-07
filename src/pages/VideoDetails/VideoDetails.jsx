@@ -86,6 +86,14 @@ export const VideoDetails = () => {
       ? deleteLikedVideos({ videoId })
       : addToLikeVideos({ video });
   };
+
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(`localhost:3001/video/${video._id}`);
+    toastHandler(ToastType.Info, 'Link copied to clipboard');
+    dispatch({
+      type: ACTION_TYPE.RESET_MENU,
+    });
+  };
   const clickHandler = (e, video, id) => {
     switch (id) {
       case 1: {
@@ -109,6 +117,11 @@ export const VideoDetails = () => {
         break;
       }
       case 3: {
+        navigator.clipboard.writeText(`localhost:3001/video/${video._id}`);
+        toastHandler(ToastType.Info, 'Link copied to clipboard');
+        dispatch({
+          type: ACTION_TYPE.RESET_MENU,
+        });
         break;
       }
       default:
@@ -204,7 +217,10 @@ export const VideoDetails = () => {
                   <span className='material-icons-outlined'>playlist_play</span>
                   <p className='font-wt-semibold'>Save</p>
                 </div>
-                <div className='details-video-footer-button'>
+                <div
+                  className='details-video-footer-button'
+                  onClick={copyToClipboard}
+                >
                   <i className='fas fa-share-alt'></i>
                   <p className='font-wt-semibold'>Share</p>
                 </div>
