@@ -1,19 +1,32 @@
 import { useNavigate } from 'react-router-dom';
+import { ACTION_TYPE } from '../../constants/constant';
 import { useData } from '../../contexts';
+import { toastHandler, ToastType } from '../../utils/utils';
 import VideoCard from '../VIdeoListPage/components/VideoCard/VideoCard';
 import './LikedPage.css';
 export const LikedPage = () => {
-  const { deleteLikedVideos, postWatchLater, setPlaylistModalState, state } =
-    useData();
+  const {
+    deleteLikedVideos,
+    postWatchLater,
+    setPlaylistModalState,
+    state,
+    dispatch,
+  } = useData();
   const navigate = useNavigate();
-  const clickHandler = (e, video, menuId) => {
+  const clickHandler = async (e, video, menuId) => {
     switch (menuId) {
       case 0: {
         deleteLikedVideos({ videoId: video._id });
         break;
       }
       case 1: {
-        postWatchLater({ video });
+        const msg = await postWatchLater({ video });
+
+        if (msg) toastHandler(ToastType.Info, msg);
+        else toastHandler(ToastType.Info, 'Already added to wishlist');
+        dispatch({
+          type: ACTION_TYPE.RESET_MENU,
+        });
         break;
       }
       case 2: {

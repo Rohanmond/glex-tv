@@ -16,7 +16,7 @@ export const HistoryPage = () => {
   const navigate = useNavigate();
   const reversedHistoryArray = [...state.history].reverse();
 
-  const clickHandler = (e, video, menuId) => {
+  const clickHandler = async (e, video, menuId) => {
     switch (menuId) {
       case 0: {
         deleteHistory({ videoId: video._id });
@@ -24,8 +24,13 @@ export const HistoryPage = () => {
         break;
       }
       case 1: {
-        postWatchLater({ video });
-        dispatch({ type: ACTION_TYPE.RESET_MENU });
+        const msg = await postWatchLater({ video });
+
+        if (msg) toastHandler(ToastType.Info, msg);
+        else toastHandler(ToastType.Info, 'Already added to wishlist');
+        dispatch({
+          type: ACTION_TYPE.RESET_MENU,
+        });
         break;
       }
       case 2: {

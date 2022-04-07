@@ -94,15 +94,17 @@ export const VideoDetails = () => {
       type: ACTION_TYPE.RESET_MENU,
     });
   };
-  const clickHandler = (e, video, id) => {
+  const clickHandler = async (e, video, id) => {
     switch (id) {
       case 1: {
         if (!token) {
           navigate('/login', { state: { from: location } });
           return;
         }
-        const error = postWatchLater({ video });
-        if (error) toastHandler(ToastType.Info, 'Already inside watch later');
+        const msg = await postWatchLater({ video });
+
+        if (msg) toastHandler(ToastType.Info, msg);
+        else toastHandler(ToastType.Info, 'Already added to wishlist');
         dispatch({
           type: ACTION_TYPE.RESET_MENU,
         });

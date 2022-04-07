@@ -282,9 +282,10 @@ export const DataProvider = ({ children }) => {
           type: ACTION_TYPE.SET_WATCH_LATER,
           payload: { laters: watchlaterRes.data.laters },
         });
+        return 'Added to watch later';
       }
     } catch (err) {
-      return err;
+      console.log(err);
     }
   };
 
