@@ -83,7 +83,11 @@ export const VideoList = () => {
         <ChipsContainer />
       </div>
       <div className='video-list-container'>
-        {filteredData.length > 0 &&
+        {filteredData.length === 0 ? (
+          <p className='text-lg font-weight-bold'>
+            No Videos available to display
+          </p>
+        ) : (
           filteredData.map((el) => {
             return (
               <VideoCard
@@ -93,7 +97,8 @@ export const VideoList = () => {
                 type={'videos'}
               />
             );
-          })}
+          })
+        )}
       </div>
     </>
   );

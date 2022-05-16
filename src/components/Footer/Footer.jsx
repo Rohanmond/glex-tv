@@ -17,6 +17,9 @@ export const Footer = () => {
           playlist_play
         </span>
       </NavLink>
+      <NavLink to={'/videos'} className={toggleActive}>
+        <span className='material-icons-outlined footer-icon'>home</span>
+      </NavLink>
       <NavLink to={'/history'} className={toggleActive}>
         <span className='material-icons-outlined footer-icon'>history</span>
       </NavLink>
