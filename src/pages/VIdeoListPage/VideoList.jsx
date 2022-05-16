@@ -1,4 +1,5 @@
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 import { ChipsContainer } from '../../components';
 import { ACTION_TYPE } from '../../constants/constant';
 import { useAuth, useData } from '../../contexts';
@@ -76,7 +77,9 @@ export const VideoList = () => {
       text: 'Share',
     },
   ];
-
+  useEffect(() => {
+    console.log('video list', location);
+  });
   return (
     <>
       <div>

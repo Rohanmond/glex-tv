@@ -13,13 +13,16 @@ export const Login = () => {
     email: '',
     password: '',
   });
-
+  useEffect(() => {
+    console.log('login', location);
+  });
   useEffect(() => {
     if (token) {
       dispatch({
         type: ACTION_TYPE.RESET_MENU,
       });
       navigate(location.state?.from?.pathname || '/', { replace: true });
+      // navigate('/videos', { replace: true });
     }
   }, [token, navigate]);
 

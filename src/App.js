@@ -48,7 +48,7 @@ function App() {
           <Route path='/' element={<LandingPage />} exact />
           <Route path='/mock-man' element={<MockAPI />} />
 
-          <Route path='' element={<Home />}>
+          <Route element={<Home />}>
             <Route path='videos' element={<VideoList />} />
             <Route path='video/:videoId' element={<VideoDetails />} />
             <Route

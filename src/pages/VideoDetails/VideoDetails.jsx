@@ -44,6 +44,9 @@ export const VideoDetails = () => {
     if (token) postHistory({ video });
   }, [videoId]);
   useEffect(() => {
+    console.log('video details', location);
+  });
+  useEffect(() => {
     const id = setTimeout(() => {
       if (Object.keys(video).length === 0) navigate('/404');
     }, 3000);
@@ -79,7 +82,7 @@ export const VideoDetails = () => {
   };
   const likeHandler = () => {
     if (!token) {
-      navigate('/login', { state: { from: location } });
+      navigate('/login', { state: { from: location }, replace: true });
       return;
     }
     state.likes.some((el) => el._id === videoId)
